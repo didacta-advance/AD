@@ -1,0 +1,21 @@
+{
+    "name": "displaylib",
+    "meta": {
+        "versions": {
+            "target": "2.1.5",
+            "pxt": "5.21.7"
+        }
+    },
+    "editor": "tsprj",
+    "pubId": "_gz0L7M1frXvy",
+    "pubCurrent": false,
+    "target": "microbit",
+    "targetVersion": "2.1.5",
+    "id": "85e947d4-d062-4294-cc0c-0d1353d7306d",
+    "recentUse": 1571758306,
+    "modificationTime": 1571758292,
+    "path": "lajbrebi",
+    "blobCurrent": false,
+    "saveId": null,
+    "githubCurrent": false
+}
