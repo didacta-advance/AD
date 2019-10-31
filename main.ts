@@ -46,10 +46,10 @@ namespace Display {
         ispis("B16;" + n.toString() + ";" + x.toString() + ";" + y.toString() + ";" + boja);
     }
 
-    //% weight=101
-    //%block = %x1 %x2 %x3 %x4 %x5 %x6 %x7 %x8
-    //% inlineInputMode=inline
     export class Red1 {
+        //% weight=101
+        //% block = %x1 %x2 %x3 %x4 %x5 %x6 %x7 %x8
+        //% inlineInputMode=inline
         public izracun(x1: number, x2: number, x3: number, x4: number, x5: number, x6: number, x7: number, x8: number){
             return x1+x2+x3+x4+x5+x6+x7+x8;
         }
