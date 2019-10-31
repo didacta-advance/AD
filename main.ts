@@ -37,7 +37,6 @@ namespace Display {
     //% weight=100
     //% blockId=bit16
     //% block="iscrtaj bitmapu 16x16 broja %n na poziciji  x %x i  y %y| i boje(c/b) %boja"
-    //% blockExternalInputs=true
     export function bit16(n: number, x: number, y: number, boja: string): void {
         switch (boja) {
             case ("c"): boja = "C";
@@ -51,7 +50,6 @@ namespace Display {
     //% weight=99
     //% blockId=bit8x8
     //% block="definiraj bitmapu 8x8 brojem(0-9) %n i sedam boja(0-255) %boja1 %boja2 %boja3 %boja4 %boja5 %boja6 %boja7 %boja8 | definiraj bitmapu 8x8 brojem(0-9) %n i sedam boja(0-255) %boja9"
-    //% inlineInputMode=inline
     export function bit8x8(n: number, boja1: number, boja2: number, boja3: number, boja4: number, boja5: number, boja6: number, boja7: number, boja8: number, boja9: number): void {
         ispis("BIT;" + n.toString() + ";" + boja1.toString() + ";" + boja2.toString() + ";" + boja3.toString() + ";" + boja4.toString() + ";" + boja5.toString() + ";" + boja6.toString() + ";" + boja7.toString() + ";" + boja8.toString());
         /*   let zbroj = [128,64,32,16,8,4,2,1] */
@@ -60,7 +58,6 @@ namespace Display {
     //% weight=98
     //% blockId=isbit8x8
     //% block="ispisi definiranu bitmapu 8x8 (0-9) %n na poziciji  x %x i  y %y| i boje(c/b) %boja"
-    //% blockExternalInputs=true
     export function isbit8x8(n: number, x: number, y: number, boja: string): void {
         switch (boja) {
             case ("c"): boja = "C";
@@ -73,7 +70,6 @@ namespace Display {
     //% weight=97
     //% blockId=scup
     //% block="scroll bitmap UP za %n pixela"
-    //% blockExternalInputs=true
     export function scup(n: number): void {
         ispis("SBU;" + n.toString());
     }
@@ -81,7 +77,6 @@ namespace Display {
     //% weight=96
     //% blockId=scdown
     //% block="scroll bitmap DOWN za %n pixela"
-    //% blockExternalInputs=true
     export function scdown(n: number): void {
         ispis("SBD;" + n.toString());
     }
