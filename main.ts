@@ -46,10 +46,16 @@ namespace Display {
         ispis("B16;" + n.toString() + ";" + x.toString() + ";" + y.toString() + ";" + boja);
     }
 
+    class Red1 {
+        constructor(x1: number, x2: number, x3: number, x4: number, x5: number, x6: number, x7: number, x8: number) {
+            return x1+x2+x3+x4+x5+x6+x7+x8;
+        }
+    }
+    
 
     //% weight=99
     //% blockId=bit8x8
-    //% block="definiraj bitmapu 8x8 brojem(0-9) %n i sedam boja(0-255) %boja1 %boja2 %boja3 %boja4 %boja5 %boja6 %boja7 %boja8 | definiraj bitmapu 8x8 brojem(0-9) %n i sedam boja(0-255) %boja9"
+    //% block="definiraj bitmapu 8x8 brojem(0-9) %n i sedam boja(0-255) %boja1 %boja2 %boja3 %boja4 %boja5 %boja6 %boja7 %boja8 | %Red1 "
     export function bit8x8(n: number, boja1: number, boja2: number, boja3: number, boja4: number, boja5: number, boja6: number, boja7: number, boja8: number, boja9: number): void {
         ispis("BIT;" + n.toString() + ";" + boja1.toString() + ";" + boja2.toString() + ";" + boja3.toString() + ";" + boja4.toString() + ";" + boja5.toString() + ";" + boja6.toString() + ";" + boja7.toString() + ";" + boja8.toString());
         /*   let zbroj = [128,64,32,16,8,4,2,1] */
