@@ -29,6 +29,8 @@ input.onButtonPressed(Button.A, function () {
     Display.ispunaekrana(254);
     Display.isbuf();
 })
+
+//% color=#6495ED weight=101 block="Basic Blocks"
 namespace Display {
 
 
