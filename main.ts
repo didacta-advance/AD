@@ -30,11 +30,11 @@ input.onButtonPressed(Button.A, function () {
     Display.isbuf();
 })
 
-//% color=218 weight=101 
+//% color=218 weight=103 
 namespace Display {
 
 
-    //% weight=100
+    //% weight=102
     //% blockId=bit16
     //% block="iscrtaj bitmapu 16x16 broja %n na poziciji  x %x i  y %y| i boje(c/b) %boja"
     export function bit16(n: number, x: number, y: number, boja: string): void {
@@ -46,10 +46,11 @@ namespace Display {
         ispis("B16;" + n.toString() + ";" + x.toString() + ";" + y.toString() + ";" + boja);
     }
 
+    //% weight=101
     //%block = %x1 %x2 %x3 %x4 %x5 %x6 %x7 %x8
     //% inlineInputMode=inline
     export class Red1 {
-        constructor(x1: number, x2: number, x3: number, x4: number, x5: number, x6: number, x7: number, x8: number) {
+        public izracun(x1: number, x2: number, x3: number, x4: number, x5: number, x6: number, x7: number, x8: number){
             return x1+x2+x3+x4+x5+x6+x7+x8;
         }
     }
