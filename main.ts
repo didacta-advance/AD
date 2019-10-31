@@ -1,3 +1,6 @@
+input.onButtonPressed(Button.A, function () {
+
+})
 function ispis(tekst: string) {
     dd = tekst.length
     if (dd < 31) {
@@ -14,14 +17,18 @@ function salji(tekst: string) {
         let bb = tekst.charCodeAt(n);
         buf.setNumber(NumberFormat.UInt8LE, n, bb);
     }
-    pins.i2cWriteBuffer(0x99, buf, false);
+    pins.i2cWriteBuffer(0x11, buf, false);
     basic.pause(30)
 }
-input.onButtonPressed(Button.A, function () {
-
-})
 let dd = 0
 let duz = 0
+
+
+
+input.onButtonPressed(Button.A, function () {
+    Display.ispunaekrana(254);
+    Display.isbuf();
+})
 namespace Display {
 
 
@@ -38,12 +45,14 @@ namespace Display {
         ispis("B16;" + n.toString() + ";" + x.toString() + ";" + y.toString() + ";" + boja);
     }
 
+
     //% weight=99
     //% blockId=bit8x8
-    //% block="definiraj bitmapu 8x8 brojem(0-9) %n i sedam boja(0-255) %boja1 %boja2 %boja3 %boja4 %boja5 %boja6 %boja7"
+    //% block="definiraj bitmapu 8x8 brojem(0-9) %n i sedam boja(0-255) %boja1, %boja2, %boja3 %boja4 %boja5 %boja6 %boja7 %boja8"
     //% blockExternalInputs=true
-    export function bit8x8(n: number, boja1: number, boja2: number, boja3: number, boja4: number, boja5: number, boja6: number, boja7: number, ): void {
-        ispis("BIT;" + n.toString() + ";" + boja1.toString() + ";" + boja2.toString() + ";" + boja3.toString() + ";" + boja4.toString() + ";" + boja5.toString() + ";" + boja6.toString() + ";" + boja7.toString());
+    export function bit8x8(n: number, boja1: number, boja2: number, boja3: number, boja4: number, boja5: number, boja6: number, boja7: number, boja8: number): void {
+        ispis("BIT;" + n.toString() + ";" + boja1.toString() + ";" + boja2.toString() + ";" + boja3.toString() + ";" + boja4.toString() + ";" + boja5.toString() + ";" + boja6.toString() + ";" + boja7.toString() + ";" + boja8.toString());
+        /*   let zbroj = [128,64,32,16,8,4,2,1] */
     }
 
     //% weight=98
@@ -162,7 +171,6 @@ namespace Display {
         ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";0;" + boja);
     }
 
-    //brisanje ne razmim
     //% weight=86
     //% blockId=bristxtpoz
     //% block="brisanje texta od %tekst slova na stupac x %x i red y %y"
