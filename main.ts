@@ -46,21 +46,34 @@ namespace Display {
         ispis("B16;" + n.toString() + ";" + x.toString() + ";" + y.toString() + ";" + boja);
     }
 
+    enum odabir {
+        Crna,
+        Bijela
+    }
+
     export class Red1 {
         //% weight=101
-        //% block = %x1 %x2 %x3 %x4 %x5 %x6 %x7 %x8
+        //% block = %x8 %x7 %x6 %x5 %x4 %x3 %x2 %x1
         //% inlineInputMode=inline
-        public izracun(x1: number, x2: number, x3: number, x4: number, x5: number, x6: number, x7: number, x8: number){
-            return x1+x2+x3+x4+x5+x6+x7+x8;
+        public izracun(x1: odabir, x2: odabir, x3: odabir, x4: odabir, x5: odabir, x6: odabir, x7: odabir, x8: odabir){
+            let zbroj = [128,64,32,16,8,4,2,1];
+            let broji = [];
+            let brojac = 0;
+            broji.push(x8,x7,x6,x5,x4,x3,x2,x1);
+            for (let i in zbroj){
+                if (broji[i] = odabir.Crna){
+                    
+                }
+            }
         }
     }
     
 
     //% weight=99
     //% blockId=bit8x8
-    //% block="definiraj bitmapu 8x8 brojem(0-9) %n i sedam boja(0-255) | %boja1 %boja2 %boja3 %boja4 %boja5 %boja6 %boja7 %boja8 "
-    export function bit8x8(n: number, boja1: number, boja2: number, boja3: number, boja4: number, boja5: number, boja6: number, boja7: number, boja8: number, boja9: number): void {
-        ispis("BIT;" + n.toString() + ";" + boja1.toString() + ";" + boja2.toString() + ";" + boja3.toString() + ";" + boja4.toString() + ";" + boja5.toString() + ";" + boja6.toString() + ";" + boja7.toString() + ";" + boja8.toString());
+    //% block="definiraj bitmapu 8x8 brojem(0-9) %n i osam redova(0-255) | %red1 %red2 %red3 %red4 %red5 %red6 %red7 %red8 "
+    export function bit8x8(n: number, red1: Red1, red2: Red1, red3: Red1, red4: Red1, red5: Red1, red6: Red1, red7: Red1, red8: Red1, red9: Red1): void {
+        //ispis("BIT;" + n.toString() + ";" + red1.toString() + ";" + red2.toString() + ";" + red3.toString() + ";" + red4.toString() + ";" + red5.toString() + ";" + red6.toString() + ";" + red7.toString() + ";" + red8.toString());
         /*   let zbroj = [128,64,32,16,8,4,2,1] */
     }
 
