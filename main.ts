@@ -30,7 +30,7 @@ input.onButtonPressed(Button.A, function () {
     Display.isbuf();
 })
 
-//% color=#6495ED weight=101 block="Basic Blocks"
+//% color=218 weight=101 
 namespace Display {
 
 
