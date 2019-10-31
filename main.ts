@@ -51,7 +51,6 @@ namespace Display {
     //% weight=99
     //% blockId=bit8x8
     //% block="definiraj bitmapu 8x8 brojem(0-9) %n i sedam boja(0-255) %boja1 %boja2 %boja3 %boja4 %boja5 %boja6 %boja7 %boja8"
-    //% blockExternalInputs=true
     //% inlineInputMode=inline
     export function bit8x8(n: number, boja1: number, boja2: number, boja3: number, boja4: number, boja5: number, boja6: number, boja7: number, boja8: number): void {
         ispis("BIT;" + n.toString() + ";" + boja1.toString() + ";" + boja2.toString() + ";" + boja3.toString() + ";" + boja4.toString() + ";" + boja5.toString() + ";" + boja6.toString() + ";" + boja7.toString() + ";" + boja8.toString());
