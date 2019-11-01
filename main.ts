@@ -72,7 +72,7 @@ namespace Display {
     //     set qux(v: number) { if (v != 42) this._qux = v }
     // }
 
-    export class Red1 {
+    export class Red {
         //% weight=101
         //% block
         //% inlineInputMode=inline
@@ -80,11 +80,11 @@ namespace Display {
              let zbroj = [128,64,32,16,8,4,2,1];
              let broji = [x1,x2,x3,x4,x5,x6,x7,x8];
              let brojac = 0;
-             for (let i in zbroj){
-                if (broji[i] = odabir.Crna){
+            //  for (let i in zbroj){
+            //     if (broji[i] = odabir.Crna){
                     
-                }
-             }
+            //     }
+            //  }
         }
     }
     
