@@ -74,13 +74,12 @@ namespace Display {
 
     export class Red1 {
         //% weight=101
-        //% block="%x8 %x7 %x6 %x5 %x4 %x3 %x2 %x1"
+        //% block="%x1 %x2 %x3 %x4 %x5 %x6 %x7 %x8"
         //% inlineInputMode=inline
         public izracun(x1: odabir, x2: odabir, x3: odabir, x4: odabir, x5: odabir, x6: odabir, x7: odabir, x8: odabir) {
              let zbroj = [128,64,32,16,8,4,2,1];
-             let broji = [];
+             let broji = [x1,x2,x3,x4,x5,x6,x7,x8];
              let brojac = 0;
-             broji.push(x8,x7,x6,x5,x4,x3,x2,x1);
              for (let i in zbroj){
                 if (broji[i] = odabir.Crna){
                     
