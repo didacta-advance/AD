@@ -48,6 +48,15 @@ namespace Display {
         Bijela
     }
 
+    //% weight=101
+    //% block = "%x1 %x2 %x3 %x4 %x5 %x6 %x7 %x8"
+    //% inlineInputMode=inline
+    export function izracun(x1: odabir, x2: odabir, x3: odabir, x4: odabir, x5: odabir, x6: odabir, x7: odabir, x8: odabir) {
+        let zbroj = [128,64,32,16,8,4,2,1];
+        let broji = [x1,x2,x3,x4,x5,x6,x7,x8];
+        let brojac = 0;
+    }
+
     // export class Foo {
     //     //% blockCombine
     //     x: number;
@@ -72,21 +81,21 @@ namespace Display {
     //     set qux(v: number) { if (v != 42) this._qux = v }
     // }
 
-    export class Red {
-        //% weight=101
-        //% block
-        //% inlineInputMode=inline
-        public izracun(x1: odabir, x2: odabir, x3: odabir, x4: odabir, x5: odabir, x6: odabir, x7: odabir, x8: odabir) {
-             let zbroj = [128,64,32,16,8,4,2,1];
-             let broji = [x1,x2,x3,x4,x5,x6,x7,x8];
-             let brojac = 0;
-            //  for (let i in zbroj){
-            //     if (broji[i] = odabir.Crna){
+    // export class Red {
+    //     //% weight=101
+    //     //% block = "%x1 %x2 %x3 %x4 %x5 %x6 %x7 %x8"
+    //     //% inlineInputMode=inline
+    //     public izracun(x1: odabir, x2: odabir, x3: odabir, x4: odabir, x5: odabir, x6: odabir, x7: odabir, x8: odabir) {
+    //          let zbroj = [128,64,32,16,8,4,2,1];
+    //          let broji = [x1,x2,x3,x4,x5,x6,x7,x8];
+    //          let brojac = 0;
+    //         //  for (let i in zbroj){
+    //         //     if (broji[i] = odabir.Crna){
                     
-            //     }
-            //  }
-        }
-    }
+    //         //     }
+    //         //  }
+    //     }
+    // }
     
     // export function 
 
