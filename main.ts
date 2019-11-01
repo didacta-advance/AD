@@ -1,8 +1,8 @@
-input.onButtonPressed(Button.A, function () {
+// input.onButtonPressed(Button.A, function () {
 
-})
+// })
 function ispis(tekst: string) {
-    dd = tekst.length
+    let dd = tekst.length
     if (dd < 31) {
         salji(tekst)
     } else {
@@ -10,8 +10,9 @@ function ispis(tekst: string) {
         salji(tekst.substr(30, dd))
     }
 }
+
 function salji(tekst: string) {
-    duz = tekst.length
+    let duz = tekst.length
     let buf = pins.createBuffer(duz);
     for (let n = 0; n <= duz - 1; n++) {
         let bb = tekst.charCodeAt(n);
@@ -20,15 +21,6 @@ function salji(tekst: string) {
     pins.i2cWriteBuffer(0x11, buf, false);
     basic.pause(30)
 }
-let dd = 0
-let duz = 0
-
-
-
-input.onButtonPressed(Button.A, function () {
-    Display.ispunaekrana(254);
-    Display.isbuf();
-})
 
 //% color=218 weight=103 
 namespace Display {
@@ -39,9 +31,14 @@ namespace Display {
     //% block="iscrtaj bitmapu 16x16 broja %n na poziciji  x %x i  y %y| i boje(c/b) %boja"
     export function bit16(n: number, x: number, y: number, boja: string): void {
         switch (boja) {
-            case ("c"): boja = "C";
-            case ("b"): boja = "B";
-            default: boja = "C";
+            case ("c"):
+                boja = "C";
+                break;
+            case ("b"):
+                boja = "B";
+                break;
+            default:
+                boja = "C";
         }
         ispis("B16;" + n.toString() + ";" + x.toString() + ";" + y.toString() + ";" + boja);
     }
@@ -51,23 +48,48 @@ namespace Display {
         Bijela
     }
 
+    // export class Foo {
+    //     //% blockCombine
+    //     x: number;
+    //     //% blockCombine
+    //     y: number;
+    //     // exposed with custom name
+    //     //% blockCombine block="foo bar"
+    //     foo_bar: number;
+    
+    //     // not exposed
+    //     _bar: number;
+    //     _qux: number;
+    
+    //     // exposed as read-only (only in the getter block)
+    //     //% blockCombine
+    //     get bar() { return this._bar }
+    
+    //     // exposed in both getter and setter
+    //     //% blockCombine
+    //     get qux() { return this._qux }
+    //     //% blockCombine
+    //     set qux(v: number) { if (v != 42) this._qux = v }
+    // }
+
     export class Red1 {
         //% weight=101
-        //% block = %x8 %x7 %x6 %x5 %x4 %x3 %x2 %x1
+        //% block="%x8 %x7 %x6 %x5 %x4 %x3 %x2 %x1"
         //% inlineInputMode=inline
-        public izracun(x1: odabir, x2: odabir, x3: odabir, x4: odabir, x5: odabir, x6: odabir, x7: odabir, x8: odabir){
-            let zbroj = [128,64,32,16,8,4,2,1];
-            let broji = [];
-            let brojac = 0;
-            broji.push(x8,x7,x6,x5,x4,x3,x2,x1);
-            for (let i in zbroj){
-                if (broji[i] = odabir.Crna){
+        public izracun(x1: odabir, x2: odabir, x3: odabir, x4: odabir, x5: odabir, x6: odabir, x7: odabir, x8: odabir) {
+            // let zbroj = [128,64,32,16,8,4,2,1];
+            // let broji = [];
+            // let brojac = 0;
+            // broji.push(x8,x7,x6,x5,x4,x3,x2,x1);
+            // for (let i in zbroj){
+            //     if (broji[i] = odabir.Crna){
                     
-                }
-            }
+            //     }
+            // }
         }
     }
     
+    // export function 
 
     //% weight=99
     //% blockId=bit8x8
@@ -122,11 +144,20 @@ namespace Display {
     //% block="scroll text DOWN za 1 red sa rotacijom(y/n) %r"
     export function sctxtdown(r: string): void {
         switch (r) {
-            case ("y"): r = "R";
-            case ("n"): r = null;
-            case ("Y"): r = "R";
-            case ("N"): r = null;
-            default: r = null;
+            case ("y"):
+                r = "R";
+                break;
+            case ("n"):
+                r = null;
+                break;
+            case ("Y"):
+                r = "R";
+                break;
+            case ("N"):
+                r = null;
+                break;
+            default:
+                r = null;
         }
         ispis("SCD;" + r);
     }
