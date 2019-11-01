@@ -49,7 +49,7 @@ namespace Display {
     }
 
     //% weight=101
-    //% block = "%x1 %x2 %x3 %x4 %x5 %x6 %x7 %x8"
+    //% block
     //% inlineInputMode=inline
     export function izracun(x1: odabir, x2: odabir, x3: odabir, x4: odabir, x5: odabir, x6: odabir, x7: odabir, x8: odabir) {
         let zbroj = [128,64,32,16,8,4,2,1];
