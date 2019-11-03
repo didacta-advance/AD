@@ -38,6 +38,7 @@ namespace Display {
     //% weight=102
     //% blockId=bit16
     //% block="iscrtaj bitmapu 16x16 broja %n na poziciji  x %x i  y %y| i boje(c/b) %boja"
+    //% inlineInputMode=inline
     export function bit16(n: number, x: number, y: number, boja: string): void {
         switch (boja) {
             case ("c"):
@@ -167,6 +168,7 @@ namespace Display {
     //% weight=92
     //% blockId=ispispix
     //% block="ispis pixela na poziciju x %x y %y i boje(c/b) %boja"
+    //% inlineInputMode=inline
     export function ispispix(x: number, y: number, boja: string): void {
         switch (boja) {
             case ("c"): boja = "C"; break;
@@ -200,6 +202,7 @@ namespace Display {
     //% weight=88
     //% blockId=ispistxtpix
     //% block="ispis texta %tekst na poziciju x %x y %y i boje(c/b) %boja"
+    //% inlineInputMode=inline
     export function ispistxtpix(tekst: string, x: number, y: number): void {
         ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";G");
     }
