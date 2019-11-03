@@ -221,7 +221,7 @@ namespace Display {
             case ("b"): boja = "B"; break;
             default: boja = "C";
         }
-        ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";0;" + boja);
+        ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";" + boja);
     }
 
     //% weight=86
