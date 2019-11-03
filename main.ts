@@ -215,7 +215,6 @@ namespace Display {
     //% blockId=ispistxt
     //% block="ispis texta %tekst na stupac x %x i red y %y  boje(c/b) %boja"
     //% inlineInputMode=inline
-    //% boja.defl="C"
     export function ispistxt(tekst: string, x: number, y: number, boja: string): void {
         switch (boja) {
             case ("c"): boja = "C"; break;
