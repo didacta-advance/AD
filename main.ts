@@ -70,7 +70,7 @@ namespace Display {
     }
     
     //% blockId=fooo
-    //% block="fooo| $foof $foof1 $foof2 $foof3 $foof4 $foof5 $foof6 $foof7"
+    //% block="broj bitmape %bitbr| $foof $foof1 $foof2 $foof3 $foof4 $foof5 $foof6 $foof7"
     //% foof.shadow="displayRed"
     //% foof1.shadow="displayRed"
     //% foof2.shadow="displayRed"
@@ -80,8 +80,8 @@ namespace Display {
     //% foof6.shadow="displayRed"
     //% foof7.shadow="displayRed"
     //% blockExternalInputs=true
-    export function fooo(foof : number, foof1 : number, foof2 : number, foof3 : number, foof4 : number, foof5 : number, foof6 : number, foof7 : number) {
-
+    export function fooo(bitbr: number, foof : number, foof1 : number, foof2 : number, foof3 : number, foof4 : number, foof5 : number, foof6 : number, foof7 : number) {
+        ispis("BIT;" + bitbr.toString() + ";" + foof.toString() + ";" + foof1.toString() + ";" + foof2.toString() + ";" + foof3.toString() + ";" + foof4.toString() + ";" + foof5.toString() + ";" + foof6.toString() + ";" + foof7.toString());
     }
 
     //% weight=99
