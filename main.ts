@@ -206,6 +206,7 @@ namespace Display {
     //% weight=87
     //% blockId=ispistxt
     //% block="ispis texta %tekst na stupac x %x i red y %y  boje(c/b) %boja"
+    //% inlineInputMode=inline
     export function ispistxt(tekst: string, x: number, y: number, boja: string): void {
         switch (boja) {
             case ("c"): boja = "C"; break;
@@ -218,6 +219,7 @@ namespace Display {
     //% weight=86
     //% blockId=bristxtpoz
     //% block="brisanje texta od %tekst slova na stupac x %x i red y %y"
+    //% inlineInputMode=inline
     export function bristxtpoz(tekst: string, x: number, y: number, boja: string): void {
         let ispuna = [];
         for (let i = 0; i < tekst.length; i++) {
@@ -231,6 +233,7 @@ namespace Display {
     //% weight=85
     //% blockId=bitscrolltxt
     //% block="bit scroll prema strani(L/D) %str od reda %x do reda %y sa rotacijom ili bez(y/n) %r"
+    //% inlineInputMode=inline
     export function bitscrolltxt(str: string, x: number, y: number, r: string): void {
         switch (str) {
             case ("l"): str = "L"; break;
@@ -253,6 +256,7 @@ namespace Display {
     //% weight=84
     //% blockId=lin
     //% block="iscrtavanje linije od x1 %x1 y1 %y1 do x2 %x2 y2 %y2 sa bojom(C/B) %boja"
+    //% inlineInputMode=inline
     export function lin(x1: number, y1: number, x2: number, y2: number, boja: string): void {
         switch (boja) {
             case ("c"): boja = "C"; break;
@@ -266,6 +270,7 @@ namespace Display {
     //% weight=83
     //% blockId=kruz
     //% block="iscrtavanje kruznice na x %x y %y radiusa %r sa bojom(C/B) %boja"
+    //% inlineInputMode=inline
     export function kruz(x: number, y: number, r: number, boja: string): void {
         switch (boja) {
             case ("c"): boja = "C"; break;
@@ -279,6 +284,7 @@ namespace Display {
     //% weight=82
     //% blockId=krug
     //% block="iscrtavanje kruga na x %x y %y radiusa %r punjenog bojom(C/B) %fill i boje(C/B) %boja"
+    //% inlineInputMode=inline
     export function krug(x: number, y: number, r: number, fill: string, boja: string): void {
         switch (fill) {
             case ("c"): fill = "C"; break;
@@ -298,6 +304,7 @@ namespace Display {
     //% weight=81
     //% blockId=kvad
     //% block="iscrtavanje kvadrata od x1 %x1 y1 %y1 do x2 %x2 y2 %y2 sa bojom(C/B) %boja"
+    //% inlineInputMode=inline
     export function kvad(x1: number, y1: number, x2: number, y2: number, boja: string): void {
         switch (boja) {
             case ("c"): boja = "C"; break;
@@ -311,6 +318,7 @@ namespace Display {
     //% weight=81
     //% blockId=tro
     //% block="iscrtavanje trokuta od x1 %x1 y1 %y1 do x2 %x2 y2 %y2 do x3 %x3 y3 %y3 sa bojom(C/B) %boja"
+    //% inlineInputMode=inline
     export function tro(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, boja: string): void {
         switch (boja) {
             case ("c"): boja = "C"; break;
@@ -324,6 +332,7 @@ namespace Display {
     //% weight=80
     //% blockId=troisp
     //% block="iscrtavanje trokuta od x1 %x1 y1 %y1 do x2 %x2 y2 %y2 do x3 %x3 y3 %y3 sa ispunom(C/B) %fill i bojom(C/B) %boja"
+    //% inlineInputMode=inline
     export function troisp(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, fill: string, boja: string): void {
         switch (boja) {
             case ("c"): boja = "C"; break;
