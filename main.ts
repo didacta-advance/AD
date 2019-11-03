@@ -96,6 +96,7 @@ namespace Display {
     //% weight=98
     //% blockId=isbit8x8
     //% block="ispisi definiranu bitmapu 8x8 (0-9) %n na poziciji  x %x i  y %y| i boje(c/b) %boja"
+    //% inlineInputMode=inline
     export function isbit8x8(n: number, x: number, y: number, boja: string): void {
         switch (boja) {
             case ("c"): boja = "C"; break;
