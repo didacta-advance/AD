@@ -58,6 +58,7 @@ namespace Display {
     //% blockId="displayRed"
     //% blockHidden=true
     //% inlineInputMode=inline
+    //% x1.defl = 1 
     export function __red(x1: odabir, x2: odabir, x3: odabir, x4: odabir, x5: odabir, x6: odabir, x7: odabir, x8: odabir): number {
         return (
               x8
@@ -176,6 +177,7 @@ namespace Display {
             default: boja = "C";
         }
         ispis("PIX;" + x.toString() + ";" + y.toString() + ";" + boja);
+        ispis("DIS");
     }
 
     //% weight=91
@@ -205,6 +207,7 @@ namespace Display {
     //% inlineInputMode=inline
     export function ispistxtpix(tekst: string, x: number, y: number): void {
         ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";G");
+        ispis("DIS");
     }
 
     //% weight=87
@@ -218,6 +221,7 @@ namespace Display {
             default: boja = "C";
         }
         ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";0;" + boja);
+        ispis("DIS");
     }
 
     //% weight=86
@@ -231,6 +235,7 @@ namespace Display {
         }
         let celo = ispuna.join("");
         ispis(celo + ";" + x.toString() + ";" + y.toString() + ";0;");
+        ispis("DIS");
     }
 
 
@@ -269,6 +274,7 @@ namespace Display {
         }
 
         ispis("LIN;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + boja);
+        ispis("DIS");
     }
 
     //% weight=83
@@ -283,6 +289,7 @@ namespace Display {
         }
 
         ispis("CIR;" + x.toString() + ";" + y.toString() + ";" + r.toString() + ";" + boja);
+        ispis("DIS");
     }
 
     //% weight=82
@@ -303,6 +310,7 @@ namespace Display {
         }
 
         ispis("CIR;" + x.toString() + ";" + y.toString() + ";" + r.toString() + ";" + fill + ";" + boja);
+        ispis("DIS");
     }
 
     //% weight=81
@@ -317,6 +325,7 @@ namespace Display {
         }
 
         ispis("REC;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + boja);
+        ispis("DIS");
     }
 
     //% weight=81
@@ -331,6 +340,7 @@ namespace Display {
         }
 
         ispis("TRI;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + x3.toString() + ";" + y3.toString() + ";" + boja);
+        ispis("DIS");
     }
 
     //% weight=80
