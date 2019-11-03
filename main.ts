@@ -202,8 +202,13 @@ namespace Display {
     //% blockId=ispistxtpix
     //% block="ispis texta %tekst na poziciju x %x y %y i boje(c/b) %boja"
     //% inlineInputMode=inline
-    export function ispistxtpix(tekst: string, x: number, y: number): void {
-        ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";G");
+    export function ispistxtpix(tekst: string, x: number, y: number, boja: string): void {
+        switch (boja) {
+            case ("c"): boja = "C"; break;
+            case ("b"): boja = "B"; break;
+            default: boja = "C";
+        }
+        ispis(tekst + ";" + x.toString() + ";" + y.toString() +";"+ boja + ";G");
     }
 
     //% weight=87
