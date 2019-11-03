@@ -58,7 +58,7 @@ namespace Display {
     //% blockId="displayRed"
     //% blockHidden=true
     //% inlineInputMode=inline
-    //% x1.defl = 1 
+    //% x1.defl = odabir.Crno
     export function __red(x1: odabir, x2: odabir, x3: odabir, x4: odabir, x5: odabir, x6: odabir, x7: odabir, x8: odabir): number {
         return (
               x8
