@@ -215,6 +215,7 @@ namespace Display {
     //% blockId=ispistxt
     //% block="ispis texta %tekst na stupac x %x i red y %y  boje(c/b) %boja"
     //% inlineInputMode=inline
+    //% boja.defl="C"
     export function ispistxt(tekst: string, x: number, y: number, boja: string): void {
         switch (boja) {
             case ("c"): boja = "C"; break;
@@ -226,7 +227,7 @@ namespace Display {
 
     //% weight=86
     //% blockId=bristxtpoz
-    //% block="brisanje texta od %tekst slova na stupac x %x i red y %y"
+    //% block="brisanje texta od %tekst slova na stupac x %x i red y %y i bojom %boja"
     //% inlineInputMode=inline
     export function bristxtpoz(tekst: string, x: number, y: number, boja: string): void {
         let ispuna = [];
@@ -234,7 +235,7 @@ namespace Display {
             ispuna.push(" ");
         }
         let celo = ispuna.join("");
-        ispis(celo + ";" + x.toString() + ";" + y.toString() + ";0;");
+        ispis(celo + ";" + x.toString() + ";" + y.toString() + ";0;" + boja);
     }
 
 
