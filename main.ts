@@ -47,6 +47,9 @@ namespace Display {
             case ("b"):
                 boja = "B";
                 break;
+            case ("B"):
+                boja = "B";
+                break;
             default:
                 boja = "C";
         }
@@ -102,6 +105,7 @@ namespace Display {
         switch (boja) {
             case ("c"): boja = "C"; break;
             case ("b"): boja = "B"; break;
+            case ("B"): boja = "B"; break;
             default: boja = "C";
         }
         ispis("SPR;" + n.toString() + ";" + x.toString() + ";" + y.toString() + ";" + boja);
@@ -173,6 +177,7 @@ namespace Display {
         switch (boja) {
             case ("c"): boja = "C"; break;
             case ("b"): boja = "B"; break;
+            case ("B"): boja = "B"; break;
             default: boja = "C";
         }
         ispis("PIX;" + x.toString() + ";" + y.toString() + ";" + boja);
@@ -206,6 +211,7 @@ namespace Display {
         switch (boja) {
             case ("c"): boja = "C"; break;
             case ("b"): boja = "B"; break;
+            case ("B"): boja = "B"; break;
             default: boja = "C";
         }
         ispis(tekst + ";" + x.toString() + ";" + y.toString() +";"+ boja + ";G");
@@ -219,6 +225,7 @@ namespace Display {
         switch (boja) {
             case ("c"): boja = "C"; break;
             case ("b"): boja = "B"; break;
+            case ("B"): boja = "B"; break;
             default: boja = "C";
         }
         ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";" + boja);
@@ -246,6 +253,7 @@ namespace Display {
         switch (str) {
             case ("l"): str = "L"; break;
             case ("d"): str = "R"; break;
+            case ("L"): str = "L"; break;
             default: str = "R";
         }
 
@@ -269,6 +277,7 @@ namespace Display {
         switch (boja) {
             case ("c"): boja = "C"; break;
             case ("b"): boja = "B"; break;
+            case ("B"): boja = "B"; break;
             default: boja = "C";
         }
 
@@ -283,6 +292,7 @@ namespace Display {
         switch (boja) {
             case ("c"): boja = "C"; break;
             case ("b"): boja = "B"; break;
+            case ("B"): boja = "B"; break;
             default: boja = "C";
         }
 
@@ -297,12 +307,14 @@ namespace Display {
         switch (fill) {
             case ("c"): fill = "C"; break;
             case ("b"): fill = "B"; break;
+            case ("B"): fill = "B"; break;
             default: fill = "C";
         }
 
         switch (boja) {
             case ("c"): boja = "C"; break;
             case ("b"): boja = "B"; break;
+            case ("B"): boja = "B"; break;
             default: boja = "C";
         }
 
@@ -317,6 +329,7 @@ namespace Display {
         switch (boja) {
             case ("c"): boja = "C"; break;
             case ("b"): boja = "B"; break;
+            case ("B"): boja = "B"; break;
             default: boja = "C";
         }
 
@@ -331,6 +344,7 @@ namespace Display {
         switch (boja) {
             case ("c"): boja = "C"; break;
             case ("b"): boja = "B"; break;
+            case ("B"): boja = "B"; break;
             default: boja = "C";
         }
 
@@ -345,12 +359,14 @@ namespace Display {
         switch (boja) {
             case ("c"): boja = "C"; break;
             case ("b"): boja = "B"; break;
+            case ("B"): boja = "B"; break;
             default: boja = "C";
         }
 
         switch (fill) {
             case ("c"): fill = "C"; break;
             case ("b"): fill = "B"; break;
+            case ("B"): boja = "B"; break;
             default: fill = "C";
         }
 
