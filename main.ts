@@ -25,10 +25,10 @@ function salji(tekst: string) {
 
 
 enum odabir {
-    //% block="[#]"
-    Crno = 1,
     //% block="[ ]"
-    Bijelo = 0
+    Bijelo = 0,
+    //% block="[#]"
+    Crno = 1
 }
 
 //% color=218 weight=103 
