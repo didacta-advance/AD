@@ -26,11 +26,12 @@ function salji(tekst: string) {
 
 
 enum odabir {
-    //% block="[ ]"
+    //% block="-"
     Bijelo = 0,
-    //% block="[#]"
+    //% block="#"
     Crno = 1
 }
+
 
 //% color=218 weight=103 
 namespace Display {
@@ -74,6 +75,7 @@ namespace Display {
             | x1 << 7 );
     }
     
+
     //% blockId=fooo
     //% block="broj bitmape %bitbr| $foof $foof1 $foof2 $foof3 $foof4 $foof5 $foof6 $foof7"
     //% foof.shadow="displayRed"
