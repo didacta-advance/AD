@@ -1,6 +1,7 @@
 // input.onButtonPressed(Button.A, function () {
 
 // })
+basic.pause(1500)
 function ispis(tekst: string) {
     let dd = tekst.length
     if (dd < 31) {
