@@ -20,7 +20,7 @@ function salji(tekst: string) {
         buf.setNumber(NumberFormat.UInt8LE, n, bb);
     }
     pins.i2cWriteBuffer(0x11, buf, false);
-    basic.pause(30)
+    basic.pause(50)
 }
 
 
