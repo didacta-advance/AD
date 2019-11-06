@@ -204,6 +204,7 @@ namespace Display {
     //% blockId=isbuf
     //% block="ispisi buffer ekrana na display"
     export function isbuf(): void {
+        ispis("DIS");
     }
 
     //% weight=88
