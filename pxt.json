@@ -1,9 +1,9 @@
 {
     "name": "displaylib",
+    "description": "",
     "dependencies": {
         "core": "*"
     },
-    "description": "",
     "files": [
         "main.ts",
         "README.md"

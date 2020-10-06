@@ -20,13 +20,13 @@ function salji(tekst: string) {
         buf.setNumber(NumberFormat.UInt8LE, n, bb);
     }
     pins.i2cWriteBuffer(0x11, buf, false);
-    basic.pause(50)
+    basic.pause(40)
 }
 
 
 
 enum odabir {
-    //% block="-"
+    //% block=" "
     Bijelo = 0,
     //% block="#"
     Crno = 1
@@ -37,45 +37,26 @@ enum odabir {
 namespace Display {
 
 
-    //% weight=102
-    //% blockId=bit16
-    //% block="iscrtaj bitmapu 16x16 broja %n na poziciji  x %x i  y %y| i boje(c/b) %boja"
-    //% inlineInputMode=inline
-    export function bit16(n: number, x: number, y: number, boja: string): void {
-        switch (boja) {
-            case ("c"):
-                boja = "C";
-                break;
-            case ("b"):
-                boja = "B";
-                break;
-            case ("B"):
-                boja = "B";
-                break;
-            default:
-                boja = "C";
-        }
-        ispis("B16;" + n.toString() + ";" + x.toString() + ";" + y.toString() + ";" + boja);
-    }
-
     
+
+
     //% block="$x1 $x2 $x3 $x4 $x5 $x6 $x7 $x8"
     //% blockId="displayRed"
     //% blockHidden=true
     //% inlineInputMode=inline
     export function __red(x1: odabir, x2: odabir, x3: odabir, x4: odabir, x5: odabir, x6: odabir, x7: odabir, x8: odabir): number {
         return (
-              x8
+            x8
             | x7 << 1
             | x6 << 2
             | x5 << 3
             | x4 << 4
             | x3 << 5
             | x2 << 6
-            | x1 << 7 );
+            | x1 << 7);
     }
-    
 
+    //% weight=100
     //% blockId=fooo
     //% block="broj bitmape %bitbr| $foof $foof1 $foof2 $foof3 $foof4 $foof5 $foof6 $foof7"
     //% foof.shadow="displayRed"
@@ -87,7 +68,7 @@ namespace Display {
     //% foof6.shadow="displayRed"
     //% foof7.shadow="displayRed"
     //% blockExternalInputs=true
-    export function fooo(bitbr: number, foof : number, foof1 : number, foof2 : number, foof3 : number, foof4 : number, foof5 : number, foof6 : number, foof7 : number):void {
+    export function fooo(bitbr: number, foof: number, foof1: number, foof2: number, foof3: number, foof4: number, foof5: number, foof6: number, foof7: number): void {
         ispis("BIT;" + bitbr.toString() + ";" + foof.toString() + ";" + foof1.toString() + ";" + foof2.toString() + ";" + foof3.toString() + ";" + foof4.toString() + ";" + foof5.toString() + ";" + foof6.toString() + ";" + foof7.toString());
     }
 
@@ -218,7 +199,7 @@ namespace Display {
             case ("B"): boja = "B"; break;
             default: boja = "C";
         }
-        ispis(tekst + ";" + x.toString() + ";" + y.toString() +";"+ boja + ";G");
+        ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";" + boja + ";G");
     }
 
     //% weight=87
@@ -327,9 +308,16 @@ namespace Display {
 
     //% weight=81
     //% blockId=kvad
-    //% block="iscrtavanje kvadrata od x1 %x1 y1 %y1 do x2 %x2 y2 %y2 sa bojom(C/B) %boja"
+    //% block="iscrtavanje kvadrata od x1 %x1 y1 %y1 do x2 %x2 y2 %y2 sa bojom %boja (C/B) i ispunom %isp (C/B)"
     //% inlineInputMode=inline
-    export function kvad(x1: number, y1: number, x2: number, y2: number, boja: string): void {
+    export function kvad(x1: number, y1: number, x2: number, y2: number, boja: string, isp: string): void {
+        switch (isp) {
+            case ("c"): isp = "C"; break;
+            case ("b"): isp = "B"; break;
+            case ("B"): isp = "B"; break;
+            default: isp = null;
+        }
+        
         switch (boja) {
             case ("c"): boja = "C"; break;
             case ("b"): boja = "B"; break;
@@ -337,43 +325,245 @@ namespace Display {
             default: boja = "C";
         }
 
-        ispis("REC;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + boja);
+        ispis("REC;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + boja + ";" + isp);
     }
 
-    //% weight=81
-    //% blockId=tro
-    //% block="iscrtavanje trokuta od x1 %x1 y1 %y1 do x2 %x2 y2 %y2 do x3 %x3 y3 %y3 sa bojom(C/B) %boja"
-    //% inlineInputMode=inline
-    export function tro(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, boja: string): void {
-        switch (boja) {
-            case ("c"): boja = "C"; break;
-            case ("b"): boja = "B"; break;
-            case ("B"): boja = "B"; break;
-            default: boja = "C";
-        }
-
-        ispis("TRI;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + x3.toString() + ";" + y3.toString() + ";" + boja);
-    }
 
     //% weight=80
-    //% blockId=troisp
-    //% block="iscrtavanje trokuta od x1 %x1 y1 %y1 do x2 %x2 y2 %y2 do x3 %x3 y3 %y3 sa ispunom(C/B) %fill i bojom(C/B) %boja"
+    //% blockId=zvuksignal
+    //% block="emitaj zvucni signal frekvencije %freq (0 - 500) i duljine %time (vremenski 0 - 1000)"
     //% inlineInputMode=inline
-    export function troisp(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, fill: string, boja: string): void {
-        switch (boja) {
-            case ("c"): boja = "C"; break;
-            case ("b"): boja = "B"; break;
-            case ("B"): boja = "B"; break;
-            default: boja = "C";
+    export function zvuksignal(freq: number, time: number){
+        if(freq > 500){freq = 500;}
+        if(freq < 0){freq = 0;}
+
+        if(time > 1000){time = 1000;}
+        if(time < 0){time = 0;}
+
+        ispis("BIP;" +  freq.toString() + ";" + time.toString());
+    }
+
+
+    //% weight=79
+    //% blockId=gumb
+    //% block="stvori gumb koji povecava ili smanjuje %pov (+ ili -) X ili Y varijablu %smer za koliko %kol (0 - 255)"
+    //% inlineInputMode=inline
+    export function gumb(pov: string, smer: string, kol: number){
+        if ((pov != "+") && (pov != "-")){pov = "+";}
+        
+        switch (smer) {
+            case ("x"): smer = "X"; break;
+            case ("y"): smer = "Y"; break;
+            case ("Y"): break;
+            default: smer = "X";
         }
 
-        switch (fill) {
-            case ("c"): fill = "C"; break;
-            case ("b"): fill = "B"; break;
-            case ("B"): boja = "B"; break;
-            default: fill = "C";
+        if(kol > 255){kol = 255;}
+        if(kol < 0){kol = 0;}
+
+        ispis("BUT;" + pov + ";" + smer + ";" + kol.toString());
+    }
+
+    //% weight=78
+    //% blockId=skok
+    //% block="skok za %sk (0 - 255)"
+    //% inlineInputMode=inline
+    export function skok(sk: number){
+        if(sk > 255){sk = 255;}
+        if(sk < 0){sk = 0;}
+
+        ispis("JMP;" + sk.toString());
+    }
+
+    //% weight=77
+    //% blockId=level
+    //% block="auto promjena levela, max.brzina %maxb (20 - 255), pocetna brzina %pocb (20 - 255), promjena za %pr (0 - 255) i kolko bodova za tu promjenu %bpr (0 - 255)"
+    //% inlineInputMode=inline
+    export function level(maxb: number, pocb: number, pr: number, bpr: number){
+        if(maxb < 20){maxb = 20;}
+        if(maxb > 255){maxb = 255;}
+
+        if(pocb < 20){pocb = 20;}
+        if(pocb > 255){pocb = 255;}
+
+        if(pr > 255){pr = 255;}
+        if(pr < 0){pr = 0;}
+
+        if(bpr > 255){bpr = 255;}
+        if(bpr < 0){bpr = 0;}
+
+        ispis("LVL;" + maxb.toString() + ";" + pocb.toString() + ";" + pr.toString() + ";" + bpr.toString());
+    }
+
+
+    //% weight=76
+    //% blockId=pozobj
+    //% block="pozicija objekta na broju ekrana %bre (0 - 5), na broju mape %brm (0 - 9), x kordinate %x (0 - 80), duzine %d (1 - 10) i y kordinate %y (0 - 5)"
+    //% inlineInputMode=inline
+    export function pozobj(bre: number, brm: number, x: number, d: number, y: number){
+        if(bre > 5){bre = 5;}
+        if(bre < 0){bre = 0;}
+
+        if(brm > 9){brm = 9;}
+        if(brm < 0){brm = 0;}
+
+        if(x > 80){x = 80;}
+        if(x < 0){x = 0;}
+
+        if(d > 10){d = 10;}
+        if(d < 1){d = 1;}
+
+        if(y > 5){y = 5;}
+        if(y < 0){y = 0;}
+
+        ispis("OBJ;" + bre.toString() + ";" + brm.toString() + ";" + x.toString() + ";" + d.toString() + ";" + y.toString());
+    }
+
+
+    //% weight=75
+    //% blockId=prikazobj
+    //% block="prikaz objekata na ekranu broj %bre (0 - 5)"
+    //% inlineInputMode=inline
+    export function prikazobj(bre: number){
+        if(bre > 5){bre = 5;}
+        if(bre < 0){bre = 0;}
+
+        ispis("FX;" + bre.toString());
+    }
+
+    //% weight=74
+    //% blockId=reset
+    //% block="reset displaya"
+    //% inlineInputMode=inline
+    export function reset(){
+        ispis("RST");
+    }
+
+    //% weight=73
+    //% blockId=autoscHoriz
+    //% block="automatski scroll horizontalno %schz (da/ne)"
+    //% inlineInputMode=inline
+    export function autoscHoriz(schz: string){
+        switch (schz) {
+            case ("DA"): schz = "da"; break;
+            case ("NE"): schz = "ne"; break;
+            default: schz = "ne";
         }
 
-        ispis("TRI;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + x3.toString() + ";" + y3.toString() + ";" + fill + ";" + boja);
+        ispis("ASD;" + schz);
+    }
+
+    //% weight=72
+    //% blockId=trajanje
+    //% block="trajanje igrice %tr (0 - 255)"
+    //% inlineInputMode=inline
+    export function trajanje(tr: number){
+        if(tr > 255){tr = 255;}
+        if(tr < 0){tr = 0;}
+
+        ispis("TIM;" + tr.toString());
+    }
+
+    //% weight=71
+    //% blockId=bodovi
+    //% block="pocetni bodovi %bod (0 - 255)"
+    //% inlineInputMode=inline
+    export function bodovi(bod: number){
+        if(bod > 255){bod = 255;}
+        if(bod < 0){bod = 0;}
+
+        ispis("BOD;" + bod.toString());
+    }
+
+    //% weight=70
+    //% blockId=negbodovi
+    //% block="negativni bodovi"
+    //% inlineInputMode=inline
+    export function negbodovi(){
+        ispis("BON");
+    }
+
+    //% weight=69
+    //% blockId=brziv
+    //% block="pocetni zivotni bodovi %zbod (0 - 255)"
+    //% inlineInputMode=inline
+    export function brziv(zbod: number){
+        if(zbod > 255){zbod = 255;}
+        if(zbod < 0){zbod = 0;}
+
+        ispis("LIV;" + zbod.toString());
+    }
+
+    //% weight=68
+    //% blockId=vrata
+    //% block="auto promjena vrata"
+    //% inlineInputMode=inline
+    export function vrata(){
+        ispis("DOR");
+    }
+
+    //% weight=67
+    //% blockId=grav
+    //% block="automatski scroll horizontalno %g (da/ne)"
+    //% inlineInputMode=inline
+    export function grav(g: string){
+        switch (g) {
+            case ("DA"): g = "da"; break;
+            case ("NE"): g = "ne"; break;
+            default: g = "ne";
+        }
+
+        ispis("GRV;" + g);
+    }
+
+    //% weight=66
+    //% blockId=pad
+    //% block="pad %p (da/ne)"
+    //% inlineInputMode=inline
+    export function pad(p: string){
+        switch (p) {
+            case ("DA"): p = "da"; break;
+            case ("NE"): p = "ne"; break;
+            default: p = "ne";
+        }
+
+        ispis("PAD;" + p);
+    }
+
+    //% weight=65
+    //% blockId=brzhorsc
+    //% block="brzina horizontalnog scrolla %pix (20 - 255) i pomak %kol (1 - 2)"
+    //% inlineInputMode=inline
+    export function brzhorsc(pix: number, kol: number){
+        if(pix > 255){pix = 255;}
+        if(pix < 20){pix = 20;}
+
+        if(kol > 2){kol = 2;}
+        if(kol < 1){kol = 1;}
+
+        ispis("SPD;" + pix.toString() + ";" + kol.toString());
+    }
+
+    //% weight=64
+    //% blockId=pocpoz
+    //% block="pocetna pozicija igraca x kordinata %x (0 - 10) i y kordinata %y (0 - 5)"
+    //% inlineInputMode=inline
+    export function pocpoz(x: number, y: number){
+        if(x > 10){x = 10;}
+        if(x < 0){x = 0;}
+
+        if(y > 5){y = 5;}
+        if(y < 0){y = 0;}
+
+        ispis("POZ;" + x.toString() + ";" + y.toString());
+    }
+
+
+    //% weight=63
+    //% blockId=randr
+    //% block="random redosljed ekrana"
+    //% inlineInputMode=inline
+    export function randr(){
+        ispis("RND");
     }
 }
