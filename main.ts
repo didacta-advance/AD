@@ -19,7 +19,7 @@ function salji(tekst: string) {
         let bb = tekst.charCodeAt(n);
         buf.setNumber(NumberFormat.UInt8LE, n, bb);
     }
-    pins.i2cWriteBuffer(0x11, buf, false);
+    pins.i2cWriteBuffer(0x11, buf, false)
     basic.pause(40)
 }
 
