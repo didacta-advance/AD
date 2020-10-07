@@ -232,7 +232,7 @@ namespace Display {
 
     //% weight=85
     //% blockId=bitscrolltxt
-    //% block="bit scroll prema strani(L/D) %str od reda %x do reda %y sa rotacijom ili bez(y/n) %r"
+    //% block="bit scroll: (L/D) %str od reda %x do reda %y sa rotacijom ili bez(y/n) %r"
     //% inlineInputMode=inline
     export function bitscrolltxt(str: string, x: number, y: number, r: string): void {
         switch (str) {
