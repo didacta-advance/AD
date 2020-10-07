@@ -74,7 +74,7 @@ namespace Display {
 
     //% weight=99
     //% blockId=bit8x8
-    //% block="definiraj bitmapu 8x8 brojem(0-9) %n i osam redova(0-255) | %red1 %red2 %red3 %red4 %red5 %red6 %red7 %red8 "
+    //% block="spremi bitmapu (0-9) %n 8 x (0-255) | %red1 %red2 %red3 %red4 %red5 %red6 %red7 %red8 "
     //% inlineInputMode=inline
     export function bit8x8(n: number, red1: number, red2: number, red3: number, red4: number, red5: number, red6: number, red7: number, red8: number): void {
         ispis("BIT;" + n.toString() + ";" + red1.toString() + ";" + red2.toString() + ";" + red3.toString() + ";" + red4.toString() + ";" + red5.toString() + ";" + red6.toString() + ";" + red7.toString() + ";" + red8.toString());
@@ -83,7 +83,7 @@ namespace Display {
 
     //% weight=98
     //% blockId=isbit8x8
-    //% block="ispisi definiranu bitmapu 8x8 (0-9) %n na poziciji  x %x i  y %y| i boje(c/b) %boja"
+    //% block="ispis: bitmapa (0-9) %n na x %x ,  y %y| boja(C/B) %boja"
     //% inlineInputMode=inline
     export function isbit8x8(n: number, x: number, y: number, boja: string): void {
         switch (boja) {
