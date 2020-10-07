@@ -74,7 +74,7 @@ namespace Display {
 
     //% weight=99
     //% blockId=bit8x8
-    //% block="spremi bitmapu (0-9) %n 8 x (0-255) | %red1 %red2 %red3 %red4 %red5 %red6 %red7 %red8 "
+    //% block="spremi: bitmapa (0-9) %n 8 x (0-255) | %red1 %red2 %red3 %red4 %red5 %red6 %red7 %red8 "
     //% inlineInputMode=inline
     export function bit8x8(n: number, red1: number, red2: number, red3: number, red4: number, red5: number, red6: number, red7: number, red8: number): void {
         ispis("BIT;" + n.toString() + ";" + red1.toString() + ";" + red2.toString() + ";" + red3.toString() + ";" + red4.toString() + ";" + red5.toString() + ";" + red6.toString() + ";" + red7.toString() + ";" + red8.toString());
@@ -97,21 +97,21 @@ namespace Display {
 
     //% weight=97
     //% blockId=scup
-    //% block="scroll bitmap UP za %n pixela"
+    //% block="scroll: bitmap UP za %n pixela"
     export function scup(n: number): void {
         ispis("SBU;" + n.toString());
     }
 
     //% weight=96
     //% blockId=scdown
-    //% block="scroll bitmap DOWN za %n pixela"
+    //% block="scroll: bitmap DOWN za %n pixela"
     export function scdown(n: number): void {
         ispis("SBD;" + n.toString());
     }
 
     //% weight=95
     //% blockId=sctxtup
-    //% block="scroll text UP za 1 red sa rotacijom(y/n) %r"
+    //% block="scroll: text UP za 1 red - rotacija(y/n) %r"
     export function sctxtup(r: string): void {
         switch (r) {
             case ("y"): r = "R"; break;
@@ -125,7 +125,7 @@ namespace Display {
 
     //% weight=94
     //% blockId=sctxtdown
-    //% block="scroll text DOWN za 1 red sa rotacijom(y/n) %r"
+    //% block="scroll: text DOWN za 1 red - rotacija(y/n) %r"
     export function sctxtdown(r: string): void {
         switch (r) {
             case ("y"):
@@ -148,14 +148,14 @@ namespace Display {
 
     //% weight=93
     //% blockId=ispunaekrana
-    //% block="ispuna ekrana bojom %boja"
+    //% block="ispuna ekrana: boja %boja"
     export function ispunaekrana(boja: number): void {
         ispis("FIL;" + boja.toString());
     }
 
     //% weight=92
     //% blockId=ispispix
-    //% block="ispis pixela na poziciju x %x y %y i boje(c/b) %boja"
+    //% block="ispis: pixela - x %x y %y i boja(C/B) %boja"
     //% inlineInputMode=inline
     export function ispispix(x: number, y: number, boja: string): void {
         switch (boja) {
@@ -176,21 +176,21 @@ namespace Display {
 
     //% weight=90
     //% blockId=kontrast
-    //% block="ispis kontrasta (0-100) %oc"
+    //% block="kontrast (0-100) %oc"
     export function kontrast(oc: number): void {
         ispis("CON;" + oc.toString());
     }
 
     //% weight=89
     //% blockId=isbuf
-    //% block="ispisi buffer ekrana na display"
+    //% block="ispis buffera"
     export function isbuf(): void {
         ispis("DIS");
     }
 
     //% weight=88
     //% blockId=ispistxtpix
-    //% block="ispis texta %tekst na poziciju x %x y %y i boje(c/b) %boja"
+    //% block="ispis (G): tekst %tekst (0-84) x %x (0-48) y %y boja(C/B) %boja"
     //% inlineInputMode=inline
     export function ispistxtpix(tekst: string, x: number, y: number, boja: string): void {
         switch (boja) {
@@ -204,7 +204,7 @@ namespace Display {
 
     //% weight=87
     //% blockId=ispistxt
-    //% block="ispis texta %tekst na stupac x %x i red y %y  boje(c/b) %boja"
+    //% block="ispis: tekst %tekst - (0-10) x %x (0-5) y %y  boje(c/b) %boja"
     //% inlineInputMode=inline
     export function ispistxt(tekst: string, x: number, y: number, boja: string): void {
         switch (boja) {
