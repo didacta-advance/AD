@@ -58,7 +58,7 @@ namespace Display {
 
     //% weight=100
     //% blockId=fooo
-    //% block="BITMAPA %bitbr| $foof $foof1 $foof2 $foof3 $foof4 $foof5 $foof6 $foof7"
+    //% block="BITMAP number %bitbr| $foof $foof1 $foof2 $foof3 $foof4 $foof5 $foof6 $foof7"
     //% foof.shadow="displayRed"
     //% foof1.shadow="displayRed"
     //% foof2.shadow="displayRed"
