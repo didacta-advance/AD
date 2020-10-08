@@ -1,7 +1,7 @@
 // input.onButtonPressed(Button.A, function () {
 
 // })
-basic.pause(1500)
+basic.pause(1500);
 function ispis(tekst: string) {
     let dd = tekst.length
     if (dd < 31) {
@@ -19,8 +19,8 @@ function salji(tekst: string) {
         let bb = tekst.charCodeAt(n);
         buf.setNumber(NumberFormat.UInt8LE, n, bb);
     }
-    pins.i2cWriteBuffer(0x11, buf, false)
-    basic.pause(40)
+    pins.i2cWriteBuffer(0x11, buf, false);
+    basic.pause(40);
 }
 
 
@@ -422,7 +422,7 @@ namespace Display {
 
     //% weight=75
     //% blockId=prikazobj
-    //% block="prikaz objekata na ekranu broj %bre (0 - 5)"
+    //% block="prikaz objekata na ekranu broj %bre (0-5)"
     //% inlineInputMode=inline
     export function prikazobj(bre: number){
         if(bre > 5){bre = 5;}
@@ -477,7 +477,7 @@ namespace Display {
 
     //% weight=70
     //% blockId=negbodovi
-    //% block="negativni bodovi"
+    //% block="NEGATIVNI bodovi (da)"
     //% inlineInputMode=inline
     export function negbodovi(){
         ispis("BON");
@@ -485,7 +485,7 @@ namespace Display {
 
     //% weight=69
     //% blockId=brziv
-    //% block="pocetni zivotni bodovi %zbod (0 - 255)"
+    //% block="pocetni zivotni bodovi %zbod (0-255)"
     //% inlineInputMode=inline
     export function brziv(zbod: number){
         if(zbod > 255){zbod = 255;}
@@ -504,12 +504,14 @@ namespace Display {
 
     //% weight=67
     //% blockId=grav
-    //% block="automatski scroll horizontalno %g (da/ne)"
+    //% block="GRAVITACIJA %g (d/n)"
     //% inlineInputMode=inline
     export function grav(g: string){
         switch (g) {
-            case ("DA"): g = "da"; break;
-            case ("NE"): g = "ne"; break;
+            case ("D"): g = "da"; break;
+            case ("N"): g = "ne"; break;
+            case ("d"): g = "da"; break;
+            case ("n"): g = "ne"; break;            
             default: g = "ne";
         }
 
@@ -518,12 +520,14 @@ namespace Display {
 
     //% weight=66
     //% blockId=pad
-    //% block="pad %p (da/ne)"
+    //% block="pad %p (d/n)"
     //% inlineInputMode=inline
     export function pad(p: string){
         switch (p) {
-            case ("DA"): p = "da"; break;
-            case ("NE"): p = "ne"; break;
+            case ("D"): p = "da"; break;
+            case ("N"): p = "ne"; break;
+            case ("d"): p = "da"; break;
+            case ("n"): p = "ne"; break;            
             default: p = "ne";
         }
 
@@ -532,7 +536,7 @@ namespace Display {
 
     //% weight=65
     //% blockId=brzhorsc
-    //% block="brzina horizontalnog scrolla %pix (20 - 255) i pomak %kol (1 - 2)"
+    //% block="brzina horizontalnog scrolla %pix (10-255) i pomak %kol (1 - 2)"
     //% inlineInputMode=inline
     export function brzhorsc(pix: number, kol: number){
         if(pix > 255){pix = 255;}
@@ -546,7 +550,7 @@ namespace Display {
 
     //% weight=64
     //% blockId=pocpoz
-    //% block="pocetna pozicija igraca x kordinata %x (0 - 10) i y kordinata %y (0 - 5)"
+    //% block="pocetna pozicija igraca x %x (0-9) , y %y (0-5)"
     //% inlineInputMode=inline
     export function pocpoz(x: number, y: number){
         if(x > 10){x = 10;}
