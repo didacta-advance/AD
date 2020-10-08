@@ -74,7 +74,7 @@ namespace Display {
 
     //% weight=99
     //% blockId=bit8x8
-    //% block="SPREMI: bitmapa (0-9) %n 8 x (0-255) | %red1 %red2 %red3 %red4 %red5 %red6 %red7 %red8 "
+    //% block="SAVE: bitmap number (0-9) %n 8 x (0-255) | %red1 %red2 %red3 %red4 %red5 %red6 %red7 %red8 "
     //% inlineInputMode=inline
     export function bit8x8(n: number, red1: number, red2: number, red3: number, red4: number, red5: number, red6: number, red7: number, red8: number): void {
         ispis("BIT;" + n.toString() + ";" + red1.toString() + ";" + red2.toString() + ";" + red3.toString() + ";" + red4.toString() + ";" + red5.toString() + ";" + red6.toString() + ";" + red7.toString() + ";" + red8.toString());
@@ -83,13 +83,14 @@ namespace Display {
 
     //% weight=98
     //% blockId=isbit8x8
-    //% block="ISPIS: bitmapa (0-9) %n na x %x ,  y %y| boja(C/B) %boja"
+    //% block="SHOW: bitmap number (0-9) %n na x %x ,  y %y| color (B/W) %boja"
     //% inlineInputMode=inline
     export function isbit8x8(n: number, x: number, y: number, boja: string): void {
         switch (boja) {
-            case ("c"): boja = "C"; break;
-            case ("b"): boja = "B"; break;
-            case ("B"): boja = "B"; break;
+            case ("w"): boja = "B"; break;
+            case ("W"): boja = "B"; break;            
+            case ("b"): boja = "C"; break;
+            case ("B"): boja = "C"; break;
             default: boja = "C";
         }
         ispis("SPR;" + n.toString() + ";" + x.toString() + ";" + y.toString() + ";" + boja);
@@ -176,14 +177,14 @@ namespace Display {
 
     //% weight=90
     //% blockId=kontrast
-    //% block="KONTRAST (0-100) %oc"
+    //% block="SCREEN CONTRAST (0-100) %oc"
     export function kontrast(oc: number): void {
         ispis("CON;" + oc.toString());
     }
 
     //% weight=89
     //% blockId=isbuf
-    //% block="ISPIS: buffer"
+    //% block="SHOW: buffer"
     export function isbuf(): void {
         ispis("DIS");
     }
@@ -366,7 +367,7 @@ namespace Display {
 
     //% weight=78
     //% blockId=skok
-    //% block="SKOK: za %sk (0 - 255)"
+    //% block="JUMP UP: pixels %sk (0-255)"
     //% inlineInputMode=inline
     export function skok(sk: number){
         if(sk > 255){sk = 255;}
@@ -398,7 +399,7 @@ namespace Display {
 
     //% weight=76
     //% blockId=pozobj
-    //% block="pozicija objekta na broju ekrana %bre (0 - 5), na broju mape %brm (0 - 9), x kordinate %x (0 - 80), duzine %d (1 - 10) i y kordinate %y (0 - 5)"
+    //% block="SAVE: object position  screen %bre (0-5), bitmap %brm (0-9), x pos. %x (0-9), y pos. %y (0-5) length %d (1-10)"
     //% inlineInputMode=inline
     export function pozobj(bre: number, brm: number, x: number, d: number, y: number){
         if(bre > 5){bre = 5;}
@@ -422,18 +423,18 @@ namespace Display {
 
     //% weight=75
     //% blockId=prikazobj
-    //% block="prikaz objekata na ekranu broj %bre (0-5)"
+    //% block="SHOW: screen number %bre (1-5)"
     //% inlineInputMode=inline
     export function prikazobj(bre: number){
         if(bre > 5){bre = 5;}
-        if(bre < 0){bre = 0;}
+        if(bre < 0){bre = 1;}
 
         ispis("FX;" + bre.toString());
     }
 
     //% weight=74
     //% blockId=reset
-    //% block="reset displaya"
+    //% block="RESET PROGRAM"
     //% inlineInputMode=inline
     export function reset(){
         ispis("RST");
@@ -441,13 +442,15 @@ namespace Display {
 
     //% weight=73
     //% blockId=autoscHoriz
-    //% block="automatski scroll horizontalno %schz (da/ne)"
+    //% block="GAME SCROLL horisontal %schz (y/n)"
     //% inlineInputMode=inline
     export function autoscHoriz(schz: string){
         switch (schz) {
-            case ("da"): schz = "DA"; break;
-            case ("ne"): schz = "NE"; break;
-            default: schz = "NE";
+            case ("y"): schz = "1"; break;
+            case ("n"): schz = "0"; break;
+            case ("Y"): schz = "1"; break;
+            case ("N"): schz = "0"; break;            
+            default: schz = "0";
         }
 
         ispis("ASD;" + schz);
@@ -455,7 +458,7 @@ namespace Display {
 
     //% weight=72
     //% blockId=trajanje
-    //% block="trajanje igrice %tr (0 - 255)"
+    //% block="GAME time %tr (0-255) sec."
     //% inlineInputMode=inline
     export function trajanje(tr: number){
         if(tr > 255){tr = 255;}
@@ -466,7 +469,7 @@ namespace Display {
 
     //% weight=71
     //% blockId=bodovi
-    //% block="pocetni bodovi %bod (0 - 255)"
+    //% block="POINTS at start %bod (0-255)"
     //% inlineInputMode=inline
     export function bodovi(bod: number){
         if(bod > 255){bod = 255;}
@@ -477,7 +480,7 @@ namespace Display {
 
     //% weight=70
     //% blockId=negbodovi
-    //% block="NEGATIVNI bodovi (da)"
+    //% block="POINTS negative (yes)"
     //% inlineInputMode=inline
     export function negbodovi(){
         ispis("BON");
@@ -485,7 +488,7 @@ namespace Display {
 
     //% weight=69
     //% blockId=brziv
-    //% block="pocetni zivotni bodovi %zbod (0-255)"
+    //% block="LIVES at start %zbod (0-255)"
     //% inlineInputMode=inline
     export function brziv(zbod: number){
         if(zbod > 255){zbod = 255;}
@@ -504,17 +507,15 @@ namespace Display {
 
     //% weight=67
     //% blockId=grav
-    //% block="GRAVITACIJA %g (da/ne)"
+    //% block="GRAVITY %g (y/n)"
     //% inlineInputMode=inline
     export function grav(g: string){
         switch (g) {
-            case ("D"): g = "DA"; break;
-            case ("N"): g = "NE"; break;
-            case ("d"): g = "DA"; break;
-            case ("n"): g = "NE"; break;            
-            case ("da"): g = "DA"; break;
-            case ("ne"): g = "NE"; break;
-            default: g = "NE";
+            case ("Y"): g = "1"; break;
+            case ("N"): g = "0"; break;
+            case ("y"): g = "1"; break;
+            case ("n"): g = "0"; break;            
+            default: g = "0";
         }
 
         ispis("GRV;" + g);
@@ -522,17 +523,15 @@ namespace Display {
 
     //% weight=66
     //% blockId=pad
-    //% block="pad %p (d/n)"
+    //% block="FALL %p (y/n)"
     //% inlineInputMode=inline
     export function pad(p: string){
         switch (p) {
-            case ("D"): p = "DA"; break;
-            case ("N"): p = "NE"; break;
-            case ("d"): p = "DA"; break;
-            case ("n"): p = "NE"; break;            
-            case ("da"): p = "DA"; break;
-            case ("ne"): p = "NE"; break;
-            default: p = "NE";
+            case ("Y"): p = "1"; break;
+            case ("N"): p = "0"; break;
+            case ("y"): p = "1"; break;
+            case ("n"): p = "0"; break;            
+            default: p = "0";
         }
 
         ispis("PAD;" + p);
@@ -540,7 +539,7 @@ namespace Display {
 
     //% weight=65
     //% blockId=brzhorsc
-    //% block="brzina horizontalnog scrolla %pix (10-255) i pomak %kol (1 - 2)"
+    //% block="GAME SCROLL speed %pix (10-255) for pixels %kol (1 - 2)"
     //% inlineInputMode=inline
     export function brzhorsc(pix: number, kol: number){
         if(pix > 255){pix = 255;}
@@ -554,7 +553,7 @@ namespace Display {
 
     //% weight=64
     //% blockId=pocpoz
-    //% block="pocetna pozicija igraca x %x (0-9) , y %y (0-5)"
+    //% block="PLAYER start position x %x (0-9) , y %y (0-5)"
     //% inlineInputMode=inline
     export function pocpoz(x: number, y: number){
         if(x > 10){x = 10;}
