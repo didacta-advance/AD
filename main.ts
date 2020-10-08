@@ -504,7 +504,8 @@ namespace Display {
 
     //% weight=67
     //% blockId=grav
-    //% block="GRAVITACIJA %g (d/n)"
+    //% block="gravitacija %g (da/ne)"
+>>>>>>> a7fc8dd79be0b116a0b6ff376033a871bed43658
     //% inlineInputMode=inline
     export function grav(g: string){
         switch (g) {
