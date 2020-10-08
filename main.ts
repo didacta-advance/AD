@@ -445,9 +445,9 @@ namespace Display {
     //% inlineInputMode=inline
     export function autoscHoriz(schz: string){
         switch (schz) {
-            case ("DA"): schz = "da"; break;
-            case ("NE"): schz = "ne"; break;
-            default: schz = "ne";
+            case ("da"): schz = "DA"; break;
+            case ("ne"): schz = "NE"; break;
+            default: schz = "NE";
         }
 
         ispis("ASD;" + schz);
@@ -508,11 +508,17 @@ namespace Display {
     //% inlineInputMode=inline
     export function grav(g: string){
         switch (g) {
+<<<<<<< Updated upstream
             case ("D"): g = "da"; break;
             case ("N"): g = "ne"; break;
             case ("d"): g = "da"; break;
             case ("n"): g = "ne"; break;            
             default: g = "ne";
+=======
+            case ("da"): g = "DA"; break;
+            case ("ne"): g = "NE"; break;
+            default: g = "NE";
+>>>>>>> Stashed changes
         }
 
         ispis("GRV;" + g);
@@ -524,11 +530,17 @@ namespace Display {
     //% inlineInputMode=inline
     export function pad(p: string){
         switch (p) {
+<<<<<<< Updated upstream
             case ("D"): p = "da"; break;
             case ("N"): p = "ne"; break;
             case ("d"): p = "da"; break;
             case ("n"): p = "ne"; break;            
             default: p = "ne";
+=======
+            case ("da"): p = "DA"; break;
+            case ("ne"): p = "NE"; break;
+            default: p = "NE";
+>>>>>>> Stashed changes
         }
 
         ispis("PAD;" + p);
