@@ -504,7 +504,7 @@ namespace Display {
 
     //% weight=67
     //% blockId=grav
-    //% block="automatski scroll horizontalno %g (da/ne)"
+    //% block="gravitacija %g (da/ne)"
     //% inlineInputMode=inline
     export function grav(g: string){
         switch (g) {
