@@ -508,17 +508,13 @@ namespace Display {
     //% inlineInputMode=inline
     export function grav(g: string){
         switch (g) {
-<<<<<<< Updated upstream
-            case ("D"): g = "da"; break;
-            case ("N"): g = "ne"; break;
-            case ("d"): g = "da"; break;
-            case ("n"): g = "ne"; break;            
-            default: g = "ne";
-=======
+            case ("D"): g = "DA"; break;
+            case ("N"): g = "NE"; break;
+            case ("d"): g = "DA"; break;
+            case ("n"): g = "NE"; break;            
             case ("da"): g = "DA"; break;
             case ("ne"): g = "NE"; break;
             default: g = "NE";
->>>>>>> Stashed changes
         }
 
         ispis("GRV;" + g);
@@ -530,17 +526,13 @@ namespace Display {
     //% inlineInputMode=inline
     export function pad(p: string){
         switch (p) {
-<<<<<<< Updated upstream
-            case ("D"): p = "da"; break;
-            case ("N"): p = "ne"; break;
-            case ("d"): p = "da"; break;
-            case ("n"): p = "ne"; break;            
-            default: p = "ne";
-=======
+            case ("D"): p = "DA"; break;
+            case ("N"): p = "NE"; break;
+            case ("d"): p = "DA"; break;
+            case ("n"): p = "NE"; break;            
             case ("da"): p = "DA"; break;
             case ("ne"): p = "NE"; break;
             default: p = "NE";
->>>>>>> Stashed changes
         }
 
         ispis("PAD;" + p);
