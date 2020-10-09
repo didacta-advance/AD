@@ -417,7 +417,7 @@ namespace Display {
         if(y > 5){y = 5;}
         if(y < 0){y = 0;}
 
-        ispis("OBJ;" + bre.toString() + ";" + brm.toString() + ";" + x.toString() + ";" + d.toString() + ";" + y.toString());
+        ispis("OBJ;" + bre.toString() + ";" + brm.toString() + ";" + x.toString() + ";" + y.toString() + ";" + d.toString());
     }
 
 
