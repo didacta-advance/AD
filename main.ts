@@ -20,7 +20,7 @@ function salji(tekst: string) {
         buf.setNumber(NumberFormat.UInt8LE, n, bb);
     }
     pins.i2cWriteBuffer(0x11, buf, false);
-    basic.pause(40);
+    basic.pause(duz*8);
 }
 
 
@@ -170,7 +170,7 @@ namespace Display {
 
     //% weight=91
     //% blockId=brisi
-    //% block="BRIŠI ekran"
+    //% block="CLEAR SCREEN"
     export function brisi(): void {
         ispis("CLS");
     }
@@ -401,7 +401,7 @@ namespace Display {
     //% blockId=pozobj
     //% block="SAVE: object position  screen %bre (0-5), bitmap %brm (0-9), x pos. %x (0-9), y pos. %y (0-5) length %d (1-10)"
     //% inlineInputMode=inline
-    export function pozobj(bre: number, brm: number, x: number, d: number, y: number){
+    export function pozobj(bre: number, brm: number, x: number, y: number, d: number){
         if(bre > 5){bre = 5;}
         if(bre < 0){bre = 0;}
 
