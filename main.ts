@@ -257,7 +257,7 @@ namespace Display {
 
     //% weight=84
     //% blockId=lin
-    //% block="ISPIS: linija - x1 %x1 y1 %y1 do x2 %x2 y2 %y2 , bojom (C/B) %boja"
+    //% block="ISPIS: linija - x1(0-84) %x1 y1(0-48) %y1 do x2 %x2 y2 %y2 , bojom (C/B) %boja"
     //% inlineInputMode=inline
     export function lin(x1: number, y1: number, x2: number, y2: number, boja: string): void {
         switch (boja) {
@@ -272,9 +272,9 @@ namespace Display {
 
     //% weight=83
     //% blockId=kruz
-    //% block="ISPIS: kruznica na x %x y %y , radius %r , boja (C/B) %boja"
+    //% block="ISPIS: kruznica na x(0-84) %x y(0-48) %y , radius %r , boja crte (C/B) %boja i ispuna (C/B) %isp"
     //% inlineInputMode=inline
-    export function kruz(x: number, y: number, r: number, boja: string): void {
+    export function kruz(x: number, y: number, r: number, boja: string, isp: string): void {
         switch (boja) {
             case ("c"): boja = "C"; break;
             case ("b"): boja = "B"; break;
@@ -282,30 +282,18 @@ namespace Display {
             default: boja = "C";
         }
 
-        ispis("CIR;" + x.toString() + ";" + y.toString() + ";" + r.toString() + ";" + boja);
+        switch (isp) {
+            case ("c"): boja = "C"; break;
+            case ("b"): boja = "B"; break;
+            case ("B"): boja = "B"; break;
+            default: boja = "B";
+        }
+
+        ispis("CIR;" + x.toString() + ";" + y.toString() + ";" + r.toString() + ";" + boja + ";" + isp);
     }
 
     //% weight=82
-    //% blockId=krug
-    //% block="ISPIS: krug na x %x y %y, radius %r punjenog bojom(C/B) %fill i boje(C/B) %boja"
-    //% inlineInputMode=inline
-    export function krug(x: number, y: number, r: number, fill: string, boja: string): void {
-        switch (fill) {
-            case ("c"): fill = "C"; break;
-            case ("b"): fill = "B"; break;
-            case ("B"): fill = "B"; break;
-            default: fill = "C";
-        }
 
-        switch (boja) {
-            case ("c"): boja = "C"; break;
-            case ("b"): boja = "B"; break;
-            case ("B"): boja = "B"; break;
-            default: boja = "C";
-        }
-
-        ispis("CIR;" + x.toString() + ";" + y.toString() + ";" + r.toString() + ";" + fill + ";" + boja);
-    }
 
     //% weight=81
     //% blockId=kvad
