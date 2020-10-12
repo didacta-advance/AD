@@ -283,10 +283,9 @@ namespace Display {
         }
 
         switch (isp) {
-            case ("c"): boja = "C"; break;
-            case ("b"): boja = "B"; break;
-            case ("B"): boja = "B"; break;
-            default: boja = "B";
+            case ("c"): isp = "C"; break;
+            case ("b"): isp = "B"; break;
+            default: isp = null;
         }
 
         ispis("CIR;" + x.toString() + ";" + y.toString() + ";" + r.toString() + ";" + boja + ";" + isp);
@@ -297,7 +296,7 @@ namespace Display {
 
     //% weight=81
     //% blockId=kvad
-    //% block="ISPIS: kvadrata od x1 %x1 y1 %y1 do x2 %x2 y2 %y2 sa bojom %boja (C/B) i ispunom %isp (C/B)"
+    //% block="ISPIS: kvadrata od x1 %x1 y1 %y1 sirine %x2 i visine %y2 sa bojom %boja (C/B) i ispunom %isp (C/B)"
     //% inlineInputMode=inline
     export function kvad(x1: number, y1: number, x2: number, y2: number, boja: string, isp: string): void {
         switch (isp) {
