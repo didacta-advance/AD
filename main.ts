@@ -282,16 +282,17 @@ namespace Display {
     //% block="SHOW: rectangle from x1 %x1 y1 %y1, with width %x2, height %y2 , color %boja (B/W) and fill %isp (B/W or null)"
     //% inlineInputMode=inline
     export function kvad(x1: number, y1: number, x2: number, y2: number, boja: string, isp: string): void {
-        switch (isp) {
-            case ("w"): isp = "W"; break;
-            case ("b"): isp = "B"; break;
-            default: isp = "B";
-        }
         
         switch (boja) {
             case ("w"): boja = "W"; break;
             case ("b"): boja = "B"; break;
-            default: boja = null;
+            default: boja = "B";
+        }
+
+        switch (isp) {
+            case ("w"): isp = "W"; break;
+            case ("b"): isp = "B"; break;
+            default: isp = null;
         }
 
         ispis("REC;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + boja + ";" + isp);
