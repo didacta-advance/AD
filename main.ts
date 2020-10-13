@@ -207,7 +207,7 @@ namespace Display {
     //% blockId=bristxtpoz
     //% block="DELETE: text from %tekst letters on col (0-10) x %x and row (0-5) y %y"
     //% inlineInputMode=inline
-    export function bristxtpoz(tekst: string, x: number, y: number, boja: string): void {
+    export function bristxtpoz(tekst: string, x: number, y: number): void {
         let ispuna = [];
         for (let i = 0; i < tekst.length; i++) {
             ispuna.push(" ");
