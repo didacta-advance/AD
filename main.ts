@@ -83,41 +83,39 @@ namespace Display {
 
     //% weight=98
     //% blockId=isbit8x8
-    //% block="SHOW: bitmap number (0-9) %n na x %x ,  y %y| color (B/W) %boja"
+    //% block="SHOW: bitmap number (0-9) %n on (0-84) x %x , (0-46) y %y with color (B/W) %boja"
     //% inlineInputMode=inline
     export function isbit8x8(n: number, x: number, y: number, boja: string): void {
         switch (boja) {
-            case ("w"): boja = "B"; break;
-            case ("W"): boja = "B"; break;            
-            case ("b"): boja = "C"; break;
-            case ("B"): boja = "C"; break;
-            default: boja = "C";
+            case ("w"): boja = "W"; break;          
+            case ("b"): boja = "B"; break;
+            default: boja = "B";
         }
         ispis("SPR;" + n.toString() + ";" + x.toString() + ";" + y.toString() + ";" + boja);
     }
 
     //% weight=97
     //% blockId=scup
-    //% block="SCROLL: GORE za %n pixela"
+    //% block="SCROLL: UP for %n pixel"
     export function scup(n: number): void {
         ispis("SBU;" + n.toString());
     }
 
     //% weight=96
     //% blockId=scdown
-    //% block="SCROLL: DOLJE za %n pixela"
+    //% block="SCROLL: DOWN for %n pixel"
     export function scdown(n: number): void {
         ispis("SBD;" + n.toString());
     }
 
     //% weight=95
     //% blockId=sctxtup
-    //% block="SCROLL: text GORE za 1 red - rotacija(D/N) %r"
+    //% block="SCROLL: text UP for 1 row - loop(Y/N) %r"
     export function sctxtup(r: string): void {
         switch (r) {
-            case ("d"): r = "R"; break;
+            case ("y"): r = "R"; break;
             case ("n"): r = null; break;
-            case ("D"): r = "R"; break;
+            case ("Y"): r = "R"; break;
             case ("N"): r = null; break;
             default: r = null;
         }
@@ -126,44 +124,34 @@ namespace Display {
 
     //% weight=94
     //% blockId=sctxtdown
-    //% block="SCROLL: text DOLJE za 1 red - rotacija(D/N) %r"
+    //% block="SCROLL: text DOWN for 1 row - loop(Y/N) %r"
     export function sctxtdown(r: string): void {
         switch (r) {
-            case ("d"):
-                r = "R";
-                break;
-            case ("n"):
-                r = null;
-                break;
-            case ("D"):
-                r = "R";
-                break;
-            case ("N"):
-                r = null;
-                break;
-            default:
-                r = null;
+            case ("y"): r = "R"; break;
+            case ("n"): r = null; break;
+            case ("Y"): r = "R"; break;
+            case ("N"): r = null; break;
+            default: r = null;
         }
         ispis("SCD;" + r);
     }
 
     //% weight=93
     //% blockId=ispunaekrana
-    //% block="OBOJI ekran: boja %boja"
+    //% block="PAINT display: color %boja"
     export function ispunaekrana(boja: number): void {
         ispis("FIL;" + boja.toString());
     }
 
     //% weight=92
     //% blockId=ispispix
-    //% block="ISPIS: pixela - x %x y %y i boja(C/B) %boja"
+    //% block="SHOW: pixel - (0-84) x %x , (0-46) y %y and color(B/W or null) %boja"
     //% inlineInputMode=inline
     export function ispispix(x: number, y: number, boja: string): void {
         switch (boja) {
-            case ("c"): boja = "C"; break;
+            case ("w"): boja = "W"; break;
             case ("b"): boja = "B"; break;
-            case ("B"): boja = "B"; break;
-            default: boja = "C";
+            default: boja = null;
         }
         ispis("PIX;" + x.toString() + ";" + y.toString() + ";" + boja);
     }
@@ -191,35 +179,33 @@ namespace Display {
 
     //% weight=88
     //% blockId=ispistxtpix
-    //% block="ISPIS (G): tekst %tekst (0-84) x %x (0-48) y %y boja(C/B) %boja"
+    //% block="SHOW(G): text %tekst on col (0-84) x %x and row (0-48) y %y color(B/W or null) %boja"
     //% inlineInputMode=inline
     export function ispistxtpix(tekst: string, x: number, y: number, boja: string): void {
         switch (boja) {
-            case ("c"): boja = "C"; break;
+            case ("w"): boja = "W"; break;
             case ("b"): boja = "B"; break;
-            case ("B"): boja = "B"; break;
-            default: boja = "C";
+            default: boja = null;
         }
         ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";" + boja + ";G");
     }
 
     //% weight=87
     //% blockId=ispistxt
-    //% block="ISPIS: tekst %tekst - (0-10) x %x (0-5) y %y  boje(C/B) %boja"
+    //% block="SHOW: text %tekst - on col (0-10) x %x and row (0-5) y %y  color(B/W or null) %boja"
     //% inlineInputMode=inline
     export function ispistxt(tekst: string, x: number, y: number, boja: string): void {
         switch (boja) {
-            case ("c"): boja = "C"; break;
+            case ("w"): boja = "W"; break;
             case ("b"): boja = "B"; break;
-            case ("B"): boja = "B"; break;
-            default: boja = "C";
+            default: boja = null;
         }
         ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";" + boja);
     }
 
     //% weight=86
     //% blockId=bristxtpoz
-    //% block="BRISI: text od %tekst slova na (0-10) x %x (0-5) y %y , boja %boja"
+    //% block="DELETE: text from %tekst letters on col (0-10) x %x and row (0-5) y %y , boja %boja"
     //% inlineInputMode=inline
     export function bristxtpoz(tekst: string, x: number, y: number, boja: string): void {
         let ispuna = [];
@@ -233,13 +219,12 @@ namespace Display {
 
     //% weight=85
     //% blockId=bitscrolltxt
-    //% block="BIT SCROLL: (L/D) %str od reda %x do reda %y sa rotacijom ili bez(y/n) %r"
+    //% block="BIT SCROLL: (L/R) %str from col %x and row %y with loop(Y/N or null) %r"
     //% inlineInputMode=inline
     export function bitscrolltxt(str: string, x: number, y: number, r: string): void {
         switch (str) {
             case ("l"): str = "L"; break;
-            case ("d"): str = "R"; break;
-            case ("L"): str = "L"; break;
+            case ("r"): str = "R"; break;
             default: str = "R";
         }
 
@@ -257,14 +242,13 @@ namespace Display {
 
     //% weight=84
     //% blockId=lin
-    //% block="ISPIS: linija - x1(0-84) %x1 y1(0-48) %y1 do x2 %x2 y2 %y2 , bojom (C/B) %boja"
+    //% block="SHOW: line - x1(0-84) %x1 y1(0-48) %y1 do x2 %x2 y2 %y2 , color (B/W or null) %boja"
     //% inlineInputMode=inline
     export function lin(x1: number, y1: number, x2: number, y2: number, boja: string): void {
         switch (boja) {
-            case ("c"): boja = "C"; break;
+            case ("w"): boja = "W"; break;
             case ("b"): boja = "B"; break;
-            case ("B"): boja = "B"; break;
-            default: boja = "C";
+            default: boja = null;
         }
 
         ispis("LIN;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + boja);
@@ -272,18 +256,17 @@ namespace Display {
 
     //% weight=83
     //% blockId=kruz
-    //% block="ISPIS: kruznica na x(0-84) %x y(0-48) %y , radius %r , boja crte (C/B) %boja i ispuna (C/B) %isp"
+    //% block="SHOW: circle on x(0-84) %x y(0-48) %y , radius %r , line color (B/W) %boja and filled with (B/W or null) %isp"
     //% inlineInputMode=inline
     export function kruz(x: number, y: number, r: number, boja: string, isp: string): void {
         switch (boja) {
-            case ("c"): boja = "C"; break;
+            case ("w"): boja = "W"; break;
             case ("b"): boja = "B"; break;
-            case ("B"): boja = "B"; break;
-            default: boja = "C";
+            default: boja = "B";
         }
 
         switch (isp) {
-            case ("c"): isp = "C"; break;
+            case ("w"): isp = "W"; break;
             case ("b"): isp = "B"; break;
             default: isp = null;
         }
@@ -296,21 +279,19 @@ namespace Display {
 
     //% weight=81
     //% blockId=kvad
-    //% block="ISPIS: kvadrata od x1 %x1 y1 %y1 sirine %x2 i visine %y2 sa bojom %boja (C/B) i ispunom %isp (C/B)"
+    //% block="SHOW: rectangle from x1 %x1 y1 %y1, with width %x2, height %y2 , color %boja (B/W) and fill %isp (B/W or null)"
     //% inlineInputMode=inline
     export function kvad(x1: number, y1: number, x2: number, y2: number, boja: string, isp: string): void {
         switch (isp) {
-            case ("c"): isp = "C"; break;
+            case ("w"): isp = "W"; break;
             case ("b"): isp = "B"; break;
-            case ("B"): isp = "B"; break;
-            default: isp = null;
+            default: isp = "B";
         }
         
         switch (boja) {
-            case ("c"): boja = "C"; break;
+            case ("w"): boja = "W"; break;
             case ("b"): boja = "B"; break;
-            case ("B"): boja = "B"; break;
-            default: boja = "C";
+            default: boja = null;
         }
 
         ispis("REC;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + boja + ";" + isp);
@@ -319,7 +300,7 @@ namespace Display {
 
     //% weight=80
     //% blockId=zvuksignal
-    //% block="ZVUK: signal frekvencije %freq (0 - 500) i duljine %time (vremenski 0 - 1000)"
+    //% block="SOUND: signal frequency %freq (0 - 500) and length %time (seconds 0 - 1000)"
     //% inlineInputMode=inline
     export function zvuksignal(freq: number, time: number){
         if(freq > 500){freq = 500;}
@@ -334,7 +315,7 @@ namespace Display {
 
     //% weight=79
     //% blockId=gumb
-    //% block="GUMB: promjena (+/-) %pov (X ili Y) %smer za %kol (0 - 255)"
+    //% block="BUTTON: increment (+/-) %pov direction (X ili Y) %smer for %kol (0 - 255)"
     //% inlineInputMode=inline
     export function gumb(pov: string, smer: string, kol: number){
         if ((pov != "+") && (pov != "-")){pov = "+";}
@@ -354,7 +335,7 @@ namespace Display {
 
     //% weight=78
     //% blockId=skok
-    //% block="JUMP UP: pixels %sk (0-255)"
+    //% block="JUMP UP: pixel %sk (0-255)"
     //% inlineInputMode=inline
     export function skok(sk: number){
         if(sk > 255){sk = 255;}
@@ -365,7 +346,7 @@ namespace Display {
 
     //% weight=77
     //% blockId=level
-    //% block="LEVEL: auto, max.brzina %maxb (20 - 255), pocetna brzina %pocb (20 - 255), promjena za %pr (0 - 255) i kolko bodova za tu promjenu %bpr (0 - 255)"
+    //% block="LEVEL: auto, max.speed %maxb (20 - 255), start speed %pocb (20 - 255), change for %pr (0 - 255) speed on next level, and how much points needed to change level %bpr (0 - 255)"
     //% inlineInputMode=inline
     export function level(maxb: number, pocb: number, pr: number, bpr: number){
         if(maxb < 20){maxb = 20;}
@@ -429,7 +410,7 @@ namespace Display {
 
     //% weight=73
     //% blockId=autoscHoriz
-    //% block="GAME SCROLL horisontal %schz (y/n)"
+    //% block="GAME SCROLL horizontal %schz (y/n)"
     //% inlineInputMode=inline
     export function autoscHoriz(schz: string){
         switch (schz) {
@@ -486,7 +467,7 @@ namespace Display {
 
     //% weight=68
     //% blockId=vrata
-    //% block="auto promjena vrata"
+    //% block="AUTO gate change"
     //% inlineInputMode=inline
     export function vrata(){
         ispis("DOR");
@@ -555,7 +536,7 @@ namespace Display {
 
     //% weight=63
     //% blockId=randr
-    //% block="random redosljed ekrana"
+    //% block="RANDOM display flow"
     //% inlineInputMode=inline
     export function randr(){
         ispis("RND");
