@@ -205,7 +205,7 @@ namespace Display {
 
     //% weight=86
     //% blockId=bristxtpoz
-    //% block="DELETE: text from %tekst letters on col (0-10) x %x and row (0-5) y %y , boja %boja"
+    //% block="DELETE: text from %tekst letters on col (0-10) x %x and row (0-5) y %y"
     //% inlineInputMode=inline
     export function bristxtpoz(tekst: string, x: number, y: number, boja: string): void {
         let ispuna = [];
@@ -213,7 +213,7 @@ namespace Display {
             ispuna.push(" ");
         }
         let celo = ispuna.join("");
-        ispis(celo + ";" + x.toString() + ";" + y.toString() + ";0;" + boja);
+        ispis(celo + ";" + x.toString() + ";" + y.toString() + ";0");
     }
 
 
