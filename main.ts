@@ -1,6 +1,8 @@
 // input.onButtonPressed(Button.A, function () {
 
 // })
+
+
 basic.pause(1500);
 function ispis(tekst: string) {
     let dd = tekst.length
@@ -20,40 +22,256 @@ function salji(tekst: string) {
         buf.setNumber(NumberFormat.UInt8LE, n, bb);
     }
     pins.i2cWriteBuffer(0x11, buf, false);
-    basic.pause(duz*8);
+    basic.pause(duz*Display.saljiDelay);
 }
 
 
+//% blockHidden=true
+enum duz2{
+    //% block="4"
+    jen = 4,
+    //% block="8"
+    dva = 8
+}
 
+//% blockHidden=true
+enum jendva{
+    //% block="1"
+    one = 1,
+    //% block="2"
+    two = 2
+}
+
+//% blockHidden=true
 enum odabir {
-    //% block=" "
+    //% block="NO"
     Bijelo = 0,
-    //% block="#"
+    //% block=""
     Crno = 1
 }
 
+//% blockHidden=true
+enum bitmapIndex {
+    //% block="Custom 1"
+    Custom1 = 0,
+    //% block="Custom 2"
+    Custom2 = 1,
+    //% block="Custom 3"
+    Custom3 = 2,
+    //% block="Custom 4"
+    Custom4 = 3,
+    //% block="Custom 5"
+    Custom5 = 4,
+    //% block="Custom 6"
+    Custom6 = 5,
+    //% block="Custom 7"
+    Custom7 = 6,
+    //% block="Custom 8"
+    Custom8 = 7,
+    //% block="Animation frame"
+    AnimationFrame = 8,
+    //% block="Player"
+    Player = 9,
+}
+
+//% blockHidden=true
+enum jendeset {
+    //% block="1"
+    one = 1,
+    //% block="2"
+    two = 2,
+    //% block="3"
+    three = 3,
+    //% block="4"
+    four = 4,
+    //% block="5"
+    five = 5,
+    //% block="6"
+    six = 6,
+    //% block="7"
+    seven = 7,
+    //% block="8"
+    eight = 8,
+    //% block="9"
+    nine = 9,
+    //% block="10"
+    ten = 10,
+}
+
+//% blockHidden=true
+enum nuladeset {
+    //% block="0"
+    zero = 0,
+    //% block="1"
+    one = 1,
+    //% block="2"
+    two = 2,
+    //% block="3"
+    three = 3,
+    //% block="4"
+    four = 4,
+    //% block="5"
+    five = 5,
+    //% block="6"
+    six = 6,
+    //% block="7"
+    seven = 7,
+    //% block="8"
+    eight = 8,
+    //% block="9"
+    nine = 9,
+    //% block="10"
+    ten = 10,
+}
+
+//% blockHidden=true
+enum nulapet {
+    //% block="0"
+    zero = 0,
+    //% block="1"
+    one = 1,
+    //% block="2"
+    two = 2,
+    //% block="3"
+    three = 3,
+    //% block="4"
+    four = 4,
+    //% block="5"
+    five = 5
+}
+
+//% blockHidden=true
+enum coloring {
+    //% block="⬛"
+    black = 0,
+    //% block="⬜"
+    white = 1
+}
+
+//% blockHidden=true
+enum coloringplus {
+    //% block="⬛"
+    black = 0,
+    //% block="⬜"
+    white = 1,
+    //% block="null"
+    nill = 2
+}
+
+//% blockHidden=true
+enum yn {
+    //% block="Yes"
+    y = 1,
+    //% block="No"
+    n = 0
+}
+
+//% blockHidden=true
+enum lr {
+    //% block="Yes"
+    l = 1,
+    //% block="No"
+    r = 0
+}
+
+//% blockHidden=true
+enum pm {
+    //% block="+"
+    p = 1,
+    //% block="-"
+    m = 0
+}
+
+//% blockHidden=true
+enum xy {
+    //% block="X"
+    x = 1,
+    //% block="Y"
+    y = 0
+}
 
 //% color=218 weight=103 
 namespace Display {
 
+    //bytearray
+    let pit = pins.createBuffer(1);
+    pit.setNumber(NumberFormat.Int8LE, 0, 1); // ?
 
-    
+
+    //% blockId=rest
+    //% block="reset"
+    //% weight=104
+    export function rest(){
+        ispis("RST");
+        while (pit.getNumber(NumberFormat.Int8LE, 0) != 5){
+            trazi();
+            basic.pause(20);
+        }
+    }
+
+    //% blockId=trazi
+    //% block="trazi"
+    //% weight=105
+    export function trazi(){
+        try{
+            pit = pins.i2cReadBuffer(0x11, 1, false);
+        }catch(err){
+            console.log(err);
+        }
+    }
 
 
-    //% block="$x1 $x2 $x3 $x4 $x5 $x6 $x7 $x8"
-    //% blockId="displayRed"
-    //% blockHidden=true
+    export let saljiDelay : number = duz2.jen;
+
+    //% weight=102
+    //% block="SET: SEND DELAY FACTOR %odaberi"
     //% inlineInputMode=inline
-    export function __red(x1: odabir, x2: odabir, x3: odabir, x4: odabir, x5: odabir, x6: odabir, x7: odabir, x8: odabir): number {
+    export function duzod(odaberi : duz2){
+        saljiDelay = odaberi;
+    }
+
+    //% blockId="defimage"
+    //% block="SPRITE"
+    //% blockHidden=true
+    //% imageLiteral=1
+    //% imageLiteralColumns=8
+    //% imageLiteralRows=8
+    //% shim=images::createImage
+    export function defImage(i: string): Image {
+        return <Image><any>i;
+    }
+    
+    //% blockId=bitfoo
+    //% block="BITMAP number %bitbr| $i"
+    //% weight=101
+    //% i.shadow="defimage"
+    //% blockExternalInputs=true
+    export function foo(bitbr: bitmapIndex, i: Image): void {
+        // this is not pretty but basically, i is an Image
+        let im = i;
+        fooo(
+            bitbr,
+            redSlike(im, 0),
+            redSlike(im, 1),
+            redSlike(im, 2),
+            redSlike(im, 3),
+            redSlike(im, 4),
+            redSlike(im, 5),
+            redSlike(im, 6),
+            redSlike(im, 7)
+        )
+    }
+
+    function redSlike(im: Image, y: number): number {
         return (
-            x8
-            | x7 << 1
-            | x6 << 2
-            | x5 << 3
-            | x4 << 4
-            | x3 << 5
-            | x2 << 6
-            | x1 << 7);
+            +im.pixel(7, y)
+            | +im.pixel(6, y) << 1
+            | +im.pixel(5, y) << 2
+            | +im.pixel(4, y) << 3
+            | +im.pixel(3, y) << 4
+            | +im.pixel(2, y) << 5
+            | +im.pixel(1, y) << 6
+            | +im.pixel(0, y) << 7);
     }
 
     //% weight=100
@@ -68,30 +286,32 @@ namespace Display {
     //% foof6.shadow="displayRed"
     //% foof7.shadow="displayRed"
     //% blockExternalInputs=true
-    export function fooo(bitbr: number, foof: number, foof1: number, foof2: number, foof3: number, foof4: number, foof5: number, foof6: number, foof7: number): void {
+    function fooo(bitbr: bitmapIndex, foof: number, foof1: number, foof2: number, foof3: number, foof4: number, foof5: number, foof6: number, foof7: number): void {
         ispis("BIT;" + bitbr.toString() + ";" + foof.toString() + ";" + foof1.toString() + ";" + foof2.toString() + ";" + foof3.toString() + ";" + foof4.toString() + ";" + foof5.toString() + ";" + foof6.toString() + ";" + foof7.toString());
     }
 
     //% weight=99
     //% blockId=bit8x8
-    //% block="SAVE: bitmap number (0-9) %n 8 x (0-255) | %red1 %red2 %red3 %red4 %red5 %red6 %red7 %red8 "
+    //% block="SAVE: bitmap number %n 8 x (0-255) | %red1 %red2 %red3 %red4 %red5 %red6 %red7 %red8 "
     //% inlineInputMode=inline
-    export function bit8x8(n: number, red1: number, red2: number, red3: number, red4: number, red5: number, red6: number, red7: number, red8: number): void {
+    export function bit8x8(n: bitmapIndex, red1: number, red2: number, red3: number, red4: number, red5: number, red6: number, red7: number, red8: number): void {
         ispis("BIT;" + n.toString() + ";" + red1.toString() + ";" + red2.toString() + ";" + red3.toString() + ";" + red4.toString() + ";" + red5.toString() + ";" + red6.toString() + ";" + red7.toString() + ";" + red8.toString());
         /*   let zbroj = [128,64,32,16,8,4,2,1] */
     }
 
+    export let boja = coloring.black;
+    
     //% weight=98
     //% blockId=isbit8x8
-    //% block="SHOW: bitmap number (0-9) %n on (0-84) x %x , (0-46) y %y with color (B/W) %boja"
+    //% block="SHOW: bitmap number (0-9) %n on (0-84) x %x , (0-46) y %y with color %boja"
     //% inlineInputMode=inline
-    export function isbit8x8(n: number, x: number, y: number, boja: string): void {
+    export function isbit8x8(n: bitmapIndex, x: number, y: number, boja: coloring): void {
+        let a;
         switch (boja) {
-            case ("w"): boja = "W"; break;          
-            case ("b"): boja = "B"; break;
-            default: boja = "B";
+            case (1): a = "W"; break;          
+            case (0): a = "B"; break;
         }
-        ispis("SPR;" + n.toString() + ";" + x.toString() + ";" + y.toString() + ";" + boja);
+        ispis("SPR;" + n.toString() + ";" + x.toString() + ";" + y.toString() + ";" + a);
     }
 
     //% weight=97
@@ -110,30 +330,26 @@ namespace Display {
 
     //% weight=95
     //% blockId=sctxtup
-    //% block="SCROLL: text UP for 1 row - loop(Y/N) %r"
-    export function sctxtup(r: string): void {
-        switch (r) {
-            case ("y"): r = "R"; break;
-            case ("n"): r = null; break;
-            case ("Y"): r = "R"; break;
-            case ("N"): r = null; break;
-            default: r = null;
+    //% block="SCROLL: text UP for 1 row - loop %r"
+    export function sctxtup(r: yn): void {
+        let a;
+        switch(r){
+        case (1): a = "R"; break;
+        case (0): a = null; break;
         }
-        ispis("SCU;" + r);
+        ispis("SCU;" + a);
     }
 
     //% weight=94
     //% blockId=sctxtdown
-    //% block="SCROLL: text DOWN for 1 row - loop(Y/N) %r"
-    export function sctxtdown(r: string): void {
-        switch (r) {
-            case ("y"): r = "R"; break;
-            case ("n"): r = null; break;
-            case ("Y"): r = "R"; break;
-            case ("N"): r = null; break;
-            default: r = null;
+    //% block="SCROLL: text DOWN for 1 row - loop %r"
+    export function sctxtdown(r: yn): void {
+        let a;
+        switch(r){
+        case (1): a = "R"; break;
+        case (0): a = null; break;
         }
-        ispis("SCD;" + r);
+        ispis("SCD;" + a);
     }
 
     //% weight=93
@@ -145,15 +361,16 @@ namespace Display {
 
     //% weight=92
     //% blockId=ispispix
-    //% block="SHOW: pixel - (0-84) x %x , (0-46) y %y and color(B/W or null) %boja"
+    //% block="SHOW: pixel - (0-84) x %x , (0-46) y %y and color %boja"
     //% inlineInputMode=inline
-    export function ispispix(x: number, y: number, boja: string): void {
+    export function ispispix(x: number, y: number, boja: coloringplus): void {
+        let a;
         switch (boja) {
-            case ("w"): boja = "W"; break;
-            case ("b"): boja = "B"; break;
-            default: boja = null;
+            case (2): a = null; break;
+            case (1): a = "W"; break;
+            case (0): a = "B"; break;
         }
-        ispis("PIX;" + x.toString() + ";" + y.toString() + ";" + boja);
+        ispis("PIX;" + x.toString() + ";" + y.toString() + ";" + a);
     }
 
     //% weight=91
@@ -179,99 +396,101 @@ namespace Display {
 
     //% weight=88
     //% blockId=ispistxtpix
-    //% block="SHOW(G): text %tekst on col (0-84) x %x and row (0-48) y %y color(B/W or null) %boja"
+    //% block="SHOW(G): text %tekst on col (0-84) x %x and row (0-48) y %y color %boja"
     //% inlineInputMode=inline
-    export function ispistxtpix(tekst: string, x: number, y: number, boja: string): void {
+    export function ispistxtpix(tekst: string, x: number, y: number, boja: coloringplus): void {
+        let a;
         switch (boja) {
-            case ("w"): boja = "W"; break;
-            case ("b"): boja = "B"; break;
-            default: boja = null;
+            case (2): a = null; break;
+            case (1): a = "W"; break;
+            case (0): a = "B"; break;
         }
-        ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";" + boja + ";G");
+        ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";" + a + ";G");
     }
 
     //% weight=87
     //% blockId=ispistxt
-    //% block="SHOW: text %tekst - on col (0-10) x %x and row (0-5) y %y  color(B/W or null) %boja"
+    //% block="SHOW: text %tekst - on col x %x, row y %y color %boja"
     //% inlineInputMode=inline
-    export function ispistxt(tekst: string, x: number, y: number, boja: string): void {
+    export function ispistxt(tekst: string, x: nuladeset, y: nulapet, boja: coloringplus): void {
+        let a;
         switch (boja) {
-            case ("w"): boja = "W"; break;
-            case ("b"): boja = "B"; break;
-            default: boja = null;
+            case (2): a = null; break;
+            case (1): a = "W"; break;
+            case (0): a = "B"; break;
         }
-        ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";" + boja);
+        ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";" + a);
     }
 
     //% weight=86
     //% blockId=bristxtpoz
-    //% block="DELETE: text from %tekst letters on col (0-10) x %x and row (0-5) y %y"
+    //% block="DELETE: text from %tekst letters on col x %x and row y %y"
     //% inlineInputMode=inline
-    export function bristxtpoz(tekst: string, x: number, y: number): void {
+    export function bristxtpoz(tekst: string, x: nuladeset, y: nulapet): void {
         let ispuna = [];
         for (let i = 0; i < tekst.length; i++) {
             ispuna.push(" ");
         }
         let celo = ispuna.join("");
-        ispis(celo + ";" + x.toString() + ";" + y.toString() + ";0");
+        ispis(celo + ";" + x.toString() + ";" + y.toString() + ";B");
     }
 
 
     //% weight=85
     //% blockId=bitscrolltxt
-    //% block="BIT SCROLL: (L/R) %str from col %x and row %y with loop(Y/N or null) %r"
+    //% block="BIT SCROLL: start from %str, col %x and row %y with loop %r"
     //% inlineInputMode=inline
-    export function bitscrolltxt(str: string, x: number, y: number, r: string): void {
+    export function bitscrolltxt(str: lr, x: nuladeset, y: nulapet, r: coloring): void {
+        let b;
         switch (str) {
-            case ("l"): str = "L"; break;
-            case ("r"): str = "R"; break;
-            default: str = "R";
+            case (1): b = "L"; break;
+            case (0): b = "R"; break;
         }
 
+        let a;
         switch (r) {
-            case ("y"): r = "R"; break;
-            case ("n"): r = null; break;
-            case ("Y"): r = "R"; break;
-            case ("N"): r = null; break;
-            default: r = null;
+            case (1): a = "R"; break;
+            case (0): a = null; break;
         }
 
-        ispis("SCC;" + str + ";" + x.toString() + ";" + y.toString() + ";" + r);
+        ispis("SCC;" + b + ";" + x.toString() + ";" + y.toString() + ";" + a);
     }
 
 
     //% weight=84
     //% blockId=lin
-    //% block="SHOW: line - x1(0-84) %x1 y1(0-48) %y1 do x2 %x2 y2 %y2 , color (B/W or null) %boja"
+    //% block="SHOW: line - x1(0-84) %x1 y1(0-48) %y1 to (0-84)x2 %x2 (0-48)y2 %y2 , color %boja"
     //% inlineInputMode=inline
-    export function lin(x1: number, y1: number, x2: number, y2: number, boja: string): void {
+    export function lin(x1: number, y1: number, x2: number, y2: number, boja: coloringplus): void {
+        let a;
         switch (boja) {
-            case ("w"): boja = "W"; break;
-            case ("b"): boja = "B"; break;
-            default: boja = null;
+            case (2): a = null;
+            case (1): a = "W"; break;
+            case (0): a = "B"; break;
         }
 
-        ispis("LIN;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + boja);
+        ispis("LIN;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + a);
     }
 
     //% weight=83
     //% blockId=kruz
-    //% block="SHOW: circle on x(0-84) %x y(0-48) %y , radius %r , line color (B/W) %boja and filled with (B/W or null) %isp"
+    //% block="SHOW: circle on x(0-84) %x y(0-48) %y , radius %r , line color %boja and filled with %isp"
     //% inlineInputMode=inline
-    export function kruz(x: number, y: number, r: number, boja: string, isp: string): void {
+    export function kruz(x: number, y: number, r: number, boja: coloring, isp: coloringplus): void {
+        let b;
         switch (boja) {
-            case ("w"): boja = "W"; break;
-            case ("b"): boja = "B"; break;
-            default: boja = "B";
+            case (1): b = "W"; break;
+            case (0): b = "B"; break;
         }
 
+        let a;
         switch (isp) {
-            case ("w"): isp = "W"; break;
-            case ("b"): isp = "B"; break;
-            default: isp = null;
+            case (2): a = null; break;
+            case (1): a = "W"; break;
+            case (0): a = "B"; break;
         }
 
-        ispis("CIR;" + x.toString() + ";" + y.toString() + ";" + r.toString() + ";" + boja + ";" + isp);
+        ispis("CIR;" + x.toString() + ";" + y.toString() + ";" + r.toString() + ";" + b + ";" + a);
     }
 
     //% weight=82
@@ -279,23 +498,24 @@ namespace Display {
 
     //% weight=81
     //% blockId=kvad
-    //% block="SHOW: rectangle from x1 %x1 y1 %y1, with width %x2, height %y2 , color %boja (B/W) and fill %isp (B/W or null)"
+    //% block="SHOW: rectangle from x1 %x1 y1 %y1, with width %x2, height %y2 , color %boja and fill %isp"
     //% inlineInputMode=inline
-    export function kvad(x1: number, y1: number, x2: number, y2: number, boja: string, isp: string): void {
+    export function kvad(x1: number, y1: number, x2: number, y2: number, boja: coloring, isp: coloringplus): void {
         
+        let b;
         switch (boja) {
-            case ("w"): boja = "W"; break;
-            case ("b"): boja = "B"; break;
-            default: boja = "B";
+            case (1): b = "W"; break;
+            case (0): b = "B"; break;
         }
 
+        let a;
         switch (isp) {
-            case ("w"): isp = "W"; break;
-            case ("b"): isp = "B"; break;
-            default: isp = null;
+            case (2): a = null; break;
+            case (1): a = "W"; break;
+            case (0): a = "B"; break;
         }
 
-        ispis("REC;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + boja + ";" + isp);
+        ispis("REC;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + b + ";" + a);
     }
 
 
@@ -316,22 +536,25 @@ namespace Display {
 
     //% weight=79
     //% blockId=gumb
-    //% block="BUTTON: increment (+/-) %pov direction (X ili Y) %smer for %kol (0 - 255)"
+    //% block="BUTTON: increment %pov direction %smer for %kol (0 - 255)"
     //% inlineInputMode=inline
-    export function gumb(pov: string, smer: string, kol: number){
-        if ((pov != "+") && (pov != "-")){pov = "+";}
-        
+    export function gumb(pov: pm, smer: xy, kol: number){   
+        let a;
         switch (smer) {
-            case ("x"): smer = "X"; break;
-            case ("y"): smer = "Y"; break;
-            case ("Y"): break;
-            default: smer = "X";
+            case (1): a = "X"; break;
+            case (0): a = "Y"; break;
+        }
+
+        let b;
+        switch (pov) {
+            case (1): b = "+"; break;
+            case (0): b = "-"; break;
         }
 
         if(kol > 255){kol = 255;}
         if(kol < 0){kol = 0;}
 
-        ispis("BUT;" + pov + ";" + smer + ";" + kol.toString());
+        ispis("BUT;" + b + ";" + a + ";" + kol.toString());
     }
 
     //% weight=78
@@ -368,23 +591,12 @@ namespace Display {
 
     //% weight=76
     //% blockId=pozobj
-    //% block="SAVE: object position  screen %bre (0-5), bitmap %brm (0-9), x pos. %x (0-9), y pos. %y (0-5) length %d (1-10)"
+    //% block="SAVE: object position screen number: %bre , bitmap %brm , x pos. %x (0-80), y pos. %y length %d (1-10)"
     //% inlineInputMode=inline
-    export function pozobj(bre: number, brm: number, x: number, y: number, d: number){
-        if(bre > 5){bre = 5;}
-        if(bre < 0){bre = 0;}
-
-        if(brm > 9){brm = 9;}
-        if(brm < 0){brm = 0;}
+    export function pozobj(bre: nulapet, brm: bitmapIndex, x: number, y: nulapet, d: jendeset){
 
         if(x > 80){x = 80;}
         if(x < 0){x = 0;}
-
-        if(d > 10){d = 10;}
-        if(d < 1){d = 1;}
-
-        if(y > 5){y = 5;}
-        if(y < 0){y = 0;}
 
         ispis("OBJ;" + bre.toString() + ";" + brm.toString() + ";" + x.toString() + ";" + y.toString() + ";" + d.toString());
     }
@@ -392,12 +604,9 @@ namespace Display {
 
     //% weight=75
     //% blockId=prikazobj
-    //% block="SHOW: screen number %bre (1-5)"
+    //% block="SHOW: screen number %bre"
     //% inlineInputMode=inline
-    export function prikazobj(bre: number){
-        if(bre > 5){bre = 5;}
-        if(bre < 0){bre = 1;}
-
+    export function prikazobj(bre: nulapet){
         ispis("FX;" + bre.toString());
     }
 
@@ -413,16 +622,14 @@ namespace Display {
     //% blockId=autoscHoriz
     //% block="GAME SCROLL horizontal %schz (y/n)"
     //% inlineInputMode=inline
-    export function autoscHoriz(schz: string){
+    export function autoscHoriz(schz: yn){
+        let a;
         switch (schz) {
-            case ("y"): schz = "1"; break;
-            case ("n"): schz = "0"; break;
-            case ("Y"): schz = "1"; break;
-            case ("N"): schz = "0"; break;            
-            default: schz = "0";
+            case (1): a = "1"; break;
+            case (0): a = "0"; break;
         }
 
-        ispis("ASD;" + schz);
+        ispis("ASD;" + a);
     }
 
     //% weight=72
@@ -449,7 +656,7 @@ namespace Display {
 
     //% weight=70
     //% blockId=negbodovi
-    //% block="POINTS negative (yes)"
+    //% block="POINTS negative (enable)"
     //% inlineInputMode=inline
     export function negbodovi(){
         ispis("BON");
@@ -478,59 +685,46 @@ namespace Display {
     //% blockId=grav
     //% block="GRAVITY %g (y/n)"
     //% inlineInputMode=inline
-    export function grav(g: string){
+    export function grav(g: yn){
+        let a;
         switch (g) {
-            case ("Y"): g = "1"; break;
-            case ("N"): g = "0"; break;
-            case ("y"): g = "1"; break;
-            case ("n"): g = "0"; break;            
-            default: g = "0";
+            case (1): a = "1"; break;
+            case (0): a = "0"; break;
         }
 
-        ispis("GRV;" + g);
+        ispis("GRV;" + a);
     }
 
     //% weight=66
     //% blockId=pad
     //% block="FALL %p (y/n)"
     //% inlineInputMode=inline
-    export function pad(p: string){
+    export function pad(p: yn){
+        let a;
         switch (p) {
-            case ("Y"): p = "1"; break;
-            case ("N"): p = "0"; break;
-            case ("y"): p = "1"; break;
-            case ("n"): p = "0"; break;            
-            default: p = "0";
+            case (1): a = "1"; break;
+            case (0): a = "0"; break;
         }
 
-        ispis("PAD;" + p);
+        ispis("PAD;" + a);
     }
 
     //% weight=65
     //% blockId=brzhorsc
     //% block="GAME SCROLL speed %pix (10-255) for pixels %kol (1 - 2)"
     //% inlineInputMode=inline
-    export function brzhorsc(pix: number, kol: number){
+    export function brzhorsc(pix: number, kol: jendva){
         if(pix > 255){pix = 255;}
         if(pix < 20){pix = 20;}
-
-        if(kol > 2){kol = 2;}
-        if(kol < 1){kol = 1;}
 
         ispis("SPD;" + pix.toString() + ";" + kol.toString());
     }
 
     //% weight=64
     //% blockId=pocpoz
-    //% block="PLAYER start position x %x (0-9) , y %y (0-5)"
+    //% block="PLAYER start position x %x , y %y"
     //% inlineInputMode=inline
-    export function pocpoz(x: number, y: number){
-        if(x > 10){x = 10;}
-        if(x < 0){x = 0;}
-
-        if(y > 5){y = 5;}
-        if(y < 0){y = 0;}
-
+    export function pocpoz(x: nuladeset, y: nulapet){
         ispis("POZ;" + x.toString() + ";" + y.toString());
     }
 
