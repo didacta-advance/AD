@@ -211,12 +211,13 @@ namespace Display {
     export function end(){
         basic.pause(100);
         trazi();
-        ispis("CLS");
-        ispis("E N D;2;1;2");
-        ispis("G A M E;3;3");
-        ispis("Score:"+pit.getNumber(NumberFormat.Int8LE, 0).toString()+";3;4");
-        basic.pause(1000);
-        
+        if (pit.getNumber(NumberFormat.Int8LE, 0) == 9){        
+            ispis("CLS");
+            ispis("E N D;2;1;2");
+            ispis("G A M E;3;3");
+            ispis("Score:"+pit.getNumber(NumberFormat.Int8LE, 0).toString()+";3;4");
+            basic.pause(1000);
+        }
     }
 
     //% blockId=score
@@ -247,8 +248,7 @@ namespace Display {
     }
 
     //% blockId=zvuk
-    //% block="zvuk if"
-    //% blockHidden=true
+    //% block="GAME sounds"
     export function zvuk(){
         trazi();
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 2){
