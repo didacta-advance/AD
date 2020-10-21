@@ -197,10 +197,76 @@ namespace Display {
     let pit = pins.createBuffer(1);
     pit.setNumber(NumberFormat.Int8LE, 0, 1); // ?
 
+    //% blockId=begin
+    //% block="begin screen"
+    export function begin(){
+        ispis("CLS");
+        ispis("START;2;1;2");
+        ispis("G A M E;3;3");
+        basic.pause(1000);
+    }
+
+    //% blockId=end
+    //% block="end screen"
+    export function end(){
+        basic.pause(100);
+        trazi();
+        ispis("CLS");
+        ispis("E N D;2;1;2");
+        ispis("G A M E;3;3");
+        ispis("Score:"+pit.getNumber(NumberFormat.Int8LE, 0).toString()+";3;4");
+        basic.pause(1000);
+        
+    }
+
+    //% blockId=dead
+    //% block="(Logic) when player dead"
+    export function dead(){
+        trazi();
+        if (pit.getNumber(NumberFormat.Int8LE, 0) == 2){
+            return true;
+        } else { return false; }
+    }
+
+    //% blockId=collision
+    //% block="(Logic) when collision"
+    export function col(){
+        trazi();
+        if (pit.getNumber(NumberFormat.Int8LE, 0) == 3){
+            return true;
+        } else { return false; }
+    }
+
+    //% blockId=alive
+    //% block="(Logic) when jump"
+    export function alive(){
+        trazi();
+        if (pit.getNumber(NumberFormat.Int8LE, 0) == 4){
+            return true;
+        } else { return false; }
+    }
+
+    //% blockId=zvuk
+    //% block="zvuk if"
+    //% blockHidden=true
+    export function zvuk(){
+        trazi();
+        if (pit.getNumber(NumberFormat.Int8LE, 0) == 2){
+            music.playTone(1500, 50);
+        } else if (pit.getNumber(NumberFormat.Int8LE, 0) == 3){
+            music.playTone(800, 100);
+        } else if (pit.getNumber(NumberFormat.Int8LE, 0) == 4){
+            for(let i=900; i<1200; i+=30){
+                music.playTone(i, 8);
+            }
+        } 
+    }
+
 
     //% blockId=rest
     //% block="reset"
-    //% weight=104
+    //% blockExternalInputs=true
+    //% weight=105
     export function rest(){
         ispis("RST");
         while (pit.getNumber(NumberFormat.Int8LE, 0) != 5){
@@ -209,9 +275,9 @@ namespace Display {
         }
     }
 
-    //% blockId=trazi
-    //% block="trazi"
-    //% weight=105
+    //% blockId=read
+    //% block="read i2c"
+    //% weight=104
     export function trazi(){
         try{
             pit = pins.i2cReadBuffer(0x11, 1, false);
