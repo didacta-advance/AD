@@ -219,18 +219,18 @@ namespace Display {
         
     }
 
-    //% blockId=dead
-    //% block="(Logic) when player dead"
-    export function dead(){
+    //% blockId=score
+    //% block="Point scored"
+    export function score(){
         trazi();
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 2){
             return true;
         } else { return false; }
     }
 
-    //% blockId=collision
-    //% block="(Logic) when collision"
-    export function col(){
+    //% blockId=dead
+    //% block="Player dead"
+    export function dead(){
         trazi();
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 3){
             return true;
@@ -238,8 +238,8 @@ namespace Display {
     }
 
     //% blockId=alive
-    //% block="(Logic) when jump"
-    export function alive(){
+    //% block="Player fall"
+    export function fall(){
         trazi();
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 4){
             return true;
