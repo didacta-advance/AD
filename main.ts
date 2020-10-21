@@ -209,8 +209,8 @@ namespace Display {
     //% blockId=end
     //% block="Game end message"
     export function end(){
-        basic.pause(100);
-        trazi();
+    //   trazi();
+        basic.pause(300);
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 9){        
             ispis("CLS");
             ispis("E N D;2;1;2");
@@ -223,7 +223,7 @@ namespace Display {
     //% blockId=score
     //% block="Point scored"
     export function score(){
-        trazi();
+    //    trazi();
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 2){
             return true;
         } else { return false; }
@@ -232,7 +232,7 @@ namespace Display {
     //% blockId=dead
     //% block="Player dead"
     export function dead(){
-        trazi();
+    //    trazi();
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 3){
             return true;
         } else { return false; }
@@ -241,7 +241,7 @@ namespace Display {
     //% blockId=alive
     //% block="Player fall"
     export function fall(){
-        trazi();
+    //    trazi();
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 4){
             return true;
         } else { return false; }
@@ -250,7 +250,7 @@ namespace Display {
     //% blockId=zvuk
     //% block="GAME sounds"
     export function zvuk(){
-        trazi();
+    //   trazi();
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 2){
             music.playTone(1500, 50);
         } else if (pit.getNumber(NumberFormat.Int8LE, 0) == 3){
@@ -284,7 +284,7 @@ namespace Display {
     }
 
     //% blockId=read
-    //% block="read i2c"
+    //% block="GET data"
     //% weight=104
     export function trazi(){
         try{
@@ -644,7 +644,7 @@ namespace Display {
 
     //% weight=77
     //% blockId=level
-    //% block="AUTO LEVEL: speed max. %maxb (20 - 255), start %pocb (20 - 255), change for %pr (0 - 255) next level, new level points %bpr (0 - 255)"
+    //% block="AUTO LEVEL: speed max. %maxb (20 - 255), start %pocb (20 - 255), change for %pr (0 - 255) next level, points for new level %bpr (0 - 255)"
     //% inlineInputMode=inline
     export function level(maxb: number, pocb: number, pr: number, bpr: number){
         if(maxb < 20){maxb = 20;}
