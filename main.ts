@@ -665,11 +665,11 @@ namespace Display {
 
     //% weight=76
     //% blockId=pozobj
-    //% block="SAVE: object position screen number: %bre , bitmap %brm , x pos. %x (0-80), y pos. %y length %d (1-10)"
+    //% block="SAVE: object position screen number: %bre , bitmap %brm , x pos. %x (0-5), y pos. %y length %d (1-10)"
     //% inlineInputMode=inline
     export function pozobj(bre: nulapet, brm: bitmapIndex, x: number, y: nulapet, d: jendeset){
 
-        if(x > 80){x = 80;}
+        if(x > 5){x = 5;}
         if(x < 0){x = 0;}
 
         ispis("OBJ;" + bre.toString() + ";" + brm.toString() + ";" + x.toString() + ";" + y.toString() + ";" + d.toString());
