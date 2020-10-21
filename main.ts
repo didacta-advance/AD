@@ -198,7 +198,7 @@ namespace Display {
     pit.setNumber(NumberFormat.Int8LE, 0, 1); // ?
 
     //% blockId=begin
-    //% block="begin screen"
+    //% block="Game start message"
     export function begin(){
         ispis("CLS");
         ispis("START;2;1;2");
@@ -207,7 +207,7 @@ namespace Display {
     }
 
     //% blockId=end
-    //% block="end screen"
+    //% block="Game end message"
     export function end(){
         basic.pause(100);
         trazi();
@@ -262,6 +262,14 @@ namespace Display {
         } 
     }
 
+    //% blockId=collision
+    //% block="add collision %ans"
+    export function collision(ans: yn){
+        switch(ans){
+            case(1): ispis("KOL;1"); break;
+            case(0): ispis("KOL;0"); break;
+        }
+    }
 
     //% blockId=rest
     //% block="reset"
