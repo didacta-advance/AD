@@ -263,7 +263,7 @@ namespace Display {
     }
 
     //% blockId=collision
-    //% block="add collision %ans"
+    //% block="COLLISION %ans"
     export function collision(ans: yn){
         switch(ans){
             case(1): ispis("KOL;1"); break;
@@ -644,7 +644,7 @@ namespace Display {
 
     //% weight=77
     //% blockId=level
-    //% block="LEVEL: auto, max.speed %maxb (20 - 255), start speed %pocb (20 - 255), change for %pr (0 - 255) speed on next level, and how much points needed to change level %bpr (0 - 255)"
+    //% block="AUTO LEVEL: speed max. %maxb (20 - 255), start %pocb (20 - 255), change for %pr (0 - 255) next level, new level points %bpr (0 - 255)"
     //% inlineInputMode=inline
     export function level(maxb: number, pocb: number, pr: number, bpr: number){
         if(maxb < 20){maxb = 20;}
