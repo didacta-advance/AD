@@ -210,11 +210,11 @@ namespace Display {
     //% block="Game end message"
     export function end(){
     //   trazi();
-        basic.pause(300);
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 9){        
             ispis("CLS");
             ispis("E N D;2;1;2");
             ispis("G A M E;3;3");
+            basic.pause(300);
             ispis("Score:"+pit.getNumber(NumberFormat.Int8LE, 0).toString()+";3;4");
             basic.pause(1000);
         }
@@ -284,7 +284,7 @@ namespace Display {
     }
 
     //% blockId=read
-    //% block="GET data"
+    //% block="GET GAME status"
     //% weight=104
     export function trazi(){
         try{
