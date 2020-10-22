@@ -209,7 +209,8 @@ namespace Display {
     export function end(){
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 9){ 
             saljiDelay = 8;
-            //basic.pause(100); 
+            basic.pause(100); 
+            trazi();
             ispis("CLS");
             ispis("E N D;2;1;2");
             ispis("G A M E;3;3");
