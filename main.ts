@@ -54,11 +54,11 @@ enum odabir {
 enum bitmapIndex {
     //% block="Custom 1"
     Custom1 = 1,
-    //% block="Custom 2"
+    //% block="Points (+)"
     Custom2 = 2,
-    //% block="Custom 3"
+    //% block="Lives (-)"
     Custom3 = 3,
-    //% block="Custom 4"
+    //% block="Door"
     Custom4 = 4,
     //% block="Custom 5"
     Custom5 = 5,
@@ -66,7 +66,7 @@ enum bitmapIndex {
     Custom6 = 6,
     //% block="Custom 7"
     Custom7 = 7,
-    //% block="Animation frame"
+    //% block="Player animation frame"
     AnimationFrame = 8,
     //% block="Player"
     Player = 9,
