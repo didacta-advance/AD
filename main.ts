@@ -196,7 +196,7 @@ namespace Display {
     pit.setNumber(NumberFormat.Int8LE, 0, 1); // ?
 
     //% blockId=begin
-    //% block="GAME start message"
+    //% block="GAME START message"
     export function begin(){
         ispis("CLS");
         ispis("START;2;1;2");
@@ -205,16 +205,20 @@ namespace Display {
     }
 
     //% blockId=end
-    //% block="Game end message"
+    //% block="GAME END message"
     export function end(){
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 9){ 
+            saljiDelay = 8;
             //basic.pause(100); 
             ispis("CLS");
             ispis("E N D;2;1;2");
             ispis("G A M E;3;3");
-            basic.pause(100);
+            basic.pause(200);
             ispis("Score:"+pit.getNumber(NumberFormat.Int8LE, 0).toString()+";3;4");
-            basic.pause(1000);
+            while(true)
+            {
+                basic.pause(5000);
+            }
         }
     }
 
