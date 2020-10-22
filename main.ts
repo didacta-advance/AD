@@ -198,7 +198,7 @@ namespace Display {
     pit.setNumber(NumberFormat.Int8LE, 0, 1); // ?
 
     //% blockId=begin
-    //% block="Game start message"
+    //% block="GAME start message"
     export function begin(){
         ispis("CLS");
         ispis("START;2;1;2");
@@ -209,14 +209,14 @@ namespace Display {
     //% blockId=end
     //% block="Game end message"
     export function end(){
-    //   trazi();
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 9){ 
-            basic.pause(300);       
+            basic.pause(400); 
+            pit.getNumber(NumberFormat.Int8LE, 0)      
             ispis("CLS");
             ispis("E N D;2;1;2");
             ispis("G A M E;3;3");
             basic.pause(100);
-            ispis("Score:"+pit.getNumber(NumberFormat.Int8LE, 0).toString()+";3;4");
+            ispis("Score:"+pit.toString()+";3;4");
             basic.pause(1000);
         }
     }
@@ -224,7 +224,6 @@ namespace Display {
     //% blockId=score
     //% block="Point scored"
     export function score(){
-    //    trazi();
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 2){
             return true;
         } else { return false; }
@@ -233,7 +232,6 @@ namespace Display {
     //% blockId=dead
     //% block="Player dead"
     export function dead(){
-    //    trazi();
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 3){
             return true;
         } else { return false; }
@@ -242,7 +240,6 @@ namespace Display {
     //% blockId=alive
     //% block="Player fall"
     export function fall(){
-    //    trazi();
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 4){
             return true;
         } else { return false; }
@@ -251,7 +248,6 @@ namespace Display {
     //% blockId=zvuk
     //% block="GAME sounds"
     export function zvuk(){
-    //   trazi();
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 2){
             music.playTone(1500, 50);
         } else if (pit.getNumber(NumberFormat.Int8LE, 0) == 3){
