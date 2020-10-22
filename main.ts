@@ -568,6 +568,15 @@ namespace Display {
     }
 
     //% weight=82
+    //% blockId=anima
+    //% block="ANIMATION speed %tr (1-20)"
+    //% inlineInputMode=inline
+    export function anima(tr: number){
+        if(tr > 20){tr = 20;}
+        if(tr < 1){tr = 1;}
+
+        ispis("ANI;" + tr.toString());
+    }
 
 
     //% weight=81
