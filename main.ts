@@ -665,7 +665,7 @@ namespace Display {
 
     //% weight=76
     //% blockId=pozobj
-    //% block="SAVE: object position screen number: %bre , bitmap %brm , x pos. %x (0-5), y pos. %y length %d (1-10)"
+    //% block="SAVE: object position screen number: %bre , bitmap %brm , x pos. %x (0-9), y pos. %y length %d (1-10)"
     //% inlineInputMode=inline
     export function pozobj(bre: nulapet, brm: bitmapIndex, x: number, y: nulapet, d: jendeset){
 
