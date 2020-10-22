@@ -3,7 +3,7 @@
 // })
 
 
-basic.pause(1500);
+//basic.pause(1500);
 function ispis(tekst: string) {
     let dd = tekst.length
     if (dd < 31) {
@@ -210,11 +210,12 @@ namespace Display {
     //% block="Game end message"
     export function end(){
     //   trazi();
-        if (pit.getNumber(NumberFormat.Int8LE, 0) == 9){        
+        if (pit.getNumber(NumberFormat.Int8LE, 0) == 9){ 
+            basic.pause(300);       
             ispis("CLS");
             ispis("E N D;2;1;2");
             ispis("G A M E;3;3");
-            basic.pause(300);
+            basic.pause(100);
             ispis("Score:"+pit.getNumber(NumberFormat.Int8LE, 0).toString()+";3;4");
             basic.pause(1000);
         }
