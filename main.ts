@@ -53,20 +53,18 @@ enum odabir {
 //% blockHidden=true
 enum bitmapIndex {
     //% block="Custom 1"
-    Custom1 = 0,
-    //% block="Custom 2"
     Custom2 = 1,
-    //% block="Custom 3"
+    //% block="Custom 2"
     Custom3 = 2,
-    //% block="Custom 4"
+    //% block="Custom 3"
     Custom4 = 3,
-    //% block="Custom 5"
+    //% block="Custom 4"
     Custom5 = 4,
-    //% block="Custom 6"
+    //% block="Custom 5"
     Custom6 = 5,
-    //% block="Custom 7"
+    //% block="Custom 6"
     Custom7 = 6,
-    //% block="Custom 8"
+    //% block="Custom 7"
     Custom8 = 7,
     //% block="Animation frame"
     AnimationFrame = 8,
