@@ -377,7 +377,7 @@ namespace Display {
     
     //% weight=98
     //% blockId=isbit8x8
-    //% block="SHOW: bitmap number (0-9) %n on (0-84) x %x , (0-46) y %y with color %boja"
+    //% block="SHOW: bitmap number (0-9) %n on (0-83) x %x , (0-47) y %y with color %boja"
     //% inlineInputMode=inline
     export function isbit8x8(n: bitmapIndex, x: number, y: number, boja: coloring): void {
         let a;
@@ -435,7 +435,7 @@ namespace Display {
 
     //% weight=92
     //% blockId=ispispix
-    //% block="SHOW: pixel - (0-84) x %x , (0-46) y %y and color %boja"
+    //% block="SHOW: pixel - (0-83) x %x , (0-47) y %y and color %boja"
     //% inlineInputMode=inline
     export function ispispix(x: number, y: number, boja: coloringplus): void {
         let a;
@@ -470,7 +470,7 @@ namespace Display {
 
     //% weight=88
     //% blockId=ispistxtpix
-    //% block="SHOW(G): text %tekst on col (0-84) x %x and row (0-48) y %y color %boja"
+    //% block="SHOW(G): text %tekst on col (0-83) x %x and row (0-47) y %y color %boja"
     //% inlineInputMode=inline
     export function ispistxtpix(tekst: string, x: number, y: number, boja: coloringplus): void {
         let a;
@@ -533,7 +533,7 @@ namespace Display {
 
     //% weight=84
     //% blockId=lin
-    //% block="SHOW: line - x1(0-84) %x1 y1(0-48) %y1 to (0-84)x2 %x2 (0-48)y2 %y2 , color %boja"
+    //% block="SHOW: line - x1(0-83) %x1 y1(0-47) %y1 to (0-83)x2 %x2 (0-47)y2 %y2 , color %boja"
     //% inlineInputMode=inline
     export function lin(x1: number, y1: number, x2: number, y2: number, boja: coloringplus): void {
         let a;
@@ -548,7 +548,7 @@ namespace Display {
 
     //% weight=83
     //% blockId=kruz
-    //% block="SHOW: circle on x(0-84) %x y(0-48) %y , radius %r , line color %boja and filled with %isp"
+    //% block="SHOW: circle on x(0-83) %x y(0-47) %y , radius %r , line color %boja and filled with %isp"
     //% inlineInputMode=inline
     export function kruz(x: number, y: number, r: number, boja: coloring, isp: coloringplus): void {
         let b;
@@ -785,7 +785,7 @@ namespace Display {
 
     //% weight=65
     //% blockId=brzhorsc
-    //% block="GAME SCROLL speed %pix (10-255) for pixels %kol (1 - 2)"
+    //% block="GAME SCROLL speed %pix (20-255) for pixels %kol (1 - 2)"
     //% inlineInputMode=inline
     export function brzhorsc(pix: number, kol: jendva){
         if(pix > 255){pix = 255;}
