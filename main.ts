@@ -209,12 +209,13 @@ namespace Display {
     export function end(){
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 9){ 
             saljiDelay = 8;
-            basic.pause(100); 
+            basic.pause(300); 
             trazi();
+            basic.pause(100);            
             ispis("CLS");
             ispis("E N D;2;1;2");
             ispis("G A M E;3;3");
-            basic.pause(200);
+            basic.pause(100);
             ispis("Score:"+pit.getNumber(NumberFormat.Int8LE, 0).toString()+";3;4");
             while(true)
             {
