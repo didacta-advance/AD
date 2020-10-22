@@ -208,7 +208,7 @@ namespace Display {
     //% block="Game end message"
     export function end(){
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 9){ 
-            basic.pause(300); 
+            basic.pause(200); 
             ispis("CLS");
             ispis("E N D;2;1;2");
             ispis("G A M E;3;3");
