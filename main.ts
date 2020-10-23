@@ -764,7 +764,7 @@ namespace Display {
         ispis("DOR");
     }
 
-    //% weight=67
+    //% weight=67 color=#f87820
     //% blockId=grav
     //% block="GRAVITY %g (y/n)"
     //% inlineInputMode=inline
@@ -778,7 +778,7 @@ namespace Display {
         ispis("GRV;" + a);
     }
 
-    //% weight=66
+    //% weight=66 color=#f87820
     //% blockId=pad
     //% block="FALL %p (y/n)"
     //% inlineInputMode=inline
@@ -792,7 +792,7 @@ namespace Display {
         ispis("PAD;" + a);
     }
 
-    //% weight=65
+    //% weight=65 color=#f87820
     //% blockId=brzhorsc
     //% block="GAME SCROLL speed %pix (20-255) for pixels %kol (1 - 2)"
     //% inlineInputMode=inline
@@ -803,7 +803,7 @@ namespace Display {
         ispis("SPD;" + pix.toString() + ";" + kol.toString());
     }
 
-    //% weight=64
+    //% weight=64 color=#f87820
     //% blockId=pocpoz
     //% block="PLAYER start position x %x , y %y"
     //% inlineInputMode=inline
@@ -812,7 +812,7 @@ namespace Display {
     }
 
 
-    //% weight=63
+    //% weight=63 color=#f87820
     //% blockId=randr
     //% block="RANDOM display flow"
     //% inlineInputMode=inline
