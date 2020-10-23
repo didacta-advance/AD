@@ -390,16 +390,16 @@ namespace Display {
 
    //% weight=112 color=#05b115
     //% blockId=bitscrolltxt
-    //% block="BIT SCROLL HORIZONTAL: start from %str, col %x and row %y with loop %r"
+    //% block="BIT SCROLL HORIZONTAL: start from %str, col %x and row %y with loop %yn"
     //% inlineInputMode=inline
-    export function bitscrolltxt(str: lr, x: nuladeset, y: nulapet, r: coloring): void {
+    export function bitscrolltxt(str: lr, x: nuladeset, y: nulapet, yn: coloring): void {
         let b;
         switch (str) {
             case (1): b = "L"; break;
             case (0): b = "R"; break;
         }
         let a;
-        switch (r) {
+        switch (yn) {
             case (1): a = "R"; break;
             case (0): a = null; break;
         }
