@@ -33,7 +33,7 @@ enum duz2{
     //% block="6"
     dva = 6    
     //% block="8"
-    dva = 8
+    tri = 8
 }
 
 //% blockHidden=true
@@ -394,7 +394,7 @@ namespace Display {
     //% blockId=bitscrolltxt
     //% block="BIT SCROLL HORIZONTAL: start from %str, col %x and row %y with loop %yn"
     //% inlineInputMode=inline
-    export function bitscrolltxt(str: lr, x: nuladeset, y: nulapet, yn: coloring): void {
+    export function bitscrolltxt(str: lr, x: nuladeset, y: nulapet, yn: yn): void {
         let b;
         switch (str) {
             case (1): b = "L"; break;
