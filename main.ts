@@ -398,13 +398,11 @@ namespace Display {
             case (1): b = "L"; break;
             case (0): b = "R"; break;
         }
-
         let a;
         switch (r) {
             case (1): a = "R"; break;
             case (0): a = null; break;
         }
-
         ispis("SCC;" + b + ";" + x.toString() + ";" + y.toString() + ";" + a);
     }    
 //************************************** GRAPHICS */
