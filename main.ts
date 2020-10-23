@@ -188,93 +188,19 @@ enum xy {
     y = 0
 }
 
-//% color=218 weight=103 
+//% color=#4467fe  
 namespace Display {
 
     //bytearray
     let pit = pins.createBuffer(1);
     pit.setNumber(NumberFormat.Int8LE, 0, 1); // ?
 
-    //% blockId=begin
-    //% block="GAME START message"
-    export function begin(){
-        ispis("CLS");
-        ispis("START;2;1;2");
-        ispis("G A M E;3;3");
-        basic.pause(1000);
-    }
+// STANDARDNE FUNKCIJE ****************************************************
 
-    //% blockId=end
-    //% block="GAME END message"
-    export function end(){
-        if (pit.getNumber(NumberFormat.Int8LE, 0) == 9){ 
-            saljiDelay = 8;
-            basic.pause(300); 
-            trazi();
-            basic.pause(100);            
-            ispis("CLS");
-            ispis("E N D;2;1;2");
-            ispis("G A M E;3;3");
-            basic.pause(100);
-            ispis("Score:"+pit.getNumber(NumberFormat.Int8LE, 0).toString()+";3;4");
-            while(true)
-            {
-                basic.pause(5000);
-            }
-        }
-    }
-
-    //% blockId=score
-    //% block="Point scored"
-    export function score(){
-        if (pit.getNumber(NumberFormat.Int8LE, 0) == 2){
-            return true;
-        } else { return false; }
-    }
-
-    //% blockId=dead
-    //% block="Player dead"
-    export function dead(){
-        if (pit.getNumber(NumberFormat.Int8LE, 0) == 3){
-            return true;
-        } else { return false; }
-    }
-
-    //% blockId=alive
-    //% block="Player fall"
-    export function fall(){
-        if (pit.getNumber(NumberFormat.Int8LE, 0) == 4){
-            return true;
-        } else { return false; }
-    }
-
-    //% blockId=zvuk
-    //% block="GAME sounds"
-    export function zvuk(){
-        if (pit.getNumber(NumberFormat.Int8LE, 0) == 2){
-            music.playTone(1500, 50);
-        } else if (pit.getNumber(NumberFormat.Int8LE, 0) == 3){
-            music.playTone(800, 100);
-        } else if (pit.getNumber(NumberFormat.Int8LE, 0) == 4){
-            for(let i=900; i<1200; i+=30){
-                music.playTone(i, 8);
-            }
-        } 
-    }
-
-    //% blockId=collision
-    //% block="COLLISION %ans"
-    export function collision(ans: yn){
-        switch(ans){
-            case(1): ispis("KOL;1"); break;
-            case(0): ispis("KOL;0"); break;
-        }
-    }
-
+    //% weight=222  color=#f87820    
     //% blockId=rest
-    //% block="RESET"
+    //% block="RESET PROGRAM"
     //% blockExternalInputs=true
-    //% weight=105
     export function rest(){
         ispis("RST");
         while (pit.getNumber(NumberFormat.Int8LE, 0) != 5){
@@ -283,27 +209,209 @@ namespace Display {
         }
     }
 
-    //% blockId=read
-    //% block="GET GAME status"
-    //% weight=104
-    export function trazi(){
-        try{
-            pit = pins.i2cReadBuffer(0x11, 1, false);
-        }catch(err){
-            console.log(err);
-        }
+    //% weight=220 color=#f87820
+    //% blockId=brisi
+    //% block="CLEAR SCREEN"
+    export function brisi(): void {
+        ispis("CLS");
     }
 
+    //% weight=218 color=#f87820
+    //% blockId=kontrast
+    //% block="SCREEN CONTRAST (0-100) %oc"
+    export function kontrast(oc: number): void {
+        ispis("CON;" + oc.toString());
+    }
 
-    export let saljiDelay : number = duz2.dva;
+    //% weight=216 color=#f87820
+    //% blockId=isbuf
+    //% block="SHOW: buffer"
+    export function isbuf(): void {
+        ispis("DIS");
+    }
 
-    //% weight=102
-    //% block="SET: SEND DELAY FACTOR %odaberi"
+    //% weight=214  color=#f87820
+    //% blockId=zvuksignal
+    //% block="SOUND: signal frequency %freq (0 - 500) and length %time (seconds 0 - 1000)"
     //% inlineInputMode=inline
-    export function duzod(odaberi : duz2){
-        saljiDelay = odaberi;
+    export function zvuksignal(freq: number, time: number){
+        if(freq > 500){freq = 500;}
+        if(freq < 0){freq = 0;}
+
+        if(time > 1000){time = 1000;}
+        if(time < 0){time = 0;}
+
+        ispis("BIP;" +  freq.toString() + ";" + time.toString());
     }
 
+    //% weight=212 color=#f87820
+    //% blockId=lin
+    //% block="LINE: x1(0-83) %x1 y1(0-47) %y1 to (0-83)x2 %x2 (0-47)y2 %y2 , color %boja"
+    //% inlineInputMode=inline
+    export function lin(x1: number, y1: number, x2: number, y2: number, boja: coloringplus): void {
+        let a;
+        switch (boja) {
+            case (2): a = null;
+            case (1): a = "W"; break;
+            case (0): a = "B"; break;
+        }
+
+        ispis("LIN;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + a);
+    }
+
+    //% weight=210 color=#f87820
+    //% blockId=kruz
+    //% block="CIRCLE: on x(0-83) %x y(0-47) %y , radius %r , line color %boja and filled with %isp"
+    //% inlineInputMode=inline
+    export function kruz(x: number, y: number, r: number, boja: coloring, isp: coloringplus): void {
+        let b;
+        switch (boja) {
+            case (1): b = "W"; break;
+            case (0): b = "B"; break;
+        }
+
+        let a;
+        switch (isp) {
+            case (2): a = null; break;
+            case (1): a = "W"; break;
+            case (0): a = "B"; break;
+        }
+
+        ispis("CIR;" + x.toString() + ";" + y.toString() + ";" + r.toString() + ";" + b + ";" + a);
+    }
+
+    //% weight=208 color=#f87820
+    //% blockId=kvad
+    //% block="RECTANGLE: from x %x1 y %y1, width %x2, height %y2 , color %boja and fill %isp"
+    //% inlineInputMode=inline
+    export function kvad(x1: number, y1: number, x2: number, y2: number, boja: coloring, isp: coloringplus): void {
+        
+        let b;
+        switch (boja) {
+            case (1): b = "W"; break;
+            case (0): b = "B"; break;
+        }
+
+        let a;
+        switch (isp) {
+            case (2): a = null; break;
+            case (1): a = "W"; break;
+            case (0): a = "B"; break;
+        }
+
+        ispis("REC;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + b + ";" + a);
+    }
+
+    //% weight=206 color=#f87820
+    //% blockId=ispistxtpix
+    //% block="TEXT(G): %tekst on col (0-83) x %x and row (0-47) y %y color %boja"
+    //% inlineInputMode=inline
+    export function ispistxtpix(tekst: string, x: number, y: number, boja: coloringplus): void {
+        let a;
+        switch (boja) {
+            case (2): a = null; break;
+            case (1): a = "W"; break;
+            case (0): a = "B"; break;
+        }
+        ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";" + a + ";G");
+    }
+
+    //% weight=204 color=#f87820
+    //% blockId=ispistxt
+    //% block="TEXT: %tekst - on col x %x, row y %y color %boja"
+    //% inlineInputMode=inline
+    export function ispistxt(tekst: string, x: nuladeset, y: nulapet, boja: coloringplus): void {
+        let a;
+        switch (boja) {
+            case (2): a = null; break;
+            case (1): a = "W"; break;
+            case (0): a = "B"; break;
+        }
+        ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";" + a);
+    }
+
+    //% weight=202 color=#f87820
+    //% blockId=bristxtpoz
+    //% block="DELETE: text from %tekst letters on col x %x and row y %y"
+    //% inlineInputMode=inline
+    export function bristxtpoz(tekst: string, x: nuladeset, y: nulapet): void {
+        let ispuna = [];
+        for (let i = 0; i < tekst.length; i++) {
+            ispuna.push(" ");
+        }
+        let celo = ispuna.join("");
+        ispis(celo + ";" + x.toString() + ";" + y.toString() + ";B");
+    }
+
+    //% weight=200 color=#f87820
+    //% blockId=ispunaekrana
+    //% block="PAINT display: color %boja"
+    export function ispunaekrana(boja: number): void {
+        ispis("FIL;" + boja.toString());
+    }
+
+//******************************* scroll */
+
+    //% weight=120 color=#05b115
+    //% blockId=scup
+    //% block="SCROLL: UP for %n pixel"
+    export function scup(n: number): void {
+        ispis("SBU;" + n.toString());
+    }
+
+    //% weight=118 color=#05b115
+    //% blockId=scdown
+    //% block="SCROLL: DOWN for %n pixel"
+    export function scdown(n: number): void {
+        ispis("SBD;" + n.toString());
+    }
+
+    //% weight=116 color=#05b115
+    //% blockId=sctxtup
+    //% block="SCROLL: text UP for 1 row - loop %r"
+    export function sctxtup(r: yn): void {
+        let a;
+        switch(r){
+        case (1): a = "R"; break;
+        case (0): a = null; break;
+        }
+        ispis("SCU;" + a);
+    }
+
+    //% weight=114 color=#05b115
+    //% blockId=sctxtdown
+    //% block="SCROLL: text DOWN for 1 row - loop %r"
+    export function sctxtdown(r: yn): void {
+        let a;
+        switch(r){
+        case (1): a = "R"; break;
+        case (0): a = null; break;
+        }
+        ispis("SCD;" + a);
+    }
+
+   //% weight=112 color=#05b115
+    //% blockId=bitscrolltxt
+    //% block="BIT SCROLL HORIZONTAL: start from %str, col %x and row %y with loop %r"
+    //% inlineInputMode=inline
+    export function bitscrolltxt(str: lr, x: nuladeset, y: nulapet, r: coloring): void {
+        let b;
+        switch (str) {
+            case (1): b = "L"; break;
+            case (0): b = "R"; break;
+        }
+
+        let a;
+        switch (r) {
+            case (1): a = "R"; break;
+            case (0): a = null; break;
+        }
+
+        ispis("SCC;" + b + ";" + x.toString() + ";" + y.toString() + ";" + a);
+    }    
+//************************************** GRAPHICS */
+
+    //% weight=110 color=#f1444c
     //% blockId="defimage"
     //% block="SPRITE"
     //% blockHidden=true
@@ -314,10 +422,10 @@ namespace Display {
     export function defImage(i: string): Image {
         return <Image><any>i;
     }
-    
+
+    //% weight=108 color=#f1444c
     //% blockId=bitfoo
     //% block="BITMAP number %bitbr| $i"
-    //% weight=101
     //% i.shadow="defimage"
     //% blockExternalInputs=true
     export function foo(bitbr: bitmapIndex, i: Image): void {
@@ -348,7 +456,7 @@ namespace Display {
             | +im.pixel(0, y) << 7);
     }
 
-    //% weight=100
+    //% weight=106 color=#f1444c
     //% blockId=fooo
     //% block="BITMAP number %bitbr| $foof $foof1 $foof2 $foof3 $foof4 $foof5 $foof6 $foof7"
     //% foof.shadow="displayRed"
@@ -364,9 +472,9 @@ namespace Display {
         ispis("BIT;" + bitbr.toString() + ";" + foof.toString() + ";" + foof1.toString() + ";" + foof2.toString() + ";" + foof3.toString() + ";" + foof4.toString() + ";" + foof5.toString() + ";" + foof6.toString() + ";" + foof7.toString());
     }
 
-    //% weight=99
+    //% weight=104 color=#f1444c
     //% blockId=bit8x8
-    //% block="SAVE: bitmap number %n 8 x (0-255) | %red1 %red2 %red3 %red4 %red5 %red6 %red7 %red8 "
+    //% block="BITMAP: number (1-9) %n 8 x (0-255) | %red1 %red2 %red3 %red4 %red5 %red6 %red7 %red8 "
     //% inlineInputMode=inline
     export function bit8x8(n: bitmapIndex, red1: number, red2: number, red3: number, red4: number, red5: number, red6: number, red7: number, red8: number): void {
         ispis("BIT;" + n.toString() + ";" + red1.toString() + ";" + red2.toString() + ";" + red3.toString() + ";" + red4.toString() + ";" + red5.toString() + ";" + red6.toString() + ";" + red7.toString() + ";" + red8.toString());
@@ -375,9 +483,9 @@ namespace Display {
 
     export let boja = coloring.black;
     
-    //% weight=98
+    //% weight=102 color=#f1444c
     //% blockId=isbit8x8
-    //% block="SHOW: bitmap number (0-9) %n on (0-83) x %x , (0-47) y %y with color %boja"
+    //% block="BITMAP: number (1-9) %n on (0-83) x %x , (0-47) y %y with color %boja"
     //% inlineInputMode=inline
     export function isbit8x8(n: bitmapIndex, x: number, y: number, boja: coloring): void {
         let a;
@@ -388,54 +496,11 @@ namespace Display {
         ispis("SPR;" + n.toString() + ";" + x.toString() + ";" + y.toString() + ";" + a);
     }
 
-    //% weight=97
-    //% blockId=scup
-    //% block="SCROLL: UP for %n pixel"
-    export function scup(n: number): void {
-        ispis("SBU;" + n.toString());
-    }
 
-    //% weight=96
-    //% blockId=scdown
-    //% block="SCROLL: DOWN for %n pixel"
-    export function scdown(n: number): void {
-        ispis("SBD;" + n.toString());
-    }
 
-    //% weight=95
-    //% blockId=sctxtup
-    //% block="SCROLL: text UP for 1 row - loop %r"
-    export function sctxtup(r: yn): void {
-        let a;
-        switch(r){
-        case (1): a = "R"; break;
-        case (0): a = null; break;
-        }
-        ispis("SCU;" + a);
-    }
-
-    //% weight=94
-    //% blockId=sctxtdown
-    //% block="SCROLL: text DOWN for 1 row - loop %r"
-    export function sctxtdown(r: yn): void {
-        let a;
-        switch(r){
-        case (1): a = "R"; break;
-        case (0): a = null; break;
-        }
-        ispis("SCD;" + a);
-    }
-
-    //% weight=93
-    //% blockId=ispunaekrana
-    //% block="PAINT display: color %boja"
-    export function ispunaekrana(boja: number): void {
-        ispis("FIL;" + boja.toString());
-    }
-
-    //% weight=92
+    //% weight=100 color=#f1444c
     //% blockId=ispispix
-    //% block="SHOW: pixel - (0-83) x %x , (0-47) y %y and color %boja"
+    //% block="PIXEL: - (0-83) x %x , (0-47) y %y and color %boja"
     //% inlineInputMode=inline
     export function ispispix(x: number, y: number, boja: coloringplus): void {
         let a;
@@ -446,178 +511,108 @@ namespace Display {
         }
         ispis("PIX;" + x.toString() + ";" + y.toString() + ";" + a);
     }
-
-    //% weight=91
-    //% blockId=brisi
-    //% block="CLEAR SCREEN"
-    export function brisi(): void {
+//************************************* GAME */
+    //% weight=70
+    //% blockId=begin
+    //% block="GAME START message"
+    export function begin(){
         ispis("CLS");
+        ispis("START;2;1;2");
+        ispis("G A M E;3;3");
+        basic.pause(1000);
     }
 
-    //% weight=90
-    //% blockId=kontrast
-    //% block="SCREEN CONTRAST (0-100) %oc"
-    export function kontrast(oc: number): void {
-        ispis("CON;" + oc.toString());
+    //% weight=68
+    //% blockId=end
+    //% block="GAME END message"
+    export function end(){
+        if (pit.getNumber(NumberFormat.Int8LE, 0) == 9){ 
+            saljiDelay = 8;
+            basic.pause(300); 
+            trazi();
+            basic.pause(100);            
+            ispis("CLS");
+            ispis("E N D;2;1;2");
+            ispis("G A M E;3;3");
+            basic.pause(100);
+            ispis("Score:"+pit.getNumber(NumberFormat.Int8LE, 0).toString()+";3;4");
+            while(true)
+            {
+                basic.pause(5000);
+            }
+        }
+    }
+    //% weight=66
+    //% blockId=score
+    //% block="Point scored"
+    export function score(){
+        if (pit.getNumber(NumberFormat.Int8LE, 0) == 2){
+            return true;
+        } else { return false; }
+    }
+    //% weight=64
+    //% blockId=dead
+    //% block="Player dead"
+    export function dead(){
+        if (pit.getNumber(NumberFormat.Int8LE, 0) == 3){
+            return true;
+        } else { return false; }
+    }
+    //% weight=62
+    //% blockId=alive
+    //% block="Player fall"
+    export function fall(){
+        if (pit.getNumber(NumberFormat.Int8LE, 0) == 4){
+            return true;
+        } else { return false; }
     }
 
-    //% weight=89
-    //% blockId=isbuf
-    //% block="SHOW: buffer"
-    export function isbuf(): void {
-        ispis("DIS");
+    //% weight=60
+    //% blockId=zvuk
+    //% block="GAME sounds"
+    export function zvuk(){
+        if (pit.getNumber(NumberFormat.Int8LE, 0) == 2){
+            music.playTone(1500, 50);
+        } else if (pit.getNumber(NumberFormat.Int8LE, 0) == 3){
+            music.playTone(800, 100);
+        } else if (pit.getNumber(NumberFormat.Int8LE, 0) == 4){
+            for(let i=900; i<1200; i+=30){
+                music.playTone(i, 8);
+            }
+        } 
     }
 
-    //% weight=88
-    //% blockId=ispistxtpix
-    //% block="SHOW(G): text %tekst on col (0-83) x %x and row (0-47) y %y color %boja"
+    //% weight=58
+    //% blockId=collision
+    //% block="COLLISION %ans"
+    export function collision(ans: yn){
+        switch(ans){
+            case(1): ispis("KOL;1"); break;
+            case(0): ispis("KOL;0"); break;
+        }
+    }
+
+    //% weight=56
+    //% blockId=read
+    //% block="GET GAME status"
+    export function trazi(){
+        try{
+            pit = pins.i2cReadBuffer(0x11, 1, false);
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    export let saljiDelay : number = duz2.dva;
+
+    //% weight=54
+    //% block="SET: DELAY FACTOR %odaberi"
     //% inlineInputMode=inline
-    export function ispistxtpix(tekst: string, x: number, y: number, boja: coloringplus): void {
-        let a;
-        switch (boja) {
-            case (2): a = null; break;
-            case (1): a = "W"; break;
-            case (0): a = "B"; break;
-        }
-        ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";" + a + ";G");
+    export function duzod(odaberi : duz2){
+        saljiDelay = odaberi;
     }
 
-    //% weight=87
-    //% blockId=ispistxt
-    //% block="SHOW: text %tekst - on col x %x, row y %y color %boja"
-    //% inlineInputMode=inline
-    export function ispistxt(tekst: string, x: nuladeset, y: nulapet, boja: coloringplus): void {
-        let a;
-        switch (boja) {
-            case (2): a = null; break;
-            case (1): a = "W"; break;
-            case (0): a = "B"; break;
-        }
-        ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";" + a);
-    }
-
-    //% weight=86
-    //% blockId=bristxtpoz
-    //% block="DELETE: text from %tekst letters on col x %x and row y %y"
-    //% inlineInputMode=inline
-    export function bristxtpoz(tekst: string, x: nuladeset, y: nulapet): void {
-        let ispuna = [];
-        for (let i = 0; i < tekst.length; i++) {
-            ispuna.push(" ");
-        }
-        let celo = ispuna.join("");
-        ispis(celo + ";" + x.toString() + ";" + y.toString() + ";B");
-    }
-
-
-    //% weight=85
-    //% blockId=bitscrolltxt
-    //% block="BIT SCROLL: start from %str, col %x and row %y with loop %r"
-    //% inlineInputMode=inline
-    export function bitscrolltxt(str: lr, x: nuladeset, y: nulapet, r: coloring): void {
-        let b;
-        switch (str) {
-            case (1): b = "L"; break;
-            case (0): b = "R"; break;
-        }
-
-        let a;
-        switch (r) {
-            case (1): a = "R"; break;
-            case (0): a = null; break;
-        }
-
-        ispis("SCC;" + b + ";" + x.toString() + ";" + y.toString() + ";" + a);
-    }
-
-
-    //% weight=84
-    //% blockId=lin
-    //% block="SHOW: line - x1(0-83) %x1 y1(0-47) %y1 to (0-83)x2 %x2 (0-47)y2 %y2 , color %boja"
-    //% inlineInputMode=inline
-    export function lin(x1: number, y1: number, x2: number, y2: number, boja: coloringplus): void {
-        let a;
-        switch (boja) {
-            case (2): a = null;
-            case (1): a = "W"; break;
-            case (0): a = "B"; break;
-        }
-
-        ispis("LIN;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + a);
-    }
-
-    //% weight=83
-    //% blockId=kruz
-    //% block="SHOW: circle on x(0-83) %x y(0-47) %y , radius %r , line color %boja and filled with %isp"
-    //% inlineInputMode=inline
-    export function kruz(x: number, y: number, r: number, boja: coloring, isp: coloringplus): void {
-        let b;
-        switch (boja) {
-            case (1): b = "W"; break;
-            case (0): b = "B"; break;
-        }
-
-        let a;
-        switch (isp) {
-            case (2): a = null; break;
-            case (1): a = "W"; break;
-            case (0): a = "B"; break;
-        }
-
-        ispis("CIR;" + x.toString() + ";" + y.toString() + ";" + r.toString() + ";" + b + ";" + a);
-    }
-
-    //% weight=82
-    //% blockId=anima
-    //% block="ANIMATION speed %tr (1-20)"
-    //% inlineInputMode=inline
-    export function anima(tr: number){
-        if(tr > 20){tr = 20;}
-        if(tr < 1){tr = 1;}
-
-        ispis("ANI;" + tr.toString());
-    }
-
-
-    //% weight=81
-    //% blockId=kvad
-    //% block="SHOW: rectangle from x1 %x1 y1 %y1, with width %x2, height %y2 , color %boja and fill %isp"
-    //% inlineInputMode=inline
-    export function kvad(x1: number, y1: number, x2: number, y2: number, boja: coloring, isp: coloringplus): void {
-        
-        let b;
-        switch (boja) {
-            case (1): b = "W"; break;
-            case (0): b = "B"; break;
-        }
-
-        let a;
-        switch (isp) {
-            case (2): a = null; break;
-            case (1): a = "W"; break;
-            case (0): a = "B"; break;
-        }
-
-        ispis("REC;" + x1.toString() + ";" + y1.toString() + ";" + x2.toString() + ";" + y2.toString() + ";" + b + ";" + a);
-    }
-
-
-    //% weight=80
-    //% blockId=zvuksignal
-    //% block="SOUND: signal frequency %freq (0 - 500) and length %time (seconds 0 - 1000)"
-    //% inlineInputMode=inline
-    export function zvuksignal(freq: number, time: number){
-        if(freq > 500){freq = 500;}
-        if(freq < 0){freq = 0;}
-
-        if(time > 1000){time = 1000;}
-        if(time < 0){time = 0;}
-
-        ispis("BIP;" +  freq.toString() + ";" + time.toString());
-    }
-
-
-    //% weight=79
+    //% weight=52
     //% blockId=gumb
     //% block="BUTTON: increment %pov direction %smer for %kol (0 - 255)"
     //% inlineInputMode=inline
@@ -640,7 +635,7 @@ namespace Display {
         ispis("BUT;" + b + ";" + a + ";" + kol.toString());
     }
 
-    //% weight=78
+    //% weight=50
     //% blockId=skok
     //% block="JUMP UP: pixel %sk (0-255)"
     //% inlineInputMode=inline
@@ -651,7 +646,7 @@ namespace Display {
         ispis("JMP;" + sk.toString());
     }
 
-    //% weight=77
+    //% weight=48
     //% blockId=level
     //% block="AUTO LEVEL: speed max. %maxb (20 - 255), start %pocb (20 - 255), change for %pr (0 - 255) next level, points for new level %bpr (0 - 255)"
     //% inlineInputMode=inline
@@ -672,9 +667,9 @@ namespace Display {
     }
 
 
-    //% weight=76
+    //% weight=46
     //% blockId=pozobj
-    //% block="SAVE: object position screen number: %bre , bitmap %brm , x pos. %x (0-9), y pos. %y length %d (1-10)"
+    //% block="OBJECT position: screen number: %bre , bitmap %brm , x pos. %x (0-9), y pos. %y length %d (1-10)"
     //% inlineInputMode=inline
     export function pozobj(bre: nulapet, brm: bitmapIndex, x: number, y: nulapet, d: jendeset){
 
@@ -685,7 +680,7 @@ namespace Display {
     }
 
 
-    //% weight=75
+    //% weight=44
     //% blockId=prikazobj
     //% block="SHOW: screen number %bre"
     //% inlineInputMode=inline
@@ -693,15 +688,8 @@ namespace Display {
         ispis("FX;" + bre.toString());
     }
 
-    //% weight=74
-    //% blockId=reset
-    //% block="RESET PROGRAM"
-    //% inlineInputMode=inline
-    export function reset(){
-        ispis("RST");
-    }
 
-    //% weight=73
+    //% weight=42
     //% blockId=autoscHoriz
     //% block="GAME SCROLL horizontal %schz (y/n)"
     //% inlineInputMode=inline
@@ -715,7 +703,7 @@ namespace Display {
         ispis("ASD;" + a);
     }
 
-    //% weight=72
+    //% weight=40
     //% blockId=trajanje
     //% block="GAME time %tr (0-255) sec."
     //% inlineInputMode=inline
@@ -726,7 +714,7 @@ namespace Display {
         ispis("TIM;" + tr.toString());
     }
 
-    //% weight=71
+    //% weight=38
     //% blockId=bodovi
     //% block="POINTS at start %bod (0-255)"
     //% inlineInputMode=inline
@@ -737,7 +725,7 @@ namespace Display {
         ispis("BOD;" + bod.toString());
     }
 
-    //% weight=70
+    //% weight=36
     //% blockId=negbodovi
     //% block="POINTS negative (enable)"
     //% inlineInputMode=inline
@@ -745,7 +733,7 @@ namespace Display {
         ispis("BON");
     }
 
-    //% weight=69
+    //% weight=34
     //% blockId=brziv
     //% block="LIVES at start %zbod (0-255)"
     //% inlineInputMode=inline
@@ -756,15 +744,15 @@ namespace Display {
         ispis("LIV;" + zbod.toString());
     }
 
-    //% weight=68
+    //% weight=32
     //% blockId=vrata
-    //% block="AUTO gate change"
+    //% block="LEVEL GATE"
     //% inlineInputMode=inline
     export function vrata(){
         ispis("DOR");
     }
 
-    //% weight=67 color=#f87820
+    //% weight=30
     //% blockId=grav
     //% block="GRAVITY %g (y/n)"
     //% inlineInputMode=inline
@@ -778,7 +766,7 @@ namespace Display {
         ispis("GRV;" + a);
     }
 
-    //% weight=66 color=#f87820
+    //% weight=28
     //% blockId=pad
     //% block="FALL %p (y/n)"
     //% inlineInputMode=inline
@@ -788,11 +776,10 @@ namespace Display {
             case (1): a = "1"; break;
             case (0): a = "0"; break;
         }
-
         ispis("PAD;" + a);
     }
 
-    //% weight=65 color=#f87820
+    //% weight=26
     //% blockId=brzhorsc
     //% block="GAME SCROLL speed %pix (20-255) for pixels %kol (1 - 2)"
     //% inlineInputMode=inline
@@ -803,20 +790,34 @@ namespace Display {
         ispis("SPD;" + pix.toString() + ";" + kol.toString());
     }
 
-    //% weight=64 color=#f87820
+    //% weight=24
     //% blockId=pocpoz
     //% block="PLAYER start position x %x , y %y"
     //% inlineInputMode=inline
     export function pocpoz(x: nuladeset, y: nulapet){
         ispis("POZ;" + x.toString() + ";" + y.toString());
+        saljiDelay = 4;
     }
 
 
-    //% weight=63 color=#f87820
+    //% weight=22
     //% blockId=randr
     //% block="RANDOM display flow"
     //% inlineInputMode=inline
     export function randr(){
         ispis("RND");
     }
+
+    //% weight=20
+    //% blockId=anima
+    //% block="ANIMATION speed %tr (1-20)"
+    //% inlineInputMode=inline
+    export function anima(tr: number){
+        if(tr > 20){tr = 20;}
+        if(tr < 1){tr = 1;}
+
+        ispis("ANI;" + tr.toString());
+    }
+    
+
 }
