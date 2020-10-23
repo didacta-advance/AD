@@ -392,7 +392,7 @@ namespace Display {
 
     //% weight=112 color=#05b115
     //% blockId=bitscrolltxt
-    //% block="BIT SCROLL HORIZONTAL: start from %str, col %x and row %y with loop %yn"
+    //% block="BIT SCROLL HORIZONTAL: start from %str, col %x and row %y with loop %n"
     //% inlineInputMode=inline
     export function bitscrolltxt(str: lr, x: nuladeset, y: nulapet, n: yn): void {
         let b;
@@ -748,7 +748,7 @@ namespace Display {
 
     //% weight=30
     //% blockId=grav
-    //% block="GRAVITY %g (y/n)"
+    //% block="GRAVITY %g "
     //% inlineInputMode=inline
     export function grav(g: yn){
         let a;
@@ -762,7 +762,7 @@ namespace Display {
 
     //% weight=28
     //% blockId=pad
-    //% block="FALL (- life) %p (y/n)"
+    //% block="FALL (- life) %p "
     //% inlineInputMode=inline
     export function pad(p: yn){
         let a;
