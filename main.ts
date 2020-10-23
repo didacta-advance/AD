@@ -30,6 +30,8 @@ function salji(tekst: string) {
 enum duz2{
     //% block="4"
     jen = 4,
+    //% block="6"
+    dva = 6    
     //% block="8"
     dva = 8
 }
@@ -388,7 +390,7 @@ namespace Display {
         ispis("SCD;" + a);
     }
 
-   //% weight=112 color=#05b115
+    //% weight=112 color=#05b115
     //% blockId=bitscrolltxt
     //% block="BIT SCROLL HORIZONTAL: start from %str, col %x and row %y with loop %yn"
     //% inlineInputMode=inline
