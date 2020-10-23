@@ -31,7 +31,7 @@ enum duz2{
     //% block="4"
     jen = 4,
     //% block="6"
-    dva = 6    
+    dva = 6,    
     //% block="8"
     tri = 8
 }
