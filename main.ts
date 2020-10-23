@@ -407,7 +407,7 @@ namespace Display {
     }    
 //************************************** GRAPHICS */
 
-    //% weight=110 color=#727272
+    //% weight=110 color=323131
     //% blockId="defimage"
     //% block="SPRITE"
     //% blockHidden=true
@@ -419,7 +419,7 @@ namespace Display {
         return <Image><any>i;
     }
 
-    //% weight=108 color=#727272
+    //% weight=108 color=#323131
     //% blockId=bitfoo
     //% block="BITMAP %bitbr| $i"
     //% i.shadow="defimage"
@@ -452,7 +452,7 @@ namespace Display {
             | +im.pixel(0, y) << 7);
     }
 
-    //% weight=106 color=#727272
+    //% weight=106 color=#323131
     //% blockId=fooo
     //% block="BITMAP %bitbr| $foof $foof1 $foof2 $foof3 $foof4 $foof5 $foof6 $foof7"
     //% foof.shadow="displayRed"
@@ -468,7 +468,7 @@ namespace Display {
         ispis("BIT;" + bitbr.toString() + ";" + foof.toString() + ";" + foof1.toString() + ";" + foof2.toString() + ";" + foof3.toString() + ";" + foof4.toString() + ";" + foof5.toString() + ";" + foof6.toString() + ";" + foof7.toString());
     }
 
-    //% weight=104 color=#727272
+    //% weight=104 color=#323131
     //% blockId=bit8x8
     //% block="BITMAP: (1-9) %n 8 x (0-255) | %red1 %red2 %red3 %red4 %red5 %red6 %red7 %red8 "
     //% inlineInputMode=inline
@@ -479,7 +479,7 @@ namespace Display {
 
     export let boja = coloring.black;
     
-    //% weight=102 color=#727272
+    //% weight=102 color=#323131
     //% blockId=isbit8x8
     //% block="BITMAP: (1-9) %n x (0-83) %x , y(0-47) %y color %boja"
     //% inlineInputMode=inline
@@ -494,7 +494,7 @@ namespace Display {
 
 
 
-    //% weight=100 color=#727272
+    //% weight=100 color=#323131
     //% blockId=ispispix
     //% block="PIXEL: x (0-83) %x , y (0-47) %y color %boja"
     //% inlineInputMode=inline
