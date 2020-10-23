@@ -667,15 +667,7 @@ namespace Display {
     //% blockId=pozobj
     //% block="OBJECT position: screen number: %bre , bitmap %brm , x(0-9) %x  y(0-5) %y length %d (1-9)"
     //% inlineInputMode=inline
-    export function pozobj(bre: nulapet, brm: bitmapIndex, x: number, y: nulapet, d: jendeset){
-
-        if(x > 5){x = 5;}
-        if(x < 0){x = 0;}
-        if(y > 9){y = 9;}
-        if(y < 0){y = 0;} 
-        if(d > 9){d = 9;}
-        if(d < 1){d = 1;}               
-
+    export function pozobj(bre: nulapet, brm: bitmapIndex, x: nuladeset, y: nulapet, d: jendeset){              
         ispis("OBJ;" + bre.toString() + ";" + brm.toString() + ";" + x.toString() + ";" + y.toString() + ";" + d.toString());
     }
 
