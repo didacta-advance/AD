@@ -164,9 +164,9 @@ enum yn {
 
 //% blockHidden=true
 enum lr {
-    //% block="Yes"
+    //% block="Left"
     l = 1,
-    //% block="No"
+    //% block="Right"
     r = 0
 }
 
