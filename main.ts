@@ -394,14 +394,14 @@ namespace Display {
     //% blockId=bitscrolltxt
     //% block="BIT SCROLL HORIZONTAL: start from %str, col %x and row %y with loop %yn"
     //% inlineInputMode=inline
-    export function bitscrolltxt(str: lr, x: nuladeset, y: nulapet, yn: yn): void {
+    export function bitscrolltxt(str: lr, x: nuladeset, y: nulapet, n: yn): void {
         let b;
         switch (str) {
             case (1): b = "L"; break;
             case (0): b = "R"; break;
         }
         let a;
-        switch (yn) {
+        switch (n) {
             case (1): a = "R"; break;
             case (0): a = null; break;
         }
@@ -685,7 +685,7 @@ namespace Display {
 
     //% weight=42
     //% blockId=autoscHoriz
-    //% block="GAME SCROLL horizontal %schz (y/n)"
+    //% block="GAME SCROLL horizontal %schz "
     //% inlineInputMode=inline
     export function autoscHoriz(schz: yn){
         let a;
