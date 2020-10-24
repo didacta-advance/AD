@@ -392,7 +392,7 @@ namespace Display {
 
     //% weight=112 color=#05b115
     //% blockId=bitscrolltxt
-    //% block="BIT SCROLL HORIZONTAL: start from %str, col %x and row %y with loop %nn"
+    //% block="SCROLL: horizontal - BIT: start from %str, col %x and row %y with loop %nn"
     //% inlineInputMode=inline
     export function bitscrolltxt(str: lr, x: nuladeset, y: nulapet, nn: yn): void {
         let b;
@@ -512,7 +512,7 @@ namespace Display {
 //************************************* GAME */
     //% weight=70
     //% blockId=begin
-    //% block="GAME START message"
+    //% block="GAME: START message"
     export function begin(){
         ispis("CLS");
         ispis("START;2;1;2");
@@ -522,7 +522,7 @@ namespace Display {
 
     //% weight=68
     //% blockId=end
-    //% block="GAME END message"
+    //% block="GAME: END message"
     export function end(){
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 9){ 
             saljiDelay = 8;
@@ -542,7 +542,7 @@ namespace Display {
     }
     //% weight=66
     //% blockId=score
-    //% block="Point scored"
+    //% block="GAME: Point scored"
     export function score(){
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 2){
             return true;
@@ -550,7 +550,7 @@ namespace Display {
     }
     //% weight=64
     //% blockId=dead
-    //% block="Player dead"
+    //% block="GAME: Player dead"
     export function dead(){
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 3){
             return true;
@@ -558,7 +558,7 @@ namespace Display {
     }
     //% weight=62
     //% blockId=alive
-    //% block="Player fall"
+    //% block="GAME: Player fall"
     export function fall(){
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 4){
             return true;
@@ -567,7 +567,7 @@ namespace Display {
 
     //% weight=60
     //% blockId=zvuk
-    //% block="GAME all sounds"
+    //% block="GAME: all sounds"
     export function zvuk(){
         if (pit.getNumber(NumberFormat.Int8LE, 0) == 2){
             music.playTone(1500, 50);
@@ -604,7 +604,7 @@ namespace Display {
     export let saljiDelay : number = duz2.dva;
 
     //% weight=54
-    //% block="SET SPEED FACTOR %odaberi"
+    //% block="SET COM FACTOR %odaberi"
     //% inlineInputMode=inline
     export function duzod(odaberi : duz2){
         saljiDelay = odaberi;
@@ -646,13 +646,13 @@ namespace Display {
 
     //% weight=48
     //% blockId=level
-    //% block="AUTO LEVEL: speed max. %maxb (20-255), speed start %pocb (20-255), change for %pr (0-255) next level, points for new level %bpr (0-255)"
+    //% block="AUTO LEVELS: speed max. %maxb (10-255), speed start %pocb (10-255), change for %pr (0-255) next level, points for new level %bpr (0-255)"
     //% inlineInputMode=inline
     export function level(maxb: number, pocb: number, pr: number, bpr: number){
-        if(maxb < 20){maxb = 20;}
+        if(maxb < 10){maxb = 10;}
         if(maxb > 255){maxb = 255;}
 
-        if(pocb < 20){pocb = 20;}
+        if(pocb < 10){pocb = 10;}
         if(pocb > 255){pocb = 255;}
 
         if(pr > 255){pr = 255;}
@@ -667,7 +667,7 @@ namespace Display {
 
     //% weight=46
     //% blockId=pozobj
-    //% block="OBJECT position: screen number: %bre , bitmap %brm , x(0-9) %x  y(0-5) %y length %d (1-9)"
+    //% block="OBJECT: screen : %bre , bitmap %brm , x(0-9) %x  y(0-5) %y length %d (1-9)"
     //% inlineInputMode=inline
     export function pozobj(bre: nulapet, brm: bitmapIndex, x: nuladeset, y: nulapet, d: jendeset){              
         ispis("OBJ;" + bre.toString() + ";" + brm.toString() + ";" + x.toString() + ";" + y.toString() + ";" + d.toString());
@@ -676,7 +676,7 @@ namespace Display {
 
     //% weight=44
     //% blockId=prikazobj
-    //% block="SHOW SCREEN number %bre"
+    //% block="SHOW SCREEN %bre"
     //% inlineInputMode=inline
     export function prikazobj(bre: nulapet){
         ispis("FX;" + bre.toString());
@@ -775,11 +775,11 @@ namespace Display {
 
     //% weight=26
     //% blockId=brzhorsc
-    //% block="GAME SCROLL speed %pix (20 fast - 255 slow) for pixels %kol (1-2)"
+    //% block="GAME SCROLL speed %pix (10 fast - 255 slow) for pixels %kol (1-2)"
     //% inlineInputMode=inline
     export function brzhorsc(pix: number, kol: jendva){
         if(pix > 255){pix = 255;}
-        if(pix < 20){pix = 20;}
+        if(pix < 10){pix = 10;}
 
         ispis("SPD;" + pix.toString() + ";" + kol.toString());
     }
