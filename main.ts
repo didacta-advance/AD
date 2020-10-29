@@ -99,6 +99,42 @@ enum jendeset {
 }
 
 //% blockHidden=true
+enum jendevet {
+    //% block="1"
+    one = 1,
+    //% block="2"
+    two = 2,
+    //% block="3"
+    three = 3,
+    //% block="4"
+    four = 4,
+    //% block="5"
+    five = 5,
+    //% block="6"
+    six = 6,
+    //% block="7"
+    seven = 7,
+    //% block="8"
+    eight = 8,
+    //% block="9"
+    nine = 9
+}
+
+//% blockHidden=true
+enum jenpet {
+    //% block="1"
+    one = 1,
+    //% block="2"
+    two = 2,
+    //% block="3"
+    three = 3,
+    //% block="4"
+    four = 4,
+    //% block="5"
+    five = 5
+}
+
+//% blockHidden=true
 enum nuladeset {
     //% block="0"
     zero = 0,
@@ -669,7 +705,7 @@ namespace Display {
     //% blockId=pozobj
     //% block="OBJECT: screen : %bre , bitmap %brm , x(0-9) %x  y(0-5) %y length %d (1-9)"
     //% inlineInputMode=inline
-    export function pozobj(bre: nulapet, brm: bitmapIndex, x: nuladeset, y: nulapet, d: jendeset){              
+    export function pozobj(bre: nulapet, brm: bitmapIndex, x: nuladeset, y: nulapet, d: jendevet){              
         ispis("OBJ;" + bre.toString() + ";" + brm.toString() + ";" + x.toString() + ";" + y.toString() + ";" + d.toString());
     }
 
@@ -813,5 +849,26 @@ namespace Display {
         ispis("ANI;" + tr.toString());
     }
     
+    //% weight=19
+    //% blockId=jmp
+    //% block="JUMP: height (0-255) %x with %pm and length %y"
+    //% inlineInputMode=inline
+    export function jump(x: number, pm: pm, y: jenpet): void {
+        let a;
+        switch (pm) {
+            case (1): a = "+"; break;
+            case (0): a = "-"; break;
+        }
+
+        ispis("JMP;" + x.toString() + ";" + a + ";" + y.toString());
+    }
+
+    //% weight=18
+    //% blockId=del
+    //% block="DELETE past objects"
+    //% inlineInputMode=inline
+    export function del(): void {
+        ispis("DEL");
+    }
 
 }
