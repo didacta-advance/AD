@@ -71,7 +71,7 @@ enum bitmapIndex {
     //% block="Player animation frame"
     AnimationFrame = 8,
     //% block="Player"
-    Player = 9,
+    Player = 9
 }
 
 //% blockHidden=true
@@ -155,7 +155,7 @@ enum nuladeset {
     //% block="8"
     eight = 8,
     //% block="9"
-    nine = 9,
+    nine = 9
 }
 
 //% blockHidden=true
