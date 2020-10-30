@@ -880,4 +880,22 @@ namespace Display {
         ispis("DEL");
     }
 
+    //% weight=17
+    //% blockId=points
+    //% block="GAME: get player position (x)"
+    export function get_score(){
+        ispis("GET;X");
+        trazi();
+        return pit.getNumber(NumberFormat.Int8LE, 0;       
+    }
+
+    //% weight=16
+    //% blockId=points
+    //% block="GAME: get player position (y)"
+    export function get_score(){
+        ispis("GET;Y");
+        trazi();
+        return pit.getNumber(NumberFormat.Int8LE, 0;       
+    }    
+
 }
