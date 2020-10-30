@@ -881,18 +881,18 @@ namespace Display {
     }
 
     //% weight=17
-    //% blockId=points
+    //% blockId=posx
     //% block="GAME: get player position (x)"
-    export function get_score(){
+    export function posx(){
         ispis("GET;X");
         trazi();
         return pit.getNumber(NumberFormat.Int8LE, 0;       
     }
 
     //% weight=16
-    //% blockId=points
+    //% blockId=posy
     //% block="GAME: get player position (y)"
-    export function get_score(){
+    export function posy(){
         ispis("GET;Y");
         trazi();
         return pit.getNumber(NumberFormat.Int8LE, 0;       
