@@ -896,6 +896,6 @@ namespace Display {
         ispis("GET;Y");
         trazi();
         return pit.getNumber(NumberFormat.Int8LE, 0);       
-    }    
+    }   
 
 }
