@@ -637,6 +637,15 @@ namespace Display {
         }
     }
 
+    //% weight=55
+    //% blockId=points
+    //% block="GAME: get score"
+    export function get_score(){
+        ispis("GET;B");
+        trazi();
+        return pit;       
+    }
+
     export let saljiDelay : number = duz2.dva;
 
     //% weight=54
