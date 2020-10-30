@@ -641,7 +641,7 @@ namespace Display {
     //% blockId=points
     //% block="GAME: get score"
     export function get_score(){
-        ispis("GET;B");
+        ispis("GET;P");
         trazi();
         return pit.getNumber(NumberFormat.Int8LE, 0;       
     }
