@@ -95,7 +95,7 @@ enum jendeset {
     //% block="9"
     nine = 9,
     //% block="10"
-    ten = 10,
+    ten = 10
 }
 
 //% blockHidden=true
@@ -627,7 +627,7 @@ namespace Display {
     }
 
     //% weight=56
-    //% blockId=read
+    //% blockId=trazi
     //% block="GET GAME status"
     export function trazi(){
         try{
@@ -638,7 +638,7 @@ namespace Display {
     }
 
     //% weight=55
-    //% blockId=points
+    //% blockId=get_score
     //% block="GAME: get score"
     export function get_score(){
         ispis("GET;P");
@@ -859,7 +859,7 @@ namespace Display {
     }
     
     //% weight=19
-    //% blockId=jmp
+    //% blockId=jump
     //% block="JUMP: height (0-255) %x with %pm and length %y"
     //% inlineInputMode=inline
     export function jump(x: number, pm: pm, y: jenpet): void {
