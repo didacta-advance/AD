@@ -643,7 +643,7 @@ namespace Display {
     export function get_score(){
         ispis("GET;P");
         trazi();
-        return pit.getNumber(NumberFormat.Int8LE, 0;       
+        return pit.getNumber(NumberFormat.Int8LE, 0);       
     }
 
     export let saljiDelay : number = duz2.dva;
@@ -886,7 +886,7 @@ namespace Display {
     export function posx(){
         ispis("GET;X");
         trazi();
-        return pit.getNumber(NumberFormat.Int8LE, 0;       
+        return pit.getNumber(NumberFormat.Int8LE, 0);       
     }
 
     //% weight=16
@@ -895,7 +895,7 @@ namespace Display {
     export function posy(){
         ispis("GET;Y");
         trazi();
-        return pit.getNumber(NumberFormat.Int8LE, 0;       
+        return pit.getNumber(NumberFormat.Int8LE, 0);       
     }    
 
 }
