@@ -643,7 +643,7 @@ namespace Display {
     export function get_score(){
         ispis("GET;B");
         trazi();
-        return pit;       
+        return pit.getNumber(NumberFormat.Int8LE, 0;       
     }
 
     export let saljiDelay : number = duz2.dva;
