@@ -369,7 +369,7 @@ namespace Display {
     //% blockId=ispistxtpix
     //% block="TEXT(Graphics): %tekst on x(0-83) %x y(0-47) %y size (0-3) %s color %boja"
     //% inlineInputMode=inline
-    export function ispistxtpix(tekst: string, x: number, y: number, s: nula_tri, boja: coloringplus): void {
+    export function ispistxtpix(tekst: string, x: number, y: number, s: number, boja: coloringplus): void {
         let a;
         switch (boja) {
             case (2): a = null; break;
@@ -383,7 +383,7 @@ namespace Display {
     //% blockId=ispistxt
     //% block="TEXT: %tekst - on col x(0-9) %x, row y(0-5) %y size (0-3) %s color %boja"
     //% inlineInputMode=inline
-    export function ispistxt(tekst: string, x: nuladeset, y: nulapet, s: nula_tri, boja: coloringplus): void {
+    export function ispistxt(tekst: string, x: number, y: number, s: number, boja: coloringplus): void {
         let a;
         switch (boja) {
             case (2): a = null; break;
@@ -457,7 +457,7 @@ namespace Display {
     //% blockId=bitscrolltxt
     //% block="SCROLL: horizontal - BIT: start from %str, from row %x to row %y with loop %nn"
     //% inlineInputMode=inline
-    export function bitscrolltxt(str: lr, x: nulapet, y: nulapet, nn: yn): void {
+    export function bitscrolltxt(str: lr, x: number, y: number, nn: yn): void {
         let b;
         switch (str) {
             case (1): b = "L"; break;
