@@ -187,9 +187,9 @@ enum nula_tri {
     //% block="0"
     nula = 0,
     //% block="1"
-    jedan = 1
+    jedan = 1,
     //% block="2"
-    dva = 2
+    dva = 2,
     //% block="3"
     tri = 3        
 }
