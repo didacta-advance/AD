@@ -175,6 +175,14 @@ enum nulapet {
 }
 
 //% blockHidden=true
+enum nula_jedan {
+    //% block="0"
+    black = 0,
+    //% block="1"
+    white = 1
+}
+
+//% blockHidden=true
 enum coloring {
     //% block="⬛"
     black = 0,
@@ -244,6 +252,13 @@ namespace Display {
             basic.pause(20);
         }
     }
+
+    //% weight=221 color=#f87820
+    //% blockId=displej
+    //% block="SCREEN MODE %mod"
+    export function displej(mod: nula_jedan): void {
+        ispis("DIS;" + mod.toString());
+    }    
 
     //% weight=220 color=#f87820
     //% blockId=brisi
