@@ -278,7 +278,7 @@ namespace Display {
     //% blockId=isbuf
     //% block="SHOW: buffer"
     export function isbuf(): void {
-        ispis("DIS");
+        ispis("BUF");
     }
 
     //% weight=214  color=#f87820
@@ -333,7 +333,7 @@ namespace Display {
 
     //% weight=208 color=#f87820
     //% blockId=kvad
-    //% block="RECTANGLE: x %x1 y %y1, width %x2, height %y2 , color %boja filled with %isp"
+    //% block="RECTANGLE: x(0-83) %x1 y(0-47) %y1, width %x2, height %y2 , color %boja filled with %isp"
     //% inlineInputMode=inline
     export function kvad(x1: number, y1: number, x2: number, y2: number, boja: coloring, isp: coloringplus): void {
         
