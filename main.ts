@@ -177,9 +177,21 @@ enum nulapet {
 //% blockHidden=true
 enum nula_jedan {
     //% block="0"
-    black = 0,
+    nula = 0,
     //% block="1"
-    white = 1
+    jedan = 1
+}
+
+//% blockHidden=true
+enum nula_tri {
+    //% block="0"
+    nula = 0,
+    //% block="1"
+    jedan = 1
+    //% block="2"
+    dva = 2
+    //% block="3"
+    tri = 3        
 }
 
 //% blockHidden=true
@@ -355,30 +367,30 @@ namespace Display {
 
     //% weight=206 color=#f87820
     //% blockId=ispistxtpix
-    //% block="TEXT(Graphics): %tekst on x(0-83) %x y(0-47) %y color %boja"
+    //% block="TEXT(Graphics): %tekst on x(0-83) %x y(0-47) %y size (0-3) %s color %boja"
     //% inlineInputMode=inline
-    export function ispistxtpix(tekst: string, x: number, y: number, boja: coloringplus): void {
+    export function ispistxtpix(tekst: string, x: number, y: number, s: nula_tri, boja: coloringplus): void {
         let a;
         switch (boja) {
             case (2): a = null; break;
             case (1): a = "W"; break;
             case (0): a = "B"; break;
         }
-        ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";" + a + ";G");
+        ispis(tekst + ";" + x.toString() + ";" + y.toString()+ ";" + s.toString() + ";" + a + ";G");
     }
 
     //% weight=204 color=#f87820
     //% blockId=ispistxt
-    //% block="TEXT: %tekst - on col x(0-9) %x, row y(0-5) %y color %boja"
+    //% block="TEXT: %tekst - on col x(0-9) %x, row y(0-5) %y size (0-3) %s color %boja"
     //% inlineInputMode=inline
-    export function ispistxt(tekst: string, x: nuladeset, y: nulapet, boja: coloringplus): void {
+    export function ispistxt(tekst: string, x: nuladeset, y: nulapet, s: nula_tri, boja: coloringplus): void {
         let a;
         switch (boja) {
             case (2): a = null; break;
             case (1): a = "W"; break;
             case (0): a = "B"; break;
         }
-        ispis(tekst + ";" + x.toString() + ";" + y.toString() + ";" + a);
+        ispis(tekst + ";" + x.toString() + ";" + y.toString()+ ";" + s.toString() + ";" + a);
     }
 
     //% weight=202 color=#f87820
