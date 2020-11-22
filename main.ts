@@ -739,10 +739,10 @@ namespace Display {
 
     //% weight=46
     //% blockId=pozobj
-    //% block="OBJECT: screen : %bre , bitmap  %brm , x(0-9) %x  y(0-5) %y length %d (1-9)"
+    //% block="OBJECT: screen : %bre , bitmap  %brm , x(0-9) %x  y(0-5) %y length %d (1-10) hor/ver %s (0/1)"
     //% inlineInputMode=inline
-    export function pozobj(bre: number, brm: bitmapIndex, x: number, y: number, d: number){              
-        ispis("OBJ;" + bre.toString() + ";" + brm.toString() + ";" + x.toString() + ";" + y.toString() + ";" + d.toString());
+    export function pozobj(bre: number, brm: bitmapIndex, x: number, y: number, d: number, s: number){              
+        ispis("OBJ;" + bre.toString() + ";" + brm.toString() + ";" + x.toString() + ";" + y.toString() + ";" + d.toString() + ";" + s.toString());
     }
 
 
@@ -847,7 +847,7 @@ namespace Display {
 
     //% weight=26
     //% blockId=brzhorsc
-    //% block="GAME SCROLL speed %pix (10 fast - 255 slow) for pixels %kol (1-2)"
+    //% block="GAME SPEED %pix (10 fast - 255 slow) for pixels %kol (1-2)"
     //% inlineInputMode=inline
     export function brzhorsc(pix: number, kol: jendva){
         if(pix > 255){pix = 255;}
