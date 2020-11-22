@@ -739,9 +739,9 @@ namespace Display {
 
     //% weight=46
     //% blockId=pozobj
-    //% block="OBJECT: screen : %bre , bitmap %brm , x(0-9) %x  y(0-5) %y length %d (1-9)"
+    //% block="OBJECT: screen : %bre , bitmap  %brm , x(0-9) %x  y(0-5) %y length %d (1-9)"
     //% inlineInputMode=inline
-    export function pozobj(bre: nulapet, brm: bitmapIndex, x: nuladeset, y: nulapet, d: jendevet){              
+    export function pozobj(bre: number, brm: bitmapIndex, x: number, y: number, d: number){              
         ispis("OBJ;" + bre.toString() + ";" + brm.toString() + ";" + x.toString() + ";" + y.toString() + ";" + d.toString());
     }
 
@@ -750,7 +750,7 @@ namespace Display {
     //% blockId=prikazobj
     //% block="SHOW SCREEN %bre"
     //% inlineInputMode=inline
-    export function prikazobj(bre: nulapet){
+    export function prikazobj(bre: number){
         ispis("FX;" + bre.toString());
     }
 
@@ -860,7 +860,7 @@ namespace Display {
     //% blockId=pocpoz
     //% block="PLAYER start position x(0-9) %x , y(0-5) %y"
     //% inlineInputMode=inline
-    export function pocpoz(x: nuladeset, y: nulapet){
+    export function pocpoz(x: number, y: number){
         ispis("POZ;" + x.toString() + ";" + y.toString());
         saljiDelay = 4;
     }
@@ -887,9 +887,9 @@ namespace Display {
     
     //% weight=19
     //% blockId=jump
-    //% block="JUMP: height (0-255) %x with %pm and length %y"
+    //% block="JUMP: height (0-255) %x with %pm and length(1-5) %y"
     //% inlineInputMode=inline
-    export function jump(x: number, pm: pm, y: jenpet): void {
+    export function jump(x: number, pm: pm, y: number): void {
         let a;
         switch (pm) {
             case (1): a = "+"; break;
