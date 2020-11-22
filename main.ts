@@ -295,10 +295,10 @@ namespace Display {
 
     //% weight=214  color=#f87820
     //% blockId=zvuksignal
-    //% block="SOUND: frequency %freq (0-500) and length %time (seconds 0 - 1000)"
+    //% block="SOUND: frequency %freq (0-255) and length %time (mil.sec. 0-1000)"
     //% inlineInputMode=inline
     export function zvuksignal(freq: number, time: number){
-        if(freq > 500){freq = 500;}
+        if(freq > 255){freq = 255;}
         if(freq < 0){freq = 0;}
 
         if(time > 1000){time = 1000;}
