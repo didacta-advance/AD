@@ -381,7 +381,7 @@ namespace Display {
 
     //% weight=204 color=#f87820
     //% blockId=ispistxt
-    //% block="TEXT: %tekst - on col x(0-9) %x, row y(0-5) %y size (0-3) %s color %boja"
+    //% block="TEXT: %tekst - on col x(0-13) %x, row y(0-5) %y size (0-3) %s color %boja"
     //% inlineInputMode=inline
     export function ispistxt(tekst: string, x: number, y: number, s: number, boja: coloringplus): void {
         let a;
@@ -739,7 +739,7 @@ namespace Display {
 
     //% weight=46
     //% blockId=pozobj
-    //% block="OBJECT: screen : %bre , bitmap  %brm , x(0-9) %x  y(0-5) %y length %d (1-10) hor/ver %s (0/1)"
+    //% block="OBJECT: screen : %bre , bitmap  %brm , x(0-13) %x  y(0-5) %y length %d (1-10) hor/ver %s (0/1)"
     //% inlineInputMode=inline
     export function pozobj(bre: number, brm: bitmapIndex, x: number, y: number, d: number, s: number){              
         ispis("OBJ;" + bre.toString() + ";" + brm.toString() + ";" + x.toString() + ";" + y.toString() + ";" + d.toString() + ";" + s.toString());
@@ -858,7 +858,7 @@ namespace Display {
 
     //% weight=24
     //% blockId=pocpoz
-    //% block="PLAYER start position x(0-9) %x , y(0-5) %y"
+    //% block="PLAYER start position x(0-13) %x , y(0-5) %y"
     //% inlineInputMode=inline
     export function pocpoz(x: number, y: number){
         ispis("POZ;" + x.toString() + ";" + y.toString());
