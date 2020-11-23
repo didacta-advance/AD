@@ -223,9 +223,9 @@ enum yn {
 //% blockHidden=true
 enum lr {
     //% block="Left"
-    l = 1,
+    l = 0,
     //% block="Right"
-    r = 0
+    r = 1
 }
 
 //% blockHidden=true
@@ -455,7 +455,7 @@ namespace Display {
 
     //% weight=112 color=#05b115
     //% blockId=bitscrolltxt
-    //% block="SCROLL: horizontal - BIT: start from %str, from row %x to row %y with loop %nn"
+    //% block="SCROLL: horizontal - BIT: from %str, from row %x to row %y with loop %nn"
     //% inlineInputMode=inline
     export function bitscrolltxt(str: lr, x: number, y: number, nn: yn): void {
         let b;
