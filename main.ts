@@ -64,10 +64,6 @@ enum bitmapIndex {
     Custom4 = 4,
     //% block="Custom 5"
     Custom5 = 5,
-    //% block="Custom 6"
-    Custom6 = 6,
-    //% block="Custom 7"
-    Custom7 = 7,
     //% block="Player animation frame"
     AnimationFrame = 8,
     //% block="Player"
