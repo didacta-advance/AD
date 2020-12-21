@@ -579,7 +579,7 @@ namespace Display {
         ispis("PIX;" + x.toString() + ";" + y.toString() + ";" + a);
     }
 //************************************* GAME */
-    //% weight=102 color=#323131
+    //% weight=71 color=#323131
     //% blockId=leds
     //% block="LED: color %boja (mils) %br"
     export function leds(boja: coloringled, br: number ): void {
