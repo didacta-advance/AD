@@ -213,6 +213,14 @@ enum coloringplus {
 }
 
 //% blockHidden=true
+enum coloringled {
+    //% block="🟥"
+    red = 0,
+    //% block="🟩"
+    green = 1
+}
+
+//% blockHidden=true
 enum yn {
     //% block="Yes"
     y = 1,
@@ -557,8 +565,6 @@ namespace Display {
         ispis("SPR;" + n.toString() + ";" + x.toString() + ";" + y.toString() + ";" + a);
     }
 
-
-
     //% weight=100 color=#323131
     //% blockId=ispispix
     //% block="PIXEL: x (0-83) %x , y (0-47) %y color %boja"
@@ -573,6 +579,18 @@ namespace Display {
         ispis("PIX;" + x.toString() + ";" + y.toString() + ";" + a);
     }
 //************************************* GAME */
+    //% weight=102 color=#323131
+    //% blockId=leds
+    //% block="LED: color %boja (mils) %br"
+    export function leds(boja: coloringled, br: number ): void {
+        let a;
+        switch (boja) {
+            case (1): a = "G"; break;          
+            case (0): a = "R"; break;
+        }
+        ispis("LED;" + a + ";" + br.toString());
+    }
+
     //% weight=70
     //% blockId=begin
     //% block="GAME: START message"
