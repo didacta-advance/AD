@@ -1,5 +1,5 @@
 {
-    "name": "displayAD",
+    "name": "displaylib",
     "description": "",
     "dependencies": {
         "core": "*"
