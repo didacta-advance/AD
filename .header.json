@@ -1,5 +1,5 @@
 {
-    "name": "displaylib",
+    "name": "displayAD",
     "meta": {
         "versions": {
             "target": "2.1.5",
@@ -14,7 +14,7 @@
     "id": "85e947d4-d062-4294-cc0c-0d1353d7306d",
     "recentUse": 1603706486,
     "modificationTime": 1603457189,
-    "path": "displaylib",
+    "path": "displayAD",
     "blobCurrent": false,
     "saveId": null,
     "githubCurrent": false
